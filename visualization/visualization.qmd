@@ -1,0 +1,385 @@
+---
+title: "Ethical Practices and Considerations while Developing Visualizations"
+format:
+  revealjs: 
+    slide-number: true
+    chalkboard:  
+      buttons: true
+    preview-links: auto
+#bibliography: references.bib
+---
+
+## Real World Example
+
+::::: columns
+::: {.column width="50%"}
+![](figures/NationalReview.png){style="float: left;" width="100%"}
+:::
+
+::: {.column width="50%"}
+-   In 2015, the National Review tweeted a chart that displayed the global temperature in Fahrenheit from 1800 to 2015. Noting that it was the only chart that someone needed to see.
+:::
+:::::
+
+## Real World Example: Discussion
+
+::::: columns
+::: {.column width="50%"}
+![](figures/NationalReview.png){style="float: left;" width="100%"}
+:::
+
+::: {.column width="50%"}
+-   Take a minute to reflect on the tweet and 5 minutes to discuss.
+
+-   Discuss in groups your observations, questions, and thoughts.
+
+<iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:05:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
+
+</iframe>
+:::
+:::::
+
+## Real World Example: Background {.scrollable}
+
+::: incremental
+-   The data are from NASA's Goddard Institute for Space Studies (GISS) analysis of global surface temperature change. [@hansen2010]
+
+-   The world's temperature is initial recorded in Celsius.
+
+-   The GISS analysis combines available sea surface temperature records with meteorological station measurements of temperature.
+
+-   Then compared to the years 1951–1980 as the base period to determine change.
+
+-   Additional adjustments to the average global surface temperature change are made such as accounting for heterogeneity to minimize local non-climatic effects.
+
+-   The Washington Post addressed the tweet by identifying that the National Reviewer had scaled the plot to "hide the actual change in temperature."
+
+-   The National Review failed to address how they treated to the data to get the Fahrenheit values.
+:::
+
+## Real World Example: Plot {.scrollable}
+
+::: {layout-nrow="1"}
+```{r}
+library(readr)
+library(plotly)
+library(tidyr)
+library(tidyverse)
+
+
+#this is me calling in the data 
+NASAdata <- read_csv("data/NASAdata.csv")
+NASAdata <- NASAdata |> replace_na(replace = 
+                         list(Aug=c("****"),
+                              Sep=c("****"),
+                              Oct=c("****"),
+                              Nov=c("****"),
+                              Dec =c("****"))) |> 
+  mutate(across(-Year, as.double))
+
+#this is me changing the data into long form using the pivot_longer function in tidyr 
+NASAdata <- NASAdata |> 
+  pivot_longer(-Year, names_to = "month", values_to="temperature")
+
+
+# Transform all numeric columns by multiplying by 1.8 and adding 32
+NASAdata <- NASAdata |> 
+  mutate(fahrenheit_temperature = temperature*1.8 + 32) |> 
+  mutate(date = ym(paste0(Year, "-", month)))
+
+
+#this is me 
+ 
+fig <- plot_ly(NASAdata, x = ~date)
+fig <- fig %>% add_lines(y = ~temperature)
+
+fig <- fig %>% layout(
+    title = "Global Surface Temperature Transformed from Celsius to Fahrenheit",
+    yaxis = list(
+      rangeslider = list(type = "Temperature",
+                         title = "Global Temperature",
+                          range = list(-100, 300))))
+
+fig
+
+```
+:::
+
+-   Manipulate the plot by zooming in and out and evaluate temperature at time intervals.
+-   Describe the trend as a class.
+
+<iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:05:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
+
+</iframe>
+
+# Distinguishing Between the Poorly Constructed Plots and Unethical Practices
+
+## Distinguishing Between the Poorly Constructed Plots and Unethical Practices
+
+::: incremental
+-   There is a fine line between creating a poorly constructed figure and unethically presenting findings.
+-   Data scientists should remain honest, provide clarity and avoid violations of openness or objectivity.
+-   Ensure that your audience has enough information to make an informed decision not influence by the data scientist's background (values, experience, etc.). [@schroeder2022]
+:::
+
+## Common Characteristics of Poorly Constructed Plots [@szafir2018] {.scrollable}
+
+:::::::: panel-tabset
+### The use of 3D Graphs {.scrollable}
+
+::::: columns
+::: {.column width="50%"}
+![](figures/3d%20graph.png)
+:::
+
+::: {.column width="50%"}
+3d figures:
+
+-   are often difficult to read.
+-   appear to pop out of the page.
+-   axes marks appear to be overlapping, which make some marks more difficult to view than others.
+-   lose and distort information when changing between 3d and 2d.
+:::
+:::::
+
+### Lack of Information
+
+Lack of information:
+
+-   The exclusion of information that may impact a readers understanding which include the following:
+    -   x- and y-axis labels,
+    -   variable scale of measurement (e.g. kg., log-transformation, etc.),
+    -   clear title or figure labels.
+
+### Inclusion of too Much Information
+
+-   The inclusion of too much information can have the same effect as leaving out information.
+    -   Leaving the audience with more questions and confusion.
+    -   General rule:
+        -   Provide enough information so that your audience can make an informed decision.
+    -   Exclude unnecessary text (subtitles, long title, jargon).
+    -   Address disproportionate number of numerical values than actual (i.e.,too many values on the y-axis).
+
+![](figures/toomuchinformation2.png)
+
+::: notes
+In the primary graph 19 MLS soccer teams and values spent on players salaries. The graph is broken down by several groups: players, players position. The full length of the bars suggest the total amount spent on players salaries. Individual bar can also be used to compare the relative amount invested on each player within a team. In the sub graph, the data is broken down by: players position and dollar amount spent.
+:::
+
+### Not Starting Axes at 0
+
+Not starting axes at 0:
+
+-   Some functions by default fit axis ranges to natural data scales.
+-   Non-zero y-axes may suggest that small differences to appear much larger than truth.
+-   When dealing with normalized data ensure that the variables are placed on the same scale.
+
+![](figures/3d%20graph.png)
+
+![](figures/Improvedgraph.png){style="float: left;" width="60%"}
+
+::: notes
+Highlight how this 3d graph starts at 65% rather than 0. Note that a more appropriate graph would contain data points (65% and 74% accuracy) with an y-axis that began at 0, which is seen in the second photo. By shrinking the y-axis we create the effect that one method has twice as much than the other.
+:::
+::::::::
+
+# "Excellence in statistical graphics consists of complex ideas communicated with clarity, precision, and efficiency." [@tufte2001] {.scrollable}
+
+## Tufte's graphic principles to creating useful figures:
+
+::: incremental
+-   The physical representation of numbers on a surface should be proportional to numerical quantities represented.
+-   Use clear and comprehensive labels.
+-   Write out explanations of the data (e.g., in the text, notes immediately following the graph).
+-   Show data variation not design variation.
+-   The number of dimensions presented should not exceed the number of dimensions in the data.
+-   Graphics should not quote data out of context.
+:::
+
+::: notes
+Edward Tufte is a Yale professor who studies the characteristics of data visualizations and how such characteristics impact readers. His book ''The Visual Display of Quantitative Information'' (1983) review several principles to creating informative data graphics.
+:::
+
+# Accessibility & Visualizations
+
+## Accessibility {.scrollable}
+
+::: incremental
+-   Color
+    -   Human perceptions of color vary.
+    -   In recent literature colorblindness and complete blindness are primary accessibility concerns related to graphics. [@johnson2024]
+    -   [@petroff2024] used a machine learning technique to identify color sequences which considered color blindness types, color lightness, color sequence preferences, and aesthetic preferences.
+    -   3 sequences of colors were identified and all began with the color blue.
+    -   ![](figures/Colorsequence.png){style="float: left;"}
+    -   Surrounding colors influence the perception of others
+        -   Choose colors that are not difficult to distinguish between each other.
+    -   Color association
+        -   Avoid color schemes that engage in stereotypes (i.e., black associated with unsafe and white associated with approachable).
+    -   Keep color schemes neutral
+    -   Consider how different mediums (e.g., computer screen, printouts, software) used to display the graphic may influence color.
+:::
+
+::: notes
+Accessibility is the practice of ensuring that all individuals have equal access to resources, programs, and opportunities, regardless of their abilities or backgrounds.
+
+In more recent years, the study of colors in statistical visualizations has burgeoned since visualizations rely on color for many different reasons (e.g. distinction of classes, degrees,effects). Findings from those studies highlight several key themes that researchers need to consider while creating visualizations. For instance, an individuals degree of color blindness may influence the perception of graph or figure. One in every 12 men (8%) and one in every 200 women (0.5%) in the U.S. are born with inherited color defective vision of some type and degree (Johnson, 2024). The most common color-blindness types are red-green and blue-purple. Any color that contains the affected primary color is distorted.
+
+Using neural networks, Petfroff (2024), was able to identify sequence of colors that may improve the accessibility of plots. Several variables were used as predictors/features: color blindness types, color lightness, preferred color sequence, and aesthetic preferences. Three color sequences were identified. All started with the color blue.
+
+Different mediums play a considerable role in the perception of graphs, figures, and tables. Colors may be more saturated on a computer than a piece of paper. Different software may use different varying default colors in visual aides. A data scientist needs to consider their audience.
+:::
+
+## Accessibility {.scrollable}
+
+::: incremental
+-   Graphics for the blind or visually impaired
+    -   More tools are being developed to assist the visually impaired with accessing graphics, such as:
+        -   With the use of machine learning approaches, researchers have automated data extraction from graphs and figures and consequentially provide the natural language descriptions to support visually disabled users. [@shahira2021]
+        -   R-packages that assist visually impaired researchers with developing figures and graphs. [@godfrey2018]
+            -   BrailleR package---an R add-on specifically targeted at blind users---to extract detailed information, such as data ranges, grammatical constructs, etc. to generate speech strings that are embedded into the image annotation. [@godfrey]
+            -   gridSVG - which exports graphics using the grid package to SVG, which can be read by a screen reader for the visually impaired. [@murrell]
+:::
+
+## Outliers and Visualizations {.scrollable}
+
+::: {layout-nrow="2"}
+-   During data cleaning and data exploration, evaluate the data for "unusual values" using visual aides or summary statistics.
+    -   Participants with recorded extreme high or low values are classified as outliers.
+
+```{r}
+#| code-fold: true
+#| echo: true
+
+data("diamonds")
+ggplot(diamonds, aes(x = x, y = y)) + 
+  geom_point()+
+  geom_text(data = subset(diamonds, x < 3), aes(label = x), nudge_y = 2)+
+  geom_text(data = subset(diamonds, y > 30), aes(label = y), nudge_y = 2) + 
+  theme_bw()
+```
+:::
+
+::: notes
+Additional reasons may be present in the data include: coding for missing values (e.g. 999) and entry errors
+
+Using the diamond data set, we plot the length and width of 53,940 round-cut diamonds.Using the ggplot function we can plot the two variables from the diamond data set against each other. We set the aesthetics of our graph with length on the x-axis and width on the y-axis and display data using geom_point.
+:::
+
+## Discussion: Outliers {.scrollable}
+
+::: {layout-nrow="2"}
+-   While there are no prescribed steps to handle outliers, some scientists suggest constructing two graphs and running analysis with or without the outliers. If outliers do not effect your results, you can exclude them.
+
+```{r}
+#| code-fold: true
+#| echo: true
+
+diamonds %>% 
+ filter(y <= 30, x >= 3) %>% 
+ggplot(aes(x = x, y = y)) + 
+  geom_point() + theme_bw()
+```
+:::
+
+-   Take 5 minutes to discuss:
+    -   Discuss what you observe in the graph.
+    -   How do those extreme values impact the relation between length and width of diamonds after being removed?
+    -   Would you drop the outliers and all their additional observed scores?
+
+<iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:05:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
+
+</iframe>
+
+## Ethical Principles from the Organization for Economics Co-operation and Development (OECD) related to Visualizations {.scrollable}
+
+::: {layout-nrow="4"}
+2.Data Quality
+
+-   Principle: Be sure that the data are accurate, complete and kept up-to-date.
+-   Poor data will create poor graphics [@tufte2001], which may confuse readers and lead to a wrong conclusion.
+-   Evaluate the data for errors, missing values, and extreme values prior to graphing.
+
+3.Use Limitation
+
+-   Principle: Personal data should not be disclosed, made available or otherwise used for purposes other than those specified in accordance.
+-   Ensure that graphics do not contain personal participant information or that given information can not be directly related to participants.
+
+6.Openness Principle
+
+-   Principle: There should be a general policy of openness about developments, practices and policies with respect to personal data.
+-   Remain transparent about the data used in figures.
+-   Be transparent about how your background may have influenced the graphic.
+-   Describe the procedures used to create graphics, including the transformation of data and the removing of outliers.
+-   Do not manipulate graphics that change the patterns of the data.
+
+8.Accountability principles
+
+-   Principle: A data controller should be accountable for complying with measures which give effect to the principles stated above.
+-   If the data in a figure are wrong ensure that your superior knows and the graphic is corrected.
+-   Do not let others influence the procedures used to present data or findings.
+-   Ensure that you use the proper graphic to display your data.
+:::
+
+::: notes
+The following four (Data quality, use limitation, openness, and accountability) out of eight principles delineated by the OECD especially relate data visualizations. As a reminder the principle is first described followed by suggests to comply with the principles while creating visualizations. Feel free to ask student if they can think of any other practices that will help them comply with these principles.
+:::
+
+## Case Study {.scrollable}
+
+<center>![](figures/RecreationPPF.png)</center>
+
+::: notes
+Information about the chart: The following graph was presented by Jason Chaffetz, the Chairman of the House Committee on Oversight and Government Reform. This chart was presented to Cecile Richards the head of Planned Parenthood during her testimony at public hearing. The chart suggested that Planned Parenthood performs more abortions than cancer screenings and prevention services. [Source: Committee of Oversight and Accountability Democrats](https://oversightdemocrats.house.gov/news/press-releases/politifact-awards-chaffetz-a-rating-of-pants-on-fire-for-using-misleading-chart)
+
+This is may be a good opportunity for you to ask students to take a look at the graph and identify issues with the following graph (there are several). You may ask them reflection questions such as: What implications could this graph have? If the graph is found misleading, who is at fault?
+:::
+
+Recreate the Planned Parent Hood Visualization using the following data and ggplot to evaluate the trends of cancer screening and abortions performed by the organizations
+
+
+## Side by side plot
+
+```{r, echo=FALSE}
+suppressPackageStartupMessages(library(tidyverse))
+library(patchwork)
+
+## The following data are collected from Planned Parenthood Federation of American Annual Report from 2006-2013
+
+year <- c(2006, 2007, 2008, 2009, 2010, 2011, 2012,2013)
+cancerscreen <- c(2007371, 1900850, 1860413, 1830811, 1596741, 1307570, 1121580, 935573)
+abortions <- c(289750, 305310, 324008, 331796, 329445, 333946, 327166, 327653)
+pp_data = tibble(year=year, cancerscreen=cancerscreen, abortions=abortions)
+```
+
+```{r, echo=TRUE}
+#| output-location: slide
+cancer_plot <- pp_data |> ggplot() + geom_line(aes(x=year, y=cancerscreen)) + theme_bw() 
+abortion_plot <- pp_data |> ggplot() + geom_line(aes(x=year, y=abortions)) + theme_bw()
+
+## Plot them side by side
+cancer_plot + abortion_plot 
+```
+
+
+
+
+## On the same plot
+
+```{r, echo=TRUE}
+#| output-location: slide
+pp_data |> ggplot() +
+  geom_line(aes(x=year, y=cancerscreen), col="blue") + 
+  geom_line(aes(x=year, y=abortions), col="red") + 
+  ylab("") +
+  theme_bw()
+```
+
+## Comparing data across groups
+
+ What's the best way to compare data across multiple groups?
+
+- Same plot? Different plot?
+
+- Absolute vs relative?
+
+- What is the best way to accurately and ethically convey the meaning of this data?

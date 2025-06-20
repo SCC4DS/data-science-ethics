@@ -1,0 +1,406 @@
+---
+title: "Introduction to Ethics in Data Science"
+subtitle: "Ethical Practices and Considerations to Visualizations and Summary Statistics"
+format:
+  revealjs: 
+    slide-number: true
+    preview-links: auto
+bibliography: reference.bib 
+---
+
+
+
+## Criminal Risk Assessment Algorithms 
+
+- Machine learning is increasingly used to to inform decisions about individuals in the criminal justice system
+  - Setting bond amounts
+  - Length of sentence
+
+- One major component of these decisions is trying to evaluate a defendant's risk of future crime 
+
+- *Recidivism*: the tendency of a convicted criminal to reoffend.
+
+## The COMPAS recidvism algorithm
+
+- In 2016, [ProPublica published an a story](https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing) about one of the most used algorithms called 'COMPAS'
+
+-   COMPAS stands for Correctional Offender Management Profiling for Alternative Sanctions, and was mostly used to assess the risk of a pretrial release
+
+- In their article, they conducted a rigorous analysis of possible bias by analyzing data and COMPAS predictions from more than 10,000 criminal defendants in Broward County, Florida
+
+## Fairness & Transparency
+
+- Fairness: ideally, COMPAS would have the same impact on all demographic subgroups.  Probably not possible!
+
+-  Transparency: COMPAS is a closed-source algorithm. The public is not allowed to see how the algorithm works.
+
+::: callout-note
+## Question
+What information about an individual do you think is "fair" to include in an algorithm which predicts recidivism? What information would be "unfair"?
+:::
+
+
+## COMPAS data
+
+The risk-scores are derived come from answers to a 137 question survey and the defendants criminal record.
+
+Predictors used by COMPAS include:
+
+- Prior arrests and convictions (and if any friends had priors)
+
+- Address, GPA, wealth
+
+- If the defendant’s parents separated
+
+. . . 
+
+::: callout-important
+Purportedly, race is not used as a predictor.
+:::
+
+## Recidivism Data
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(gt)
+library(gtExtras)
+
+compas_scores <- read.csv("./compas-scores-two-years.csv")
+```
+
+
+
+```{r}
+compas_scores <- compas_scores   |> select(age, c_charge_degree, race, age_cat, score_text, sex, priors_count, 
+               days_b_screening_arrest, decile_score, is_recid, two_year_recid, c_jail_in, c_jail_out) %>% 
+    filter(days_b_screening_arrest <= 30) %>%
+    filter(days_b_screening_arrest >= -30) %>%
+    filter(is_recid != -1) %>%
+    filter(c_charge_degree != "O") %>%
+    filter(score_text != 'N/A')
+
+```
+
+
+
+There are `r nrow(compas_scores)` observations in the data we'll analyze. `r 100*round((1-mean(compas_scores$score_text == "Low")), 2)`% of individuals received a high risk score.
+
+```{r}
+#| layout-ncol: 2
+compas_scores |> select(age_cat, race) |>
+  group_by(age_cat) |>
+  summarize(proportion = n() / nrow(compas_scores)) %>% gt() %>% 
+  fmt_number(columns = c("proportion"), decimals = 2) %>% 
+  opt_stylize() %>% 
+  tab_options(table.font.size = 36) %>%
+  cols_label(proportion = "Proportion", 
+             age_cat = "Age Group")
+
+compas_scores |> select(age_cat, race) |>
+  group_by(race) |>
+  summarize(proportion = n() / nrow(compas_scores)) %>% 
+  gt() %>% 
+  fmt_number(columns = c("proportion"), decimals = 2) %>% 
+  opt_stylize() %>% 
+  tab_options(table.font.size = 36) %>%
+  cols_label(proportion = "Proportion", 
+             race = "Race")
+
+#compas_scores %>% xtabs(data=., ~ sex + race)
+```
+
+
+
+<!-- ## Predictions -->
+
+<!-- ```{r} -->
+<!-- compas_scores |> filter(race %in% c("African-American", "Caucasian")) %>% ggplot() + geom_histogram(aes(x=decile_score)) + facet_wrap(~race) + theme_bw(base_size=16) + xlab("Decile Score") -->
+<!-- ``` -->
+
+```{r}
+
+compas_scores <- compas_scores %>% mutate(crime_factor = factor(c_charge_degree)) %>%
+      mutate(age_factor = as_factor(age_cat)) %>%
+      within(age_factor <- relevel(age_factor, ref = 1)) %>%
+      mutate(race_factor = factor(race)) %>%
+      within(race_factor <- relevel(race_factor, ref = 3)) %>%
+      mutate(gender_factor = factor(sex, labels= c("Female","Male"))) %>%
+      within(gender_factor <- relevel(gender_factor, ref = 2)) %>%
+      mutate(score_factor = factor(score_text != "Low", labels = c("LowScore","HighScore")))
+```
+
+## Predictions
+
+-   The COMPAS algorithm is closed-source but we can learn about the algorithm by fitting our own model to the COMPAS predictions.
+
+-   Predict COMPAS score ("high" vs "low" risk) using data about the defendants collected by ProPublica.  
+  - Data includes age, race, and prior counts
+
+-   Compare the predictions for different inputs to the model
+
+
+
+## Predictions
+
+```{r}
+model <- glm(score_factor ~ gender_factor + age_factor + race_factor +
+                            priors_count, family="binomial", data=compas_scores)
+summary(model)
+compas_scores$predictions <- predict(model, type="response")
+```
+
+. . .
+
+::: callout-note
+The classifier we used here is called a "logistic regression". You'll learn much more about this in later statistics courses.
+:::
+
+## Exploring Predictions
+
+- Use our classifier to predict the probability that COMPAS would give an individual a high score 
+
+- Looks at inputs which are identical except in one characteristic
+
+- Compare predictions for different ages and different races
+
+## The importance of age
+
+Compare predictions for two hypothetical individuals identical in all characteristics except age.
+
+<br>
+
+```{r old_v_young}
+pred_df <- tribble(
+ ~ gender_factor, ~age_factor, ~race_factor, ~priors_count, ~crime_factor, ~two_year_recid,
+ "Male", "25 - 45", "African-American", 0, "F", 0,
+ "Male", "Greater than 45", "African-American", 0, "F", 0,
+)
+
+pred_df$risk_probability <- predict(model, newdata=pred_df, type="response")
+pred_df %>% select(gender_factor, age_factor, race_factor, priors_count, risk_probability) %>% 
+  gt() %>% fmt_number(columns = c("risk_probability"), decimals = 2) %>% 
+  opt_stylize() %>% 
+  tab_style(
+    style = list(
+      cell_fill(color = "#F9E3D6")),
+    locations = cells_body(
+      columns = age_factor
+    )
+  ) %>%
+  gt_add_divider(columns = "priors_count") %>%
+  tab_options(table.font.size = 36) %>%
+  cols_label(gender_factor = "Sex", 
+             age_factor = "Age Group", 
+             race_factor = "Race", 
+             priors_count = "Priors",
+             risk_probability = "Prob. High")
+
+```
+
+
+## The importance of race
+
+Compare predictions fro two hypothetical individuals identical in all characteristics except race.
+
+<br>
+
+```{r black_v_white}
+
+pred_df <- tribble(
+
+ ~ gender_factor, ~age_factor, ~race_factor, ~priors_count, ~crime_factor, ~two_year_recid,
+
+ "Male", "25 - 45", "African-American", 0, "F", 0,
+
+ "Male", "25 - 45", "Caucasian", 0, "F", 0,
+
+)
+
+pred_df$risk_probability <- predict(model, newdata=pred_df, type="response")
+
+pred_df %>% select(gender_factor, age_factor, race_factor, priors_count, risk_probability) %>% 
+  gt() %>% fmt_number(columns = c("risk_probability"), decimals = 2) %>% 
+  opt_stylize() %>% 
+    tab_style(
+    style = list(
+      cell_fill(color = "#F9E3D6")),
+    locations = cells_body(
+      columns = race_factor
+    )
+  ) %>%
+  gt_add_divider(columns = "priors_count") %>%
+  tab_options(table.font.size = 36) %>%
+  cols_label(gender_factor = "Sex", 
+             age_factor = "Age Group", 
+             race_factor = "Race", 
+             priors_count = "Priors", 
+             risk_probability = "Prob. High")
+
+
+
+```
+
+
+. . .
+
+::: callout-important
+But "race" is purportedly not an input to COMPAS!
+:::
+
+## Proxy Variables
+
+Just because `race` isn't an input to the algorithm does not mean the algorithm makes the same predictions for all race groups!
+
+::: {.callout-note}
+## Question
+
+How might the COMPAS algorithm implicitly factor racial information into its predictions even though `race` is not an input?
+:::
+
+## Evaluating Mis-classifications
+
+![](confusion_matrix.png)
+
+- Accurary:TP + FP / n
+- False positive rate (FPR): FP / (FP + TN)
+- False negative rate (FNR): FN / (FN + TP)
+
+## Examining FPR and FNR
+
+- ProPublica provides a binary variable named `two_year_recid` which indicates whether an individual committed a new crime within two years of the screening or not.
+
+- We can compare the COMPAS risk predictions to the `two_year_recid` variable which we'll assume is our "ground truth" to compute FPR and FNR
+
+- There is a tradeoff between FPR and FNR!
+
+## Examining FPR and FNR
+
+```{r, echo=TRUE}
+#| attr-output: "style='text-align: center; font-size: 0.75em'"
+compas_scores %>% xtabs(data=., ~ score_factor + two_year_recid) 
+```
+. . .
+
+- FPR: 1018 / (2345 + 1018) = 0.30
+- FNR: 1076 / (1733+1076) = 0.38
+- Accuracy: (2345 + 1733) / n = 0.66
+
+. . .
+
+::: {.callout-note}
+## Question
+What is the meaning of FPR and FNR in this context? Is one worse than the other?
+:::
+
+
+## FPR and FNR for African-Americans
+```{r, echo=TRUE}
+#| attr-output: "style='text-align: center; font-size: 0.75em'"
+compas_scores %>% 
+  filter(race == "African-American") %>% 
+  xtabs(data=., ~ score_factor + two_year_recid) 
+```
+<br>
+
+FPR = $641 / (873 + 641) = 0.57$
+
+FNR = $473 / (473 + 1188) = 0.28$
+
+ACC = $(999+414)/(999+408+414+282) = 0.65$
+
+## FPR and FNR for Caucasians
+
+
+
+```{r, echo=TRUE}
+#| attr-output: "style='text-align: center; font-size: 0.75em'"
+compas_scores %>% 
+  filter(race == "Caucasian") %>% 
+  xtabs(data=., ~ score_factor + two_year_recid)
+```
+
+<br>
+
+FPR = $282 / (282 + 999) = 0.22$
+
+FNR = $408 / (408 + 414) = 0.50$
+
+ACC = $(999+414)/(999+408+414+282) = 0.67$
+
+## FPR and FNR
+<br>
+<br>
+```{r}
+tibble(Group = c("African-American", "Caucasian", "All"), 
+       FPR = c(0.57, 0.22, 0.3), 
+       FNR = c(0.28, 0.5, 0.38), 
+       ACC = c(0.65, 0.67, 0.66)) %>% 
+  gt(rowname_col = "Group") %>% 
+  opt_stylize(style = 3, color="red") %>%
+  tab_style(style = cell_borders(sides = c("bottom"),  weight = px(2)),
+            locations = cells_body(rows = c(2))) %>% 
+  opt_row_striping(row_striping = FALSE) %>%
+  tab_options(table.font.size = 48) %>%
+   data_color(
+    method = "numeric",
+    domain = c(0.2, 0.8),
+    palette = "ggsci::red_material",
+    columns = c("FPR", 'FNR')
+  ) %>%
+  data_color(
+    method = "numeric",
+    domain = c(0.5, 1),
+    palette = "ggsci::red_material",
+    columns = c("ACC")
+  ) %>%
+  gt_add_divider(columns = "FNR") 
+  
+```
+
+<br>
+
+Similar accuracy across the two race groups are attained in very different ways!
+
+
+##  Putting a human face on it
+
+ProPublica discusses two different incidents in Broward County: 
+
+1. In 2014, an 18-year-old girl, Brisha Borden, and her friend grabbed an unlocked bicycle and scooter and rode them down the street, then abandoning it. Police arrived and arrested the girls for burglary and theft of $80 worth of goods. 
+
+. . .
+
+2. In 2013, a 41-year-old man, Vernon Prater, was caught shoplifting $86 worth of goods from Home Depot. He had prior convictions for armed robbery and had previously served 5 years in prison.
+
+
+## Putting a human face on it
+
+<center>![](images/petty_theft_arrests1.png){width=50%}</center>
+
+<center>[source](https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing])</center>
+
+## Putting a human face on it
+
+<center>![](images/petty_theft_arrests2.png){width=60%}</center>
+
+<center>[source](https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing])</center>
+
+
+
+## Summary
+
+- We have highlighted unfairness in the COMPAS algorithm
+
+- Understanding the root causes and devising potential solutions is non-trivial!
+
+- Ethical data science and fairness in machine learning is challenging but essential!
+
+## Read more
+
+  - [The ProPublica article, "Machine Bias"](https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing), 
+  - [Methodology for the analyses used in "Machine Bias"](https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm)
+  - [Fairness and Algorithmic Decision Making - COMPAS Chapter](https://afraenkel.github.io/fairness-book/content/04-compas.html)
+
+
+## References
