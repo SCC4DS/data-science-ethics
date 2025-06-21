@@ -26,7 +26,7 @@ This module addresses the ethical dimensions of data visualization, emphasizing 
 
 **Suitable for:** Any course involving data visualization, exploratory data analysis classes, or communication-focused statistics courses.
 
-### 2. Classification  
+### Classification  
 **Focus:** Ethical considerations in predictive modeling and classification algorithms
 
 
