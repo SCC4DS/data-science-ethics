@@ -32,3 +32,14 @@ This module addresses the ethical dimensions of data visualization, emphasizing 
 
 
 **Suitable for:** Intermediate statistics courses covering regression and classification, machine learning courses.
+
+### Sampling
+**Focus:** TK TK
+
+**Suitable for:** TK TK
+
+
+### Artificial Intelligence
+**Focus:** TK TK
+
+**Suitable for:** TK TK
