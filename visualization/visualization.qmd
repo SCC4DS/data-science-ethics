@@ -6,7 +6,7 @@ format:
     chalkboard:  
       buttons: true
     preview-links: auto
-#bibliography: references.bib
+bibliography: references.bib
 ---
 
 ## Real World Example
@@ -17,7 +17,7 @@ format:
 :::
 
 ::: {.column width="50%"}
--   In 2015, the National Review tweeted a chart that displayed the global temperature in Fahrenheit from 1800 to 2015. Noting that it was the only chart that someone needed to see.
+   In 2015, the National Review tweeted a chart that displayed the global temperature in Fahrenheit from 1800 to 2015. Noting that it was the only chart that someone needed to see.
 :::
 :::::
 
@@ -181,7 +181,10 @@ Highlight how this 3d graph starts at 65% rather than 0. Note that a more approp
 :::
 ::::::::
 
-# "Excellence in statistical graphics consists of complex ideas communicated with clarity, precision, and efficiency." [@tufte2001] {.scrollable}
+##
+
+
+> Excellence in statistical graphics consists of complex ideas communicated with clarity, precision, and efficiency." [@tufte2001]
 
 ## Tufte's graphic principles to creating useful figures:
 
@@ -381,3 +384,99 @@ pp_data |> ggplot() +
 - Absolute vs relative?
 
 - What is the best way to accurately and ethically convey the meaning of this data?
+
+## Case study: cancer deaths
+
+- Since 1980, have cancer deaths in the United States been increasing, decreasing or remaining roughly constant? 
+
+- Before you look at data, hypothesize about possible trends and causes for those trends.
+
+
+
+## Case study: cancer deaths
+
+```{r}
+cancer_data <- read_csv("data/IHME_cancer.csv")
+
+cancer_data |> filter(cause_name == "Total cancers",
+                      age_name == "All ages",
+                      metric_name == "Rate",
+                      location_name == "United States of America") |> 
+  ggplot() + geom_line(aes(x=year, y=val)) + theme_bw() + 
+  ylab("Cancer Deaths (per 100000 people)") + 
+  ggtitle("United States")
+
+```
+
+
+## What story does the data tell?
+
+```{r}
+cancer_data <- read_csv("data/IHME_cancer.csv")
+
+cancer_data |> filter(cause_name == "Total cancers",
+                      age_name == "All ages",
+                      metric_name == "Rate",
+                      location_name %in% c("Japan", "Uganda")) |> 
+  ggplot() + geom_line(aes(x=year, y=val, col=location_name)) + theme_bw(base_size=16) + 
+  ylab("Cancer Deaths (per 100000 people)")
+
+```
+This visualization is valid, but perhaps misleading. Why?
+
+
+
+## Median age over time
+
+```{r}
+age_data <- read_csv('data/median-age.csv')
+
+age_data |> 
+  mutate(Country = Entity, `Median age` = `Median age - Sex: all - Age: all - Variant: estimates`) |> 
+  filter(Year < 2025 & Year > 1980) |> 
+  filter(Entity %in% c("Japan", "Uganda")) |> 
+  ggplot() + geom_line(aes(x=Year, y=`Median age`, col=Country)) + theme_bw(base_size=16) + 
+  ylab("Median Age")
+
+
+```
+
+:::attribute
+Source: [ourworldindata.org](https://ourworldindata.org/grapher/median-age)
+:::
+
+## Age-Standardized Cancer Deaths
+
+```{r}
+cancer_data <- read_csv("data/IHME_cancer.csv")
+
+cancer_data |> filter(cause_name == "Total cancers",
+                      age_name == "Age-standardized",
+                      metric_name == "Rate") |> 
+  ggplot() + geom_line(aes(x=year, y=val, col=location_name)) + theme_bw(base_size=16) + 
+  ylab("Cancer Deaths (age-standardized)")
+
+```
+See [https://ourworldindata.org/age-standardization](https://ourworldindata.org/age-standardization) for more discussion.
+
+## Comparability
+
+- Always consider relevant reference or comparison groups
+
+- Is standardization needed for fair comparison? Are there lurking variables?
+
+- Highlights that expertise is often needed to generate the most appropriate visualization 
+
+## Responsbility and power dynamics
+
+- How do power dynamics change what stories get told with data and how that data is presented?
+
+. . . 
+
+- Is the creator of a visualization responsible for how that visualization is interprted and used?
+
+. . .
+
+- What makes somebody qualified to visualize data? What are the dangers of "citizen science"? What are the dangers of over-relying on experts?
+
+## References
