@@ -1,6 +1,5 @@
 ---
-title: "Introduction to Ethics in Data Science"
-subtitle: "Ethical Practices and Considerations to Visualizations and Summary Statistics"
+title: "Ethical Considerations for Classificaiton Algorithms"
 format:
   revealjs: 
     slide-number: true
@@ -8,9 +7,121 @@ format:
 bibliography: reference.bib 
 ---
 
+## Classification Algorithms
+
+- In this module, we'll consider binary classification algorithms which use data to predict one of two outcomes which we'll refer to **"positive"** and **"negative"** classes.
+
+- Most problems have a fundamental asymmetry: not all mistakes are created equal!
+
+  + Example: consider a medical test that returns "positive for cancer" or "negative for cancer"
+
+. . . 
+
+- Most machine learning classifiers have tunable threshold parameters which allow us to increase (or decrease) the number of positive predictions which necessarily decreases (increases) the negative predictions
+
+- In this lecture, we'll take a deep dive into the consequences of different types of misclassifications
+
+## Evaluating Classifiers
+
+![](figures/confusion_matrix.png)
+
+- Accurary:TP + FP / (TP + FP + FN + TN)
+- False positive rate (FPR): FP / (FP + TN)
+- False negative rate (FNR): FN / (FN + TP)
+
+## Evaluating Classifiers
+
+There are many other commonly metrics which are used to understand classification accuracy:
+
+<center>![Source: Wikipedia, "Receiver operating characteristic"
+](figures/classification_metrics.png){width=50%}</center>
+
+In this module, we'll focus on the tradeoff between false positive rate and false negative rate
+
+## A Tradeoff: FPR vs FNR
+
+- Tunable threshold parameters which allow us to increase or decrease the number of positive predictions
+
+- Increasing positive predictions typically decreases the false negative rate but increases the false positive rate
+
+- This tradeoff is often displayed using a Receiver Operator Curve (ROC)
+
+## The ROC Curve
+
+<center>![Source: Wikipedia, "Receiver operating characteristic"](figures/Roc_curve.svg.png){width=75%}</center>
 
 
-## Criminal Risk Assessment Algorithms 
+## Example: Breast Cancer Screening
+
+Consider a breast cancer screening procedure, e.g. mammography. 
+
+- True Positive: Cancer detected when cancer is present
+- False Positive: Cancer detected when no cancer is present
+- True Negative: No cancer detected when no cancer is present
+- False Negative: No cancer detected when cancer is present
+
+. . . 
+
+:::{.callout-note}
+## Note
+These screening procedures may or may not actually involve AI or machine learning algoriths, but the example is still a useful one for understanding the ethical tradeoffs and considerations for classification accuracy.
+:::
+
+## Example: Breast Cancer Screening
+
+<br>
+<br>
+
+:::callout-note
+## False positives
+What are some possible consequences of a false positive result?
+:::
+
+::: notes
+False positives: 
+- psychological harm: anxiety, depression, and reduced quality of life from false alarms
+- physical harm: Unnecessary biopsies, additional radiation exposure, potential surgical complications
+- economic burden: Costs of follow-up testing, lost work time, insurance implications
+- healthcare resource allocation: Overuse of limited medical resources
+:::
+
+## Example: Breast Cancer Screening
+
+<br>
+<br>
+
+:::callout-note
+## False negative
+What are some possible consequences of a false negative result?
+:::
+
+::: notes
+False negatives:
+- delayed treatment: Cancer progresses while undetected, potentially becoming more aggressive or metastatic
+- survival implications: later-stage diagnosis often means worse prognosis
+- trust in medical systems: patients may lose confidence in screening programs
+- legal and professional liability: malpractice concerns for missed diagnoses
+:::
+
+## Example: Breast Cancer Screening
+
+<br>
+<br>
+
+:::callout-note
+## Equity
+Cancer risk and screening accuracy vary depending on a number of factors like race and ethnicity, age and breast density.  Further, not all populations have equal access to state-of-the-art screening technologies. Why do these inequities exist? How might we ensure more equitable access and more fair screenings? 
+:::
+
+::: notes
+Some discussion points:
+- access to advanced Screening: advanced technologies are more expensive and less available in underserved communities. 
+- geographic disparities: rural and low-income urban areas often lack specialized breast imaging centers, forcing women to travel long distances for screening or rely on older, less accurate equipment. Mobile screening units may use different (often older) technology with different accuracy profiles.
+insurance and economic barriers: Even when screening is covered by insturance, costs of follow-up testing after false positives can lead women with limited resources may skip recommended follow-up, turning false positives into dangerous delays.
+- Is it ethical to have different screening protocols for different populations if it improves overall accuracy? Could this be considered discriminatory?
+:::
+
+## Case study: Criminal Risk Assessment Algorithms 
 
 - Machine learning is increasingly used to to inform decisions about individuals in the criminal justice system
   - Setting bond amounts
@@ -66,7 +177,7 @@ library(ggplot2)
 library(gt)
 library(gtExtras)
 
-compas_scores <- read.csv("./compas-scores-two-years.csv")
+compas_scores <- read.csv("data/compas-scores-two-years.csv")
 ```
 
 
@@ -258,14 +369,6 @@ Just because `race` isn't an input to the algorithm does not mean the algorithm 
 How might the COMPAS algorithm implicitly factor racial information into its predictions even though `race` is not an input?
 :::
 
-## Evaluating Mis-classifications
-
-![](confusion_matrix.png)
-
-- Accurary:TP + FP / n
-- False positive rate (FPR): FP / (FP + TN)
-- False negative rate (FNR): FN / (FN + TP)
-
 ## Examining FPR and FNR
 
 - ProPublica provides a binary variable named `two_year_recid` which indicates whether an individual committed a new crime within two years of the screening or not.
@@ -293,6 +396,15 @@ compas_scores %>% xtabs(data=., ~ score_factor + two_year_recid)
 What is the meaning of FPR and FNR in this context? Is one worse than the other?
 :::
 
+## Examining FPR and FNR
+
+<br>
+<br>
+
+::: {.callout-note}
+In this example who decided what false positive rate and false negative rate is acceptable? Who *should* get to decide this? 
+:::
+
 
 ## FPR and FNR for African-Americans
 ```{r, echo=TRUE}
@@ -310,8 +422,6 @@ FNR = $473 / (473 + 1188) = 0.28$
 ACC = $(999+414)/(999+408+414+282) = 0.65$
 
 ## FPR and FNR for Caucasians
-
-
 
 ```{r, echo=TRUE}
 #| attr-output: "style='text-align: center; font-size: 0.75em'"
@@ -363,6 +473,7 @@ tibble(Group = c("African-American", "Caucasian", "All"),
 Similar accuracy across the two race groups are attained in very different ways!
 
 
+
 ##  Putting a human face on it
 
 ProPublica discusses two different incidents in Broward County: 
@@ -376,25 +487,17 @@ ProPublica discusses two different incidents in Broward County:
 
 ## Putting a human face on it
 
-<center>![](images/petty_theft_arrests1.png){width=50%}</center>
+<center>![](figures/petty_theft_arrests1.png){width=50%}</center>
 
 <center>[source](https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing])</center>
 
 ## Putting a human face on it
 
-<center>![](images/petty_theft_arrests2.png){width=60%}</center>
+<center>![](figures/petty_theft_arrests2.png){width=60%}</center>
 
 <center>[source](https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing])</center>
 
 
-
-## Summary
-
-- We have highlighted unfairness in the COMPAS algorithm
-
-- Understanding the root causes and devising potential solutions is non-trivial!
-
-- Ethical data science and fairness in machine learning is challenging but essential!
 
 ## Read more
 
@@ -403,4 +506,6 @@ ProPublica discusses two different incidents in Broward County:
   - [Fairness and Algorithmic Decision Making - COMPAS Chapter](https://afraenkel.github.io/fairness-book/content/04-compas.html)
 
 
-## References
+## Summary
+
+
