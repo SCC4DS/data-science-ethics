@@ -112,8 +112,6 @@ fig
 
 </iframe>
 
-# Distinguishing Between the Poorly Constructed Plots and Unethical Practices
-
 ## Distinguishing Between the Poorly Constructed Plots and Unethical Practices
 
 ::: incremental
