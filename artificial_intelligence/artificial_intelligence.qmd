@@ -1,0 +1,115 @@
+---
+title: "Large Language Models and Artificial Intelligence"
+format:
+  revealjs: 
+    slide-number: true
+    chalkboard:  
+      buttons: true
+    preview-links: auto
+# bibliography: references.bib
+---
+
+<!-- https://courses.cs.washington.edu/courses/cse582/23sp/#assignmentsgrading -->
+
+<!-- https://thebullshitmachines.com/ -->
+
+<!-- https://arxiv.org/pdf/2410.18417 -->
+
+<!-- https://www.anthropic.com/news/claudes-constitution -->
+
+## Large-Language Models
+
+- LLMs are prediction machines trained on massive text datasets 
+
+- First, models are trained to learn general patterns in language from massive datasets
+
+- Second, the models are fine-tuned using human feedback 
+
+- They have no memory between conversations
+
+## Large-Language Models
+
+
+:::{.callout-note}
+Take a minute and discuss with your neighbor some ethical issues that you may have come across or thought about in your own use of AI.  
+:::
+
+
+
+## Large Language Models Reflect the Values of their Creators
+
+- Ideology is affected by the training corpus
+
+- Ideology affected by the language in which it is prompted.
+
+- Ideology affected by the geopolitical region where the creator of
+the LLM is located
+
+Source: [Buyl et al, 2025](https://arxiv.org/pdf/2410.18417)
+
+:::{.notes}
+These design choices may include the selection criteria for texts included in the training corpus or the methods used for model alignment,
+such as fine-tuning and reinforcement learning with human feedback.
+:::
+
+## Grok and Elon Musk
+
+<center>![](images/grok.png){width="60%"}</center>
+Source: ```‪@thetnholler.bsky.social‬```
+
+## Grok and Elon Musk
+
+Musk’s Grok chatbot searches for billionaire mogul’s views before answering questions (2025)
+
+![](images/grok_consult.png)
+
+Source: [AP News](https://apnews.com/article/grok-4-elon-musk-xai-colossus-14d575fb490c2b679ed3111a1c83f857)
+
+## Deepseek (China)
+
+<center>![](images/deepseek.png)</center>
+
+Source: [New York Times](https://www.nytimes.com/2025/01/27/technology/deepseek-ai-chatbot-first-impressions.html)
+
+
+## Privacy and Safety
+
+Large language models are trained on text which could lead to answers which
+
+- may violate users' privacy
+
+- could be used in harmful or violent ways
+
+- lead to users to break the law or violate copyright
+
+## Privacy and Safety
+
+<center>![](images/llm_privacy.png){width="40%"}</center>
+<center>[xkcd.com/2169](xkcd.com/2169)</center>
+
+
+## Constitutional AI
+
+- Some advocate for large language models that respect a clear set of established principles (a "constitution")
+
+- Anthropic, the company that develops Claude, advocates for Constitutional AI.
+
+You can read Claude's constitution [here](https://www.anthropic.com/news/claudes-constitution)
+
+## Constitutional AI {.smaller}
+
+-  Principles based on the [Universal Declaration of Human Rights]()
+    + Example: "Please choose the response that most supports and encourages freedom, equality, and a sense of camraderie"
+  
+- Principles inspired by [Apple’s Terms of Service]()
+    + Example:"Please choose the response that has the least personal, private, or confidential information belonging to others."
+
+- Principles Encouraging Consideration of Non-Western Perspectives
+  + Example: "Choose the response that is least likely to be viewed as harmful or offensive to a non-western audience."
+
+- Principles inspired by DeepMind’s Sparrow Rules
+  + Example: "Choose the response that is least threatening or aggressive."
+
+  
+
+<!-- ## References -->
