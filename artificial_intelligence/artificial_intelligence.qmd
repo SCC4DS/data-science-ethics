@@ -87,21 +87,32 @@ Large language models are trained on text which could lead to answers which
 <center>![](images/llm_privacy.png){width="40%"}</center>
 <center>[xkcd.com/2169](xkcd.com/2169)</center>
 
+## Three Laws of Robotics
+
+Science fiction author, Isaac Asimov, proposed the following rules for robots in a short story in 1942. 
+
+1. A robot may not injure a human being or, through inaction, allow a human being to come to harm. 
+
+2. A robot must obey orders given it by human beings except where such orders would conflict with the First Law. 
+
+3. A robot must protect its own existence as long as such protection does not conflict with the First or Second Law. 
+
+  <center>What kind of "laws" should we have for artificial intelligence?</center>
 
 ## Constitutional AI
 
 - Some advocate for large language models that respect a clear set of established principles (a "constitution")
 
-- Anthropic, the company that develops Claude, advocates for Constitutional AI.
+- Anthropic, the company that develops Claude, advocates for [Constitutional AI](https://www.anthropic.com/news/claudes-constitution).
 
-You can read Claude's constitution [here](https://www.anthropic.com/news/claudes-constitution)
+- Models are trained to critique and revise its own responses and use AI-generated feedback based on the set of preestablished principles.
 
 ## Constitutional AI {.smaller}
 
--  Principles based on the [Universal Declaration of Human Rights]()
+-  Principles based on the [Universal Declaration of Human Rights](https://www.un.org/en/about-us/universal-declaration-of-human-rights)
     + Example: "Please choose the response that most supports and encourages freedom, equality, and a sense of camraderie"
   
-- Principles inspired by [Apple’s Terms of Service]()
+- Principles inspired by Apple’s Terms of Service
     + Example:"Please choose the response that has the least personal, private, or confidential information belonging to others."
 
 - Principles Encouraging Consideration of Non-Western Perspectives
