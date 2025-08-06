@@ -1,0 +1,951 @@
+---
+title: "Sampling and Representation in Data Science Module"
+format: 
+  revealjs: 
+    slide-number: true
+    chalkboard:  
+      buttons: true
+    preview-links: auto
+    smaller: true
+    scrollable: false
+bibliography: references.bib
+---
+
+```{r packages}
+##### Packages
+#if you need to install the following packages remove the hashtag/pound symbol before the install.packages function and cut and paste them into your console. 
+
+#install.packages("plotly")
+#install.packages("dplyr")
+#install.packages ("tibble")
+#install.packages("terra")
+#install.packages("sf")
+#install.packages("tmap")
+#install.packages("USA.state.boundaries")
+
+# Loading the plotly package for interactive plotting
+library(plotly)
+# Loading the dplyr package for data manipulation (such as bind_rows argument).
+library(dplyr)
+#package in R provides a modern reimagining   
+library(tibble)
+# R provides support for "simple features," which is a standardized way to encode and analyze spatial vector data
+library(sf)
+#need packages for tmap
+library(terra)
+## for static and interactive maps
+library(tmap)
+#package in R provides spatial data for contemporary and historical U.S. state boundaries
+library(USAboundaries)
+```
+
+## Overview
+
+The following module focuses on ethical issues that stem from sampling techniques and lack of representative samples. This module contains several real-world examples that aim to promote discussions around the importance and the consequences of sampling techniques and non-representative samples. Additionally, ethical principles from the American Statistical Association, along with recommended practices, are delineated. The module concludes with an acknowledgement that sampling is complex and that data scientists may have the tools to deal with and discern natural, nuanced patterns.
+
+## Agenda
+
+1.  Amazon's Automated Hiring
+
+2.  Defining Sampling
+
+3.  Swain's Jury Panel Case Study
+
+4.  Sampling Bias
+
+5.  Sampling and Representativeness
+
+6.  Ethic Principles and Sampling
+
+7.  The Simpson's Paradox
+
+## 1. Amazon's Automated Hiring Tool
+
+In 2014, Amazon engineers developed an algorithm using the resumes of current employees from the past decade to expedite the hiring process. The algorithm reviewed applicants' resumes and provided job candidate scores (1-5), with higher scores indicating a more well-qualified candidate.
+
+## 1. Amazon's Automated Hiring Tool: Reflection
+
+Consider the following points -
+
+How might:
+
+-   a small vs. a large number of observations influence an algorithm?
+
+-   quality of resumes play a role in the development of a fair hiring algorithm?
+
+-   the algorithm generalize to a population of applicants?
+
+## 1. Amazon's Automated Hiring Tool: Discussion
+
+Take 5 minutes to discuss in groups any of your observations, questions, and thoughts related to ethics.
+
+Take an additional 5 minutes to discuss with the whole class your group's conversation.
+
+<iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:03:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
+
+</iframe>
+
+::: notes
+-   There are several points related ethical or social justices practices that can be discussed:
+
+-   what and how much additional information would be important to collect from current employees to develop an accurate classification tool?
+
+-   Responsibility: Amazon has a data scientist who reviewed the algorithm for bias after it was employed, which is key to upholding ethical principles.
+
+-   Amazon did not provide information related to the number of and quality of resumes that were used to create the hiring algorithm or any additional features. However, the number and the quality of the sample of resumes is key.
+
+-   You could spend time discussing how the data scientists could mitigate bias, besides using female resumes.
+:::
+
+## 1. Amazon's Automated Hiring Tool: Final comments
+
+-   Findings: Amazon's researchers quickly discovered that fewer qualified women were not being considered for more technical positions, such as software engineering and data science roles. A review of the training data set and Amazon's employee resumes revealed that male employees held the majority of technical positions.
+
+-   Amazon's employees resumes are a sample of the general population of resumes for various employment positions.
+
+-   Amazon took a non-probabilistic sampling approach to collect data.
+
+## 1. Amazon's Automated Hiring Tool: Final comments
+
+-   Using probabilistic sampling approaches would have led to a more representative sample of resumes, which staff could have used to infer the qualifications of the population of applicants. A substantial body of research has demonstrated that non-probabilistic data collection can lead to biased analysis, and methodologists generally do not recommend making inferences about the population.
+
+## 2. Defining Sampling
+
+What is sampling?
+
+-   Sampling is a technique for collecting data that requires a sampling design to collect data from a small group that is part of the larger group of interest.
+
+![](Figures/Sample.png)
+
+[@fielding2025]
+
+## 2. Defining Sampling
+
+What is a sampling design?
+
+-   **A sampling design** is a way of selecting observational units for measurement (individuals, groups, organizations, events, or other relevant elements).
+
+-   *General Goal*: Select a set of individuals (or any unit of measurement of interest) from a population in a way that the descriptions of those individuals accurately portrays characteristics of the population.
+
+-   *Secondary Goal*: Sample design is to yield maximum precision (i.e., minimum variance), a highly representative sample.
+
+## 2. Defining Sampling
+
+**Population**: The collection of all entities of interest
+
+-   e.g., Gathering the grades from all 7th grade students at Westlake Middle School.
+
+-   e.g., Collecting the mortality rate of Canary Birds in the Macaronesia region.
+
+## 2. Defining Sampling
+
+**Sampling frame**: The collection of all units in a population that can be observed for a study.
+
+-   When the whole population of 7th graders at Westlake are not accessible, sampling frame consists of selecting some part of a population to observe so that one may estimate something about the whole population.
+-   E.g., three 7th grade classrooms (Mr.B's- AP English, Ms.C's- AP History, Ms. T's- Algebra) at Westlake were available and willing to provide data.
+
+## 2. Defining Sampling
+
+**Sample**: A sample is a sub-collection of units in the sampling frame actually selected for study.
+
+-   e.g., Gathering grades from an AP 7th-grade history class to estimate the academic progress of 7th grade students at Westlake Middle School.
+
+-   e.g., Surveying the mortality rate among a flock of canary birds on Canary Island to assess the death rate of all canary birds in the Macaronesia region.
+
+-   There are different mechanisms to collecting or drawing a sample
+
+    -   Based on the probability of being included in the sample also known as **inclusion probabilities** $p_i$.
+
+## 2. Defining Sampling
+
+**Sampling mechanisms**:The mechanism of obtaining a sample from the sampling frame
+
+-   Sampling mechanisms include the following four:
+
+    -   **census** every unit is included
+        -   $p_i = 1$ for every unit $i = 1,...,N$
+    -   **random sample** every unit has an equal probability to be included in the sample
+        -   $p_i = p_j$ for every pair of $i$ and $j$
+        -   The most preferred sampling mechanism
+    -   **probability sample** the probability of being included in the sample is unit dependent
+        -   $p_i \neq p_j$ for at least one unit of $i$ and $j$
+    -   **non-random sample** there is no random mechanism
+        -   $p_i = 1$ for $i \in S$
+
+## 2. Defining Sampling: Discussion
+
+Take 5 minutes to discuss in your groups:
+
+-   Why is random sampling the most preferred sampling mechanism?
+
+-   How might random sampling promote ethical data science practices?
+
+-   Is it appropriate for researchers to use other sampling techniques? When?
+
+-   As data scientists, what problems (e.g., analytically, communicating results, societal impact) do you anticipate experiencing when an inappropriate sampling mechanism is used?
+
+<iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:03:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
+
+</iframe>
+
+## 3. Swain's Jury Panel Case Study
+
+The following case study highlights the ethical importance and implications surrounding sampling. This case study and discussion is an extension of [Data8](http://www.data8.org)'s example.
+
+-   In 1962, Robert Swain was charged and convicted with committing a crime in Alabama's Talladega County, which had the possibility of a death sentence.
+
+-   Prior to his trial and after his conviction, his lawyers argued that Black citizens of Talladega were systematically excluded from grand juries such as Swain's case [@carrington2023], which violated the U.S. Constitution to an impartial jury.
+
+-   Note, only men 21 years and older were allowed to serve as jury members at the time.
+
+-   Jurors are selected from a jury panel of 100 citizens which should be representative of a regions population.
+
+## 3. Swain's Jury Panel Case Study
+
+-   During Swain's trial, 26% of males in Talladega County were Black, however the jury panel consisted of 8 Black males, in other words Black males made up 8% of the jury panel. None, actually served on the final jury.
+
+-   Swain's lawyers appealed his conviction arguing that he was not given an opportunity to fair trail due lack of representation of Black males on the jury panel.
+
+-   His appeal went all the way up to the supreme court, who decided that the percent difference was small and that there was no attempt by the State of Alabama to excluded Black citizens.
+
+-   Using simulations, we can evaluate the number of Black citizens in jury panels if they were randomly selected from a population that consisted of 26% Black and 74% White males. We can also evaluate a distribution in which 8% of the population, on average, were Black males.
+
+## 3. Jury Pool
+ 
+The statistic of interest in these simulations is the count of Black males if randomly selected from a population similar to Talladega County and a population with an 8% Black male proportion. Each randomly selected sample consisted of 100 individuals, representing the number of citizens on a jury panel. There were 10,000 iterations of random selection.
+
+```{r JuryPool}
+#| fig-width: 6
+#| fig-height: 3
+
+#Creating a data set with 100 participant age, race/nationality (black or white)
+# Load required package
+# Set seed for reproducibility
+set.seed(1234)
+# Create dataset
+Truepop <- tibble(
+  id = 1:10000,
+  age = sample(21:80, size = 10000, replace = TRUE),   
+  race = sample(c("white", "black"), size = 10000, replace = TRUE, prob = c(0.74, 0.26))   
+)
+
+#######Building samples#########
+#Prior to creating sample a seed must be set to ensure that future drawn samples are the same 
+# n <- 100: sets sample size to 100.
+# iterations 10000
+# sample1 100 from the population.
+
+set.seed(1234)
+n <- 100
+iterations <-  10000
+# Generate and bind 10,000 random samples
+Samplepop <- bind_rows(
+  lapply(1:iterations, function(i) {
+    Truepop %>%
+      sample_n(n, replace = TRUE) %>%
+      mutate(replicate_id = i)
+  }))
+
+
+
+#Step 2: Count number of "black" observations in each sample
+black_freq_pop <- Samplepop %>%
+  filter(race == "black") %>%
+  count(replicate_id, name = "black_count")
+
+
+# Step 3: Ensure all 10,000 replicates are represented (even those with 0 black)
+black_freq_full <- tibble(replicate_id = 1:iterations) %>%
+  left_join(black_freq_pop, by = "replicate_id") %>%
+  mutate(black_count = ifelse(is.na(black_count), 0, black_count))
+
+
+# Step 4: Compute means for each group
+means <- black_freq_full %>% 
+  summarise(mean_val = mean(black_count, na.rm = TRUE))
+
+# Step 5: Plot with Plotly
+p <- plot_ly()
+
+# Add histograms
+  p <- add_histogram(p,
+                     data = black_freq_full,
+                     x = ~ black_freq_full$black_count, name = paste0("Black Jury Panelist"),
+                     nbinsx = 40)
+
+
+
+# Add vertical dashed lines for means
+
+for (i in 1:nrow(means)) {
+  p <- add_lines(p,
+      x=c(means$mean_val[i]),
+                 y = c(0, 1000),
+                 name = paste0("Average number of Black Panelist"),
+                 line = list(dash = "dash", width = 5, color = "darkblue",
+                 inherit = FALSE))
+}
+
+# Add vertical line using a trace (with name for legend)
+p <- p %>% add_trace(x = c(8, 8), 
+                     y = c(0, 1000),  # adjust y-range to your plot
+                     type = 'scatter', 
+                     mode = 'lines',
+                     line = list(color = 'red', dash = 'dash'),
+                     name = "Swain's Black Jury Panelist = 8")
+# Final layout
+p <- layout(p,
+            barmode = "overlay",
+            title = "Interactive Sampling: The number of Black Citizens in Jury Panel",
+            xaxis = list(title = "Count of Randomly Selected Empaneled Black Jurors ", range = c(0,50)),
+            yaxis = list(title = "Number of Simulated Jury Panels"))
+
+# Display the plot
+p
+```
+
+## 3. Jury Pool Discussion
+
+Discuss in your groups (5 minutes):
+
+-   What do you observe in the plot?
+
+-   What do you concluded about random sampling in this scenario?
+
+-   What does the distribution and actual count of jurors suggests about the Jury panel in Swain's case? Is the difference small?
+
+<iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:03:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
+
+</iframe>
+
+## 3. Jury Pool
+
+::::: Columns
+::: {.column width="40%"}
+Consider the following hypothetical scenario.
+
+-   What if the panel of jurors consisted of 15 Black males?
+
+-   Would the count of Black panelist lead to fair panel or impartial jury?
+
+-   Would you consider a panel of 21 Black males fair?
+
+-   Take 5 minutes to discuss as a class your conclusion, remaining questions, and thoughts.
+
+<iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:05:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
+
+</iframe>
+:::
+
+::: {.column width="60%"}
+```{r JuryPool2}
+#| fig-width: 6
+#| fig-height: 3
+
+#Creating a data set with 100 participant age, race/nationality (black or white)
+# Load required package
+# Set seed for reproducibility
+set.seed(1234)
+# Create dataset
+Truepop <- tibble(
+  id = 1:10000,
+  age = sample(21:80, size = 10000, replace = TRUE),   
+  race = sample(c("white", "black"), size = 10000, replace = TRUE, prob = c(0.74, 0.26))   
+)
+
+#######Building samples#########
+#Prior to creating sample a seed must be set to ensure that future drawn samples are the same 
+# n <- 100: sets sample size to 100.
+# iterations 10000
+# sample1 100 from the population.
+
+set.seed(1234)
+n <- 100
+iterations <-  10000
+# Generate and bind 10,000 random samples
+Samplepop <- bind_rows(
+  lapply(1:iterations, function(i) {
+    Truepop %>%
+      sample_n(n, replace = TRUE) %>%
+      mutate(replicate_id = i)
+  }))
+
+
+
+#Step 2: Count number of "black" observations in each sample
+black_freq_pop <- Samplepop %>%
+  filter(race == "black") %>%
+  count(replicate_id, name = "black_count")
+
+
+# Step 3: Ensure all 10,000 replicates are represented (even those with 0 black)
+black_freq_full <- tibble(replicate_id = 1:iterations) %>%
+  left_join(black_freq_pop, by = "replicate_id") %>%
+  mutate(black_count = ifelse(is.na(black_count), 0, black_count))
+
+
+# Step 4: Compute means for each group
+means <- black_freq_full %>% 
+  summarise(mean_val = mean(black_count, na.rm = TRUE))
+
+prop_le_15 <- mean(black_freq_full$black_count <= 15)
+label_text <- paste0("Prop ≤ 15: ", round(prop_le_15, 3))
+
+# Step 5: Plot with Plotly
+p <- plot_ly()
+
+# Add histograms
+  p <- add_histogram(p,
+                     data = black_freq_full,
+                     x = ~ black_freq_full$black_count, name = paste0("Black Jury Panelist"),
+                     nbinsx = 40)
+
+
+
+# Add vertical dashed lines for means
+
+for (i in 1:nrow(means)) {
+  p <- add_lines(p,
+      x=c(means$mean_val[i]),
+                 y = c(0, 1000),
+                 name = paste0("Average number of Black Panelist"),
+                 line = list(dash = "dash", width = 5, color = "darkblue",
+                 inherit = FALSE))
+}
+
+# Add vertical line using a trace (with name for legend)
+p <- p %>% add_trace(x = c(15, 15), 
+                     y = c(0, 1000),  # adjust y-range to your plot
+                     type = 'scatter', 
+                     mode = 'lines',
+                     line = list(color = 'red', dash = 'dash'),
+                     name = "Hypothetical Panel = 15")
+# Final layout
+p <- layout(p,
+            barmode = "overlay",
+            annotations = list(
+              list(
+                x = 0,
+                y = 1000,  # adjust based on your data
+                text = label_text,
+                showarrow = FALSE,
+                font = list(size = 14, color = "black"),
+                bgcolor = "rgba(255,255,255,0.6)",
+                bordercolor = "black",
+                borderwidth = 1
+              )
+            ),
+            title = "The number of Black Males in Jury Panel",
+            xaxis = list(title = "Count of Randomly Selected Impaneled Black Jurors ", range = c(0,50)),
+            yaxis = list(title = "Number of Simulated Jury Panels"))
+
+# Display the plot
+p
+```
+
+```{r JuryPool3}
+#| fig-width: 6
+#| fig-height: 3
+
+#Creating a data set with 100 participant age, race/nationality (black or white)
+# Load required package
+# Set seed for reproducibility
+set.seed(1234)
+# Create dataset
+Truepop <- tibble(
+  id = 1:10000,
+  age = sample(21:80, size = 10000, replace = TRUE),   
+  race = sample(c("white", "black"), size = 10000, replace = TRUE, prob = c(0.74, 0.26))   
+)
+
+#######Building samples#########
+#Prior to creating sample a seed must be set to ensure that future drawn samples are the same 
+# n <- 100: sets sample size to 100.
+# iterations 10000
+# sample1 100 from the population.
+
+set.seed(1234)
+n <- 100
+iterations <-  10000
+# Generate and bind 10,000 random samples
+Samplepop <- bind_rows(
+  lapply(1:iterations, function(i) {
+    Truepop %>%
+      sample_n(n, replace = TRUE) %>%
+      mutate(replicate_id = i)
+  }))
+
+
+
+#Step 2: Count number of "black" observations in each sample
+black_freq_pop <- Samplepop %>%
+  filter(race == "black") %>%
+  count(replicate_id, name = "black_count")
+
+
+# Step 3: Ensure all 10,000 replicates are represented (even those with 0 black)
+black_freq_full <- tibble(replicate_id = 1:iterations) %>%
+  left_join(black_freq_pop, by = "replicate_id") %>%
+  mutate(black_count = ifelse(is.na(black_count), 0, black_count))
+
+
+# Step 4: Compute means for each group
+means <- black_freq_full %>% 
+  summarise(mean_val = mean(black_count, na.rm = TRUE))
+
+
+prop_le_21 <- mean(black_freq_full$black_count <= 21)
+label_text <- paste0("Prop ≤ 21: ", round(prop_le_21, 3))
+
+# Step 5: Plot with Plotly
+p <- plot_ly()
+
+# Add histograms
+  p <- add_histogram(p,
+                     data = black_freq_full,
+                     x = ~ black_freq_full$black_count, name = paste0("Black Jury Panelist"),
+                     nbinsx = 40)
+
+
+
+# Add vertical dashed lines for means
+
+for (i in 1:nrow(means)) {
+  p <- add_lines(p,
+      x=c(means$mean_val[i]),
+                 y = c(0, 1000),
+                 name = paste0("Average number of Black Panelist"),
+                 line = list(dash = "dash", width = 5, color = "darkblue",
+                 inherit = FALSE))
+}
+
+# Add vertical line using a trace (with name for legend)
+p <- p %>% add_trace(x = c(21, 21), 
+                     y = c(0, 1000),  # adjust y-range to your plot
+                     type = 'scatter', 
+                     mode = 'lines',
+                     line = list(color = 'red', dash = 'dash'),
+                     name = "Hypothetical Panel = 21")
+# Final layout
+p <- layout(p,
+            barmode = "overlay",
+            annotations = list(
+              list(
+                x = 0,
+                y = 1000,  # adjust based on your data
+                text = label_text,
+                showarrow = FALSE,
+                font = list(size = 14, color = "black"),
+                bgcolor = "rgba(255,255,255,0.6)",
+                bordercolor = "black",
+                borderwidth = 1
+              )
+            ),
+            title = " ",
+            xaxis = list(title = "Count of Randomly Selected Impaneled Black Jurors ", range = c(0,50)),
+            yaxis = list(title = "Number of Simulated Jury Panels"))
+
+# Display the plot
+p
+```
+:::
+:::::
+
+::: notes
+There were 52 simulated jury panels which had 15 or less and 1,599 simulated jury panels with 21 or less impaneled Black jurors.
+:::
+
+## 4. Sampling Bias: Defined
+
+What is sampling bias?
+
+-   The outcome of a sampling technique that suggests that not every member of the population has an equal opportunity of being in a sample.
+
+-   Consequently, statistical bias in estimates may be observed. In other words, estimates cannot be trusted as reflecting or representing the population.
+
+-   **Not investigating and addressing sampling issues raises ethical concerns**
+
+## 5. Sampling and Representativeness
+
+-   After using a sampling mechanism, it is important to determine how well the sample represents the population [@kotu2019].
+
+-   Typically, using a random sampling approach lessens the chance of omitting or over-sampling groups that make up the population of interest.
+
+-   The law of large numbers suggests that the larger the random sample the more likely sample will represent the population of interest compared to sampling a small number of individuals [@dinov2009].
+
+-   Sampling frame and sample size matters! Ensure that the sampling frame is representative of population and that the final sample is characteristically similar to the population, even in the presence of a large sample [@sauro2012].
+
+## 5. Sampling and Representativeness
+ 
+-   A sampling frame should include units that strongly represent or are characteristic of the population .
+
+-   Hypothetical Example 1 : You are interested in comparing California's housing inventory market across Northern, Central, and Southern state regions and plan on randomly selecting counties to represent the three different sectors, but California's Association of Realtor (C.A.R.) data only includes homes listed in central coastal counties (Monterey, San Luis Obispo,Santa Barbara, and Santa Cruz) excluding central valley counties. Therefore, the sampling frame is limited to central coast, which could lead to misleading findings.
+
+```{r}
+#| fig-width: 6
+#| fig-height: 2.5
+# 1. Get CA counties
+ca_counties <- us_counties(states = "California")
+
+# 2. Crop to Central CA
+central_bbox <- st_bbox(c(xmin = -122.5, xmax = -118.5, ymin = 35.5, ymax = 38), crs = st_crs(ca_counties))
+central_ca_counties <- st_crop(ca_counties, central_bbox)
+
+# 3. Label Coast vs Inland
+coast_names <- c("Santa Barbara", "Monterey", "San Luis Obispo", "Santa Cruz")
+central_ca_counties <- central_ca_counties %>%
+  mutate(region = ifelse(name %in% coast_names, "Coast", "Inland"))
+
+# 4. Summarize by region to merge counties into Coast / Inland
+region_map <- central_ca_counties %>%
+  mutate(region = ifelse(name %in% coast_names, "Central Coast", "Central Valley")) %>%
+  group_by(region) %>%
+  summarise(geometry = st_union(geometry), .groups = "drop") %>%  # now 2 rows
+  mutate(availability = case_when(
+    region == "Central Coast" ~ "2,091",
+    region == "Central Valley" ~ "11,212 "
+  ))
+
+# 5. Enable interactive mode
+tmap_mode("view")  # <- enables leaflet interactivity
+
+# 6. Plot with hover labels
+tm_shape(region_map) +
+  tm_polygons(
+    col = "region",
+    id = "region",  # hover label
+    popup.vars = c("Availability" = "availability"),
+    palette = c("skyblue", "tan")
+  ) +
+  tm_layout(title = "Click to See Region and Availability")
+```
+
+
+
+## 5. Sampling and Representativeness
+
+-   Small and large random samples can also lead to findings that do not represent the population.
+
+-   Hypothetical Example 2: You have a large sampling frame that includes California housing sales and related housing information from C.A.R. for the month of May; however, you randomly select 10 out of 53 counties to evaluate. The small sample will not be representative of the housing market.
+
+## 5. Sampling and Representativeness: Example
+
+-   In late 2014, the residents of Flint Michigan had noticed and reported that children and adults were experiencing lead poisoning after the city had switched to Flint River for the city's water supply.
+
+-   An investigation into the drinking water supply, identified that that some of the water pipes were leaded brass. The city resumed services to the water supply after it noted that they would start a task force.
+
+## 5. Sampling and Representativeness: Example
+-   In 2015, the Flint Drinking Water Task Force collected water and information from 156 out of 1951 volunteer households bi-weekly.
+
+    -   The Sentinel Sites sampling technique: The members of the task force went door-to-door asking for volunteering households and additional sites that met different criteria (e.g., households from different spatial distributions in city, predicted household experiencing high levels of lead in blood, and etc.). These households were categorized as Sentinel Sites.
+
+    -   Volunteer Sample: concerned homeowners throughout the city also volunteered to provide samples and information.
+
+## 5. Sampling and Representativeness: Example
+
+-   In 2017, Goovaerts [@goovaerts2017] compared the housing characteristics and geographical distribution of households that were sampled (Sentinel and Volunteer/Non-sentinel) by the Flint Safe Drinking Water Task Force over two month in 2016.
+
+-   Visualizations illustrated sample differences between Sentinel Sites and volunteering sites (Non-sentinel), such as the:
+
+    -   location/spacial reference in the city (Figure A)
+    -   density of sentinel sampled sites (Figure B)
+    -   year the households were built (Figure C)
+    -   material of water pipes (Figure D)
+    -   percent of households in the city above the poverty line (Figure E)
+    -   percent of elevated blood lead level (Figure F)
+
+## 5. Sampling and Representativeness: Example
+
+Visualization of Findings:
+
+![](Figures/FigureA_Flint.png){style="float: left;" width="30%"} ![](Figures/FigureB_Flint.png){style="float: center;" width="30%"} ![](Figures/FigureC_Flint.png){style="float: right;" width="30%"}
+
+## 5. Sampling and Representativeness: Example
+
+Visualization of Findings:
+
+![](Figures/FigureD_Flint.png){style="float: left;" width="30%"} ![](Figures/FigureE_Flint.png){width="30%"} ![](Figures/FigureF_Flint.png){width="30%"}
+
+## 5. Sampling and Representativeness: Discussion
+
+Independently, review and compare all figure
+
+::::: columns
+::: {.column width="50%"}
+Discuss in your groups (3 minutes):
+
+-   What patterns do you see within all figures?
+
+-   Visually what relationships do you observe between the samples and household characteristics?
+
+-   What would you concluded about the sampling done?
+:::
+
+::: {.column width="50%"}
+<iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:05:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
+
+</iframe>
+
+-   Take another 5 minutes to discuss as a class your conclusion, remaining questions, and thoughts.
+
+<iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:05:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
+
+</iframe>
+:::
+:::::
+
+## 5. Sampling and Representativeness: Different types of random sampling techniques
+
+-   Stratified Random Sampling: If the population of interest consists of smaller groups, arrange the population into those groups and then randomly sample from each group. The sampling probability may be proportional to the size of another group to ensure equal representation across all groups [@som2014].
+
+    -   Ex. Dividing Los Angeles house sales by geographical sub-divisions or by city socioeconomic classes.
+
+## 5. Sampling and Representativeness: Different types of random sampling techniques
+
+-   Cluster Random Sampling: Divide a population into clusters based on some natural characteristic. Then randomly select the number of clusters (predetermined by researcher) to be included in the sample.
+
+  - Ex. Cluster students based on ACT scores and then randomly select cluster to evaluate different cluster characteristics. 
+
+## 5. Sampling and Representativeness: Different types of random sampling techniques
+
+-   Systematic Random Sampling: A variant of random sampling. First determine the percent of the population to sample. Then, randomly select an observation within an interval (1 and 1/percent). Starting from the randomly selected unit add the interval upper bound to that observation to determine the next observation to include in the sample [@shahzad2023].
+
+    -   Ex. Suppose we are interested in sampling five percent of the population. A random number is first chosen between 1 and (1/0.05 =) 20 ; Then randomly select number is 12. Therefore, the first observation of the random sample is the 12th observation. Then the (12 + 20 =) 32nd, (32 + 20 =) 52nd etc [@som2014].
+
+## 5. Sampling and Representativeness
+
+-   There are disadvantages to random sampling from a population [@emerson2015] :
+
+    -   Time consuming and expensive
+    -   Not easy to implement with populations that have low-incidences
+    -   Used to give an average representation of the population, when a data scientist is more concerned with the nuances.
+
+-   Alternative non-random sampling (Convenience and Snowballing) mechanisms may help gather data from a smaller population.
+
+    -   Example, collecting data from children with visual impairments who attend the California School for the Blind.
+
+-   However, these mechanism will limit the generalization of findings [@sauro2012].
+
+-   To help data scientists engage in ethical practices when analyzing data and reporting findings, even in cases where sampling information is unknown or highly complex, institutions and organizations have developed guiding principles.
+
+## 6. Ethics and Sampling: ASA principle
+
+Ethical Principles related to Sampling by the American Statistical Association [(ASA, 2022)](https://www.amstat.org/your-career/ethical-guidelines-for-statistical-practice) :
+
+**Principle B**
+
+The ethical statistical practitioner seeks to understand and mitigate known or suspected limitations, defects, or biases in the data or methods and communicates potential impacts on the interpretation, conclusions, recommendations, decisions, or other results of statistical practices.
+
+**Principle D**
+
+The ethical statistical practitioner does not misuse or condone the misuse of data. They protect and respect the rights and interests of human and animal subjects. These responsibilities extend to those who will be directly affected by statistical practices.
+
+## 6. Ethics and Sampling: ASA principle
+
+The following are recommended practices that may help meet Principle B:
+
+-   Use various research methods and/or statistical techniques to determine whether the sample is representative of the population of interest.
+
+-   Use a random sampling technique and a large enough sample is pertinent. A small sample size can lead to statistical bias.
+
+-   Thoroughly explore data to identify patterns, clusters, and outliers that can confound results, which suggests that clusters represent different perspectives in the variable of interest.
+
+-   When available, evaluate the same research question in a new sample to ensure that the findings are replicated.
+
+-   Do not extrapolate findings, conclusions, and recommendations beyond statistical results.
+
+-   Be transparent about the extent to which findings can generalized to population of interest and other groups.
+
+## 6. Ethics and Sampling: ASA principle
+
+The following are recommended practices that may help meet Principle D:
+
+-   Generalize findings to the population of interests only after confirming that the sample represents the population.
+
+-   Critically reflect on research question and consider how the sampled population of interest and those excluded may be impacted by findings and future policy.
+
+## 6. Ethics and Sampling: Discussion
+
+Often times, data scientists are tasked with analyzing data with little information about sampling methods. To engage in ethical data science practices, scientists should ask questions about how the data were collected.
+
+Consider answering the following questions when working with a new data set:
+
+-   Was the data collection technique under the control of investigators or was the process pre-determined by nature or happenstance?
+
+-   What are the apparent and unseen consequences related to the sampling method used?
+
+-   How should a researcher or analyst use such data to make inferences about the larger population of interest? In other words, could there be issues with generalizing findings?
+
+## 6. Ethics and Sampling: Discussion
+
+![](Figures/Healthy School Program .png){style="float: right;" width="15%"}The American Heart Association and William J. Clinton Foundation, created the Healthy Schools Program (HSP) in 2006. The HSP aims to help administrators and teachers create an encouraging physically healthy and nutritious school environment for all.
+
+To determine the efficacy for future implementation of HSP at other schools and support nationwide policy change, researchers collected data from participating schools from 2007 through 2014.
+
+## 6. Ethics and Sampling: Discussion
+
+Take 2 minutes to read through HSP_Codebook (pg. 3) to determine sampling procedures used to collect data from participating schools for the "Healthy Schools Program Participation and Inventory Data" and answer the questions:
+
+Take 4 minutes to critically reflect on the following questions within your group.
+
+-   Was the data collection technique under the control of investigators or was the process pre-determined by nature or happenstance? Was there enough information about the sampling technique to ensure that data are representative of the population of interests?
+
+-   What are the apparent and unseen consequences related to the sampling method used? How might the sampling technique influence responses? How should a researcher or analyst use such data to make inferences about the larger population of interest? In other words, could there be issues with generalizing findings?
+
+## 6. Ethics and Sampling: Discussion
+
+-   What other questions may be helpful when determining the quality of data?
+
+Take 4 minutes to discuss as a class your group's reflection and additional questions.
+
+<iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:010:00&amp;enabled=0&amp;seconds=0&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
+
+</iframe>
+
+## 6. Ethics and Sampling: Practices related to sampling
+
+Unethical practices related to sampling:
+
+-   Under or over sampling a part of a population to confirm beliefs
+    -   Purposefully or unintentionally excluding a minority group or oversampling a majority group which results in diminishing the perspective the minority group.
+    -   E.g., A meta analysis revealed that the majority of skin cancer studies and data sets lack dark skin images which have contributed to the under-diagnosis of skin cancer in men and women of color [@wen2022].
+-   Using sampling techniques known to produce bias.
+    -   E.g., Rouke et al. (1989) determined that men are considerably under-sampled, fostering gender bias, using a sampling technique that relies on a random selection of telephone numbers and surveying the last birthday in the household [@rourke1989].
+
+## 6. Ethics and Sampling: Practices related to sampling
+
+-   Purposefully altering data of one or more observations to meet sampling expectations
+    -   After implementing a sampling technique, manipulating or fabricating data.
+    -   E.g., In 2010, a journalist had discovered that Andrew Wakefield had falsified data by picking and choosing data reported by children to find an association between the MMR vaccine and autism. Articles published in the British Medical Journal suggested that the data were manipulated for financial gain [@sathyanarayanarao2011].
+-   Knowingly fail to disclose observed patterns beyond aggregated data to stakeholders
+    -   By focusing on a large population, data scientists can fail to recognize patterns or heterogeneity across smaller groups.
+
+## 7. The Simpson's Paradox: UC Berkeley Graduate Admissions
+
+-   The Simpson’s Paradox is a statistical phenomenon in which a trend that appears in different groups tends to reverse or disappear when the groups are combined.
+
+-   Populations are naturally characteristically complex. Therefore, sampling should aim to mirror such complexities. However, often researchers develop research questions to address and collect data from a larger population.
+
+-   Data scientists and researchers have the skills and techniques to discover the subtle distinctions within smaller groups.
+
+    -   Ex. In the following histograms the total number of men and women who were admitted to UC Berkeley (1973) are displayed, which shows a concerning trend. The data is further broken down by department and tells a different story.
+
+## 7. The Simpson's Paradox: UC Berkeley Graduate Admissions
+
+-   Figure A is a bar graph that shows the total of admitted applicants by gender (Blue/Male, Orange/Female).
+
+Figure A.
+
+```{r, width = 300, height = 700}
+
+# Load necessary library
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+
+
+admissions <- tribble(
+  ~Department, ~Group,  ~Applicants, ~AdmitRate,
+  "A",         "Men",     825,        0.62,
+  "A",         "Women",   108,        0.82,
+  "B",         "Men",     560,        0.63,
+  "B",         "Women",   25,         0.68,
+  "C",         "Men",     325,        0.37,
+  "C",         "Women",   593,        0.34,
+  "D",         "Men",     417,        0.33,
+  "D",         "Women",   375,        0.35,
+  "E",         "Men",     191,        0.28,
+  "E",         "Women",   393,        0.24,
+  "F",         "Men",     373,        0.06,
+  "F",         "Women",   341,        0.07
+)
+
+#Compute admitted counts
+admissions <- admissions %>%
+  mutate(Admitted = round(Applicants * AdmitRate))
+
+# Summarize total admitted by group
+group_summary <- admissions %>%
+  group_by(Group) %>%
+  summarise(Applicants = sum(Applicants),
+            Admitted = sum(Admitted),
+            AdmitRate = Admitted / Applicants)
+# Plot bar chart of total admitted
+TotalGA<- ggplot(group_summary, aes(x = Group, y = Admitted, fill = Group)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Total Admitted Applicants by Group",
+       x = "Group",
+       y = "Number Admitted") +
+  theme_minimal() +
+  scale_fill_manual(values = c("Men" = "#1f77b4", "Women" = "#ff7f0e")) +
+  theme(legend.position = "none")
+
+TotalGA
+```
+
+## 7. The Simpson's Paradox: UC Berkeley Graduate Admissions
+
+Figure B is a histogram of the percent of male and female applicants admitted into departments.
+
+```{r, width = 300, height = 700 }
+library(patchwork)
+# Manually enter the data
+df <- data.frame(
+  Department = c("A", "B", "C", "D", "E", "F", "Total"),
+  All_Applicants = c(933, 585, 918, 792, 584, 714, 4526),
+  All_AdmitRate = c(0.64, 0.63, 0.35, 0.34, 0.25, 0.06, 0.39),
+  Men_Applicants = c(825, 560, 325, 417, 191, 373, 2691),
+  Men_AdmitRate = c(0.62, 0.63, 0.37, 0.33, 0.28, 0.06, 0.45),
+  Women_Applicants = c(108, 25, 593, 375, 393, 341, 1835),
+  Women_AdmitRate = c(0.82, 0.68, 0.34, 0.35, 0.24, 0.07, 0.30)
+)
+
+# Step 2: Reshape department-level data (exclude Total row)
+df_long <- df %>%
+  filter(Department != "Total") %>%
+  select(Department, Men_AdmitRate, Women_AdmitRate) %>%
+  pivot_longer(cols = c(Men_AdmitRate, Women_AdmitRate),
+               names_to = "Gender",
+               values_to = "AdmitRate") %>%
+  mutate(Gender = ifelse(Gender == "Men_AdmitRate", "Men", "Women"))
+
+# Step 3: Extract total rates for horizontal lines
+total_men <- df %>% filter(Department == "Total") %>% pull(Men_AdmitRate)
+total_women <- df %>% filter(Department == "Total") %>% pull(Women_AdmitRate)
+
+# Step 4: Plot
+BGS<- ggplot(df_long, aes(x = Department, y = AdmitRate, fill = Gender)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  geom_hline(yintercept = total_men, linetype = "dashed", color = "#1f77b4", linewidth = 1) +
+  geom_hline(yintercept = total_women, linetype = "dashed", color = "#ff7f0e", linewidth = 1) +
+  scale_y_continuous(labels = scales::percent, limits = c(0, 1)) +
+  labs(
+    title = "UC Berkeley Admissions: Simpson's Paradox",
+    subtitle = "Percent of applicants admitted by gender and deparment (dashed lines = total admission rate per gender)",
+    x = "Department",
+    y = "Admission Rate"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold"),
+    legend.position = "top"
+  )
+
+BGS
+```
+
+## 7. The Simpson's Paradox: UC Berkeley Graduate Admissions: Discussion
+
+-   Take a minute to reflect on the figures.
+
+-   Discuss in groups your observations, questions, and thoughts relate to ethics.
+
+-   Take 2 minutes to discuss within your groups.
+
+-   Take 5 minutes to discuss groups findings with the class.
+
+<iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:05:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
+
+</iframe>
+
+## References
