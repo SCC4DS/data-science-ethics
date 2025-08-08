@@ -620,6 +620,10 @@ Unethical practices related to sampling:
 -   Knowingly fail to disclose observed patterns beyond aggregated data to stakeholders
     -   By focusing on a large population, data scientists can fail to recognize patterns or heterogeneity across smaller groups.
 
+## "Natural" Experiments
+
+
+
 ## 7. The Simpson's Paradox: UC Berkeley Graduate Admissions
 
 -   The Simpson’s Paradox is a statistical phenomenon in which a trend that appears in different groups tends to reverse or disappear when the groups are combined.
@@ -637,7 +641,7 @@ Unethical practices related to sampling:
 Figure A.
 
 ```{r, width = 300, height = 700}
-
+#| fig-align: center
 # Load necessary library
 library(ggplot2)
 library(dplyr)
@@ -676,8 +680,8 @@ TotalGA<- ggplot(group_summary, aes(x = Group, y = Admitted, fill = Group)) +
   labs(title = "Total Admitted Applicants by Group",
        x = "Group",
        y = "Number Admitted") +
-  theme_minimal() +
-  scale_fill_manual(values = c("Men" = "#1f77b4", "Women" = "#ff7f0e")) +
+  theme_bw(base_size=16) +
+  # scale_fill_manual(values = c("Men" = "#1f77b4", "Women" = "#ff7f0e")) +
   theme(legend.position = "none")
 
 TotalGA
@@ -688,6 +692,7 @@ TotalGA
 Figure B is a histogram of the percent of male and female applicants admitted into departments.
 
 ```{r, width = 300, height = 700 }
+#| fig-align: center
 library(patchwork)
 # Manually enter the data
 df <- data.frame(
@@ -725,7 +730,7 @@ BGS<- ggplot(df_long, aes(x = Department, y = AdmitRate, fill = Gender)) +
     x = "Department",
     y = "Admission Rate"
   ) +
-  theme_minimal() +
+  theme_bw(base_size=16) +
   theme(
     plot.title = element_text(face = "bold"),
     legend.position = "top"
