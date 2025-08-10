@@ -112,10 +112,9 @@ What is sampling?
 
 -   Sampling is a technique for collecting data that requires a sampling design to collect data from a small group that is part of the larger group of interest.
 
-![](Figures/Sample.png)
+![](figures/Sample.png)
 
 [@fielding2025]
-
 ## 2. Defining Sampling
 
 What is a sampling design?
@@ -458,13 +457,13 @@ tm_shape(region_map) +
 
 Visualization of Findings:
 
-![](Figures/FigureA_Flint.png){style="float: left;" width="30%"} ![](Figures/FigureB_Flint.png){style="float: center;" width="30%"} ![](Figures/FigureC_Flint.png){style="float: right;" width="30%"}
+![](figures/FigureA_Flint.png){style="float: left;" width="30%"} ![](figures/FigureB_Flint.png){style="float: center;" width="30%"} ![](figures/FigureC_Flint.png){style="float: right;" width="30%"}
 
 ## 5. Sampling and Representativeness: Example
 
 Visualization of Findings:
 
-![](Figures/FigureD_Flint.png){style="float: left;" width="30%"} ![](Figures/FigureE_Flint.png){width="30%"} ![](Figures/FigureF_Flint.png){width="30%"}
+![](figures/FigureD_Flint.png){style="float: left;" width="30%"} ![](figures/FigureE_Flint.png){width="30%"} ![](figures/FigureF_Flint.png){width="30%"}
 
 ## 5. Sampling and Representativeness: Discussion
 
@@ -578,7 +577,7 @@ Consider answering the following questions when working with a new data set:
 
 ## 6. Ethics and Sampling: Discussion
 
-![](Figures/Healthy School Program .png){style="float: right;" width="15%"}The American Heart Association and William J. Clinton Foundation, created the Healthy Schools Program (HSP) in 2006. The HSP aims to help administrators and teachers create an encouraging physically healthy and nutritious school environment for all.
+![](figures/Healthy School Program .png){style="float: right;" width="15%"}The American Heart Association and William J. Clinton Foundation, created the Healthy Schools Program (HSP) in 2006. The HSP aims to help administrators and teachers create an encouraging physically healthy and nutritious school environment for all.
 
 To determine the efficacy for future implementation of HSP at other schools and support nationwide policy change, researchers collected data from participating schools from 2007 through 2014.
 
@@ -619,6 +618,10 @@ Unethical practices related to sampling:
     -   E.g., In 2010, a journalist had discovered that Andrew Wakefield had falsified data by picking and choosing data reported by children to find an association between the MMR vaccine and autism. Articles published in the British Medical Journal suggested that the data were manipulated for financial gain [@sathyanarayanarao2011].
 -   Knowingly fail to disclose observed patterns beyond aggregated data to stakeholders
     -   By focusing on a large population, data scientists can fail to recognize patterns or heterogeneity across smaller groups.
+
+## Randomized Controlled Trials (RCTs)
+
+## Tuskegee Syphilis Study
 
 ## "Natural" Experiments
 
