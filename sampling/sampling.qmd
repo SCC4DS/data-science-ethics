@@ -1,13 +1,18 @@
 ---
-title: "Sampling and Representation in Data Science"
+title: "Sampling and Representation"
 format: 
-  revealjs: 
+  revealjs:
+    css: custom.css
     slide-number: true
-    chalkboard:  
+    chalkboard:
       buttons: true
     preview-links: auto
     smaller: true
     scrollable: false
+    toc: true
+    toc-depth: 1
+    number-sections: true
+    number-depth: 1
 bibliography: references.bib
 ---
 
@@ -36,7 +41,7 @@ library(tmap)
 library(USAboundaries)
 ```
 
-## Overview
+## {.instructor-note}
 
 The following module focuses on ethical issues that stem from sampling techniques and lack of representative samples. This module contains several real-world examples that aim to promote discussions around the importance and the consequences of sampling techniques and non-representative samples. Additionally, ethical principles from the American Statistical Association, along with recommended practices, are delineated. The module concludes with an acknowledgement that sampling is complex and that data scientists may have the tools to deal with and discern natural, nuanced patterns.
 
@@ -44,7 +49,7 @@ The following module focuses on ethical issues that stem from sampling technique
 
 1.  Amazon's Automated Hiring
 
-2.  Defining Sampling
+2.  Definitions and Terminology
 
 3.  Swain's Jury Panel Case Study
 
@@ -55,6 +60,8 @@ The following module focuses on ethical issues that stem from sampling technique
 6.  Ethic Principles and Sampling
 
 7.  The Simpson's Paradox
+
+# Amazon's Automated Hiring
 
 ## 1. Amazon's Automated Hiring Tool
 
@@ -102,9 +109,11 @@ Take an additional 5 minutes to discuss with the whole class your group's conver
 
 -   Amazon took a non-probabilistic sampling approach to collect data.
 
-## 1. Amazon's Automated Hiring Tool: Final comments
+## 1. Amazon's Automated Hiring Tool: Final comments 
 
 -   Using probabilistic sampling approaches would have led to a more representative sample of resumes, which staff could have used to infer the qualifications of the population of applicants. A substantial body of research has demonstrated that non-probabilistic data collection can lead to biased analysis, and methodologists generally do not recommend making inferences about the population.
+
+# Defining Sampling
 
 ## 2. Defining Sampling
 
@@ -115,72 +124,322 @@ What is sampling?
 ![](figures/Sample.png)
 
 [@fielding2025]
-## 2. Defining Sampling
+
+
+## Sampling terminology
+
+All data are collected somehow. A **sampling design** is a _**way of selecting observational units for measurement**_. It can be construed as a particular relationship between:
+
+* a **population** (all entities of interest);
+* a **sampling frame** (all entities that are possible to measure); and
+* a **sample** (a specific collection of entities).
+ 
+. . .
+
+![](figures/terminology.jpg)
+
+## Population
+
+Last week, we introduced the terminology **observational unit** to mean _**the entity measured for a study**_ -- datasets consist of observations made on observational units.
+
+. . .
+
+In less technical terms, all data are data *on* some kind of thing, such as countries, species, locations, and the like. 
+
+. . .
+
+::: {.columns}
+
+::: {.column width="60%"}
+A statistical **population** is the _**collection of all units of interest**_. For example:
+
+* all countries (GDP data)
+* all mammal species (Allison 1976)
+* all babies born in the US (babynames data)
+* all locations in a region (SB weather data)
+* all adult U.S. residents (BRFSS data)
+:::
+
+::: {.column width="40%"}
+![](figures/population.PNG)
+:::
+
+:::
+
+## Sampling frame
+
+There are usually some units in a population that can't be measured due to practical constraints -- for instance, many adult U.S. residents don't have phones or addresses.
+
+. . .
+
+::: {.columns}
+
+::: {.column width="60%"}
+For this reason, it is useful to introduce the concept of a **sampling frame**, which refers to _**the collection of all units in a population that can be observed for a study**_. For example:
+
+* all countries reporting economic output between 1961 and 2019
+* all babies with birth certificates from U.S. hospitals born between 1990 and 2018
+* all adult U.S. residents with phone numbers in 2019
+:::
+
+::: {.column width="40%"}
+![](figures/frame.PNG)
+:::
+
+:::
+
+## Sample
+
+Finally, it's rarely feasible to measure every observable unit due to limited data collection resources -- for instance, states don't have the time or money to call every phone number every year.
+
+. . .
+
+::: {.columns}
+
+::: {.column width="60%"}
+A **sample** is _**a subcollection of units in the sampling frame actually selected for study**_. For instance:
+
+* 234 countries;
+* 62 mammal species;
+* 13,684,689 babies born in CA;
+* 1 weather station location at SB airport;
+* 418,268 adult U.S. residents.
+:::
+
+::: {.column width="40%"}
+![](figures/sample.PNG)
+:::
+
+:::
+
+
+
+## Census
+
+The simplest scenario is a **population census**, where the entire population is observed. 
+
+::: {.columns}
+
+::: {.column width="60%"}
+For a census: $S = F = P$
+
+*All properties of the population are definitevely **known** in a census.* So there is no need to sample.
+:::
+
+::: {.column width="40%"}
+![](figures/census.jpg)
+:::
+
+:::
+
+
+
+## Simple random sample
+
+The statistical gold standard for inference, modeling, and prediction is the **simple random sample** in which units are selected at random from the population. 
+
+::: {.columns}
+
+::: {.column width="60%"}
+For a simple random sample, the frame equals the population, and the sample is a subset of the population.
+
+*Sample properties are reflective of population properties in simple random samples.* Population inference is straightforward.
+:::
+
+::: {.column width="40%"}
+![](figures/random-sample.jpg)
+:::
+
+:::
+
+## 'Typical' sample
+
+More common in practice is a random sample from a sampling frame that overlaps but does not cover the population.
+
+::: {.columns}
+
+::: {.column width="60%"}
+For a 'typical' sample: $S \subset F \quad\text{and}\quad F \cap P \neq \emptyset$
+
+*Sample properties are **reflective of the frame** but not necessarily the study population.* Population inference gets more complicated and may not be possible.
+:::
+
+::: {.column width="40%"}
+![](figures/typical-sample.jpg)
+:::
+
+:::
+
+## 'Administrative' data
+
+Also common is **administrative data** in which all units are selected from a convenient frame that partly covers the population. 
+
+
+::: {.columns}
+
+::: {.column width="60%"}
+
+*Administrative data are not really proper samples; they cannot be replicated and they do not represent any broader group.* No inference is possible.
+:::
+
+::: {.column width="40%"}
+![](figures/admin-data.jpg)
+:::
+
+:::
+
+## Scope of inference
+
+The relationships among the population, frame, and sample determine the **scope of inference**: the _**extent to which conclusions based on the sample are generalizable**_. 
+
+. . .
+
+A good sampling design can ensure that the statistical properties of the sample are expected to match those of the population. If so, it is sound to generalize:
+
+* the sample is said to be *representative* of the population 
+* the scope of inference is *broad*
+
+. . .
+
+A poor sampling design will produce samples that distort the statistical properties of the population. If so, it is not sound to generalize:
+
+* sample statistics are subjet to bias
+* the scope of inference is *narrow*
+
+## Characterizing sampling designs
+
+The sampling scenarios above can be differentiated along two key attributes:
+
+1. The overlap between the sampling frame and the population. 
+    + frame $=$ population
+    + frame $\subset$ population 
+    + frame $\cap$ population $\neq \emptyset$ 
+2. The mechanism of obtaining a sample from the sampling frame.
+    + random sampling
+    + convenience sampling
+
+. . .
+
+*If you can articulate these two points, you have fully characterized the sampling design.*
+
+## Sampling mechanisms
+
+In order to describe sampling mechanisms precisely, we need a little terminology.
+
+. . .
+
+Each unit has some **inclusion probability** -- _**the probability of being included in the sample**_.
+
+. . .
+
+Let's suppose that the frame $F$ comprises $N$ units, and denote the inclusion probabilities by:
+
+$$
+p_i = P(\text{unit } i \text{ is included in the sample})
+\quad i = 1, \dots, N
+$$
+
+The inclusion probability of each unit depends on the physical procedure of collecting data.
+
+## Sampling mechanisms
+
+**Sampling mechanisms** are _**methods of drawing samples**_ and are categorized into four types based on inclusion probabilities.
+
+* in a **census** every unit is included
+    + $p_i = 1$ for every unit $i = 1, \dots, N$
+* in a **random sample** every unit is equally likely to be included
+    + $p_i = p_j$ for every pair of units $i, j$
+* in a **probability sample** units have different inclusion probabilities
+    + $p_i \neq p_j$ for at least one $i \neq j$
+* in a **nonrandom sample** there is no random mechanism
+    + $p_i = 1$ for $i \in S$
+
+## Example
+
+Annual observations of GDP growth for 234 countries from 1961 - 2018.
+
+* Population: all countries in existence between 1961-2019.
+* Frame: all countries reporting economic output for at least one year between 1961 and 2019.
+* Sample: equal to frame.
+
+So:
+
+1. Overlap: frame partly overlaps population.
+2. Mechanism: sample is every country in the sampling frame.
+
+*This is administrative data* with no scope of inference.
+
+## Example
+
+Phone surveys of 418K U.S. residents in 2019.
+
+* Population: all U.S. residents.
+* Frame: all adult U.S. residents with phone numbers.
+* Sample: 418K adult U.S. residents with phone numbers.
+
+So:
+
+1. Overlap: frame is a subset of the population.
+2. Mechanism: probability sample.
+    + Randomly selected phone numbers were dialed in each state, so individuals in less populous states or with multiple numbers are more likely to be included
+
+*This is a typical sample* with narrow inference to adult residents with phone numbers.
+
+## {.instruction-discussion}
+
+- Can you phone surveys to generalize about the U.S. population?
+
+- What types of people are excluded from phone surveys? What are the ethical implications of excluding these individuals? Some concrete examples that could be used include public health survey (health behaviors like smoking, exercise, and diet, access to healthcare or mental health indicators), quality of life study or survey related to market research.
+
+## Defining Sampling
 
 What is a sampling design?
 
 -   **A sampling design** is a way of selecting observational units for measurement (individuals, groups, organizations, events, or other relevant elements).
 
--   *General Goal*: Select a set of individuals (or any unit of measurement of interest) from a population in a way that the descriptions of those individuals accurately portrays characteristics of the population.
+-   *General Goal*: Select a set of individuals (or any unit of measurement of interest) from a population in a way that can be used to learn about characteristics of the population.
 
--   *Secondary Goal*: Sample design is to yield maximum precision (i.e., minimum variance), a highly representative sample.
+-   *Secondary Goal*: Sampling design is to yield maximumize the accuracy of inferences about a population (i.e. not biased, minimum variance).
 
-## 2. Defining Sampling
 
-**Population**: The collection of all entities of interest
+<!-- ## 2. Defining Sampling -->
 
--   e.g., Gathering the grades from all 7th grade students at Westlake Middle School.
+<!-- **Sampling frame**: The collection of all units in a population that can be observed for a study. -->
 
--   e.g., Collecting the mortality rate of Canary Birds in the Macaronesia region.
+<!-- -   When the whole population of 7th graders at Westlake are not accessible, sampling frame consists of selecting some part of a population to observe so that one may estimate something about the whole population. -->
+<!-- -   E.g., three 7th grade classrooms (Mr.B's- AP English, Ms.C's- AP History, Ms. T's- Algebra) at Westlake were available and willing to provide data. -->
 
-## 2. Defining Sampling
+<!-- ## 2. Defining Sampling -->
 
-**Sampling frame**: The collection of all units in a population that can be observed for a study.
+<!-- **Sample**: A sample is a sub-collection of units in the sampling frame actually selected for study. -->
 
--   When the whole population of 7th graders at Westlake are not accessible, sampling frame consists of selecting some part of a population to observe so that one may estimate something about the whole population.
--   E.g., three 7th grade classrooms (Mr.B's- AP English, Ms.C's- AP History, Ms. T's- Algebra) at Westlake were available and willing to provide data.
+<!-- -   e.g., Gathering grades from an AP 7th-grade history class to estimate the academic progress of 7th grade students at Westlake Middle School. -->
 
-## 2. Defining Sampling
+<!-- -   e.g., Surveying the mortality rate among a flock of canary birds on Canary Island to assess the death rate of all canary birds in the Macaronesia region. -->
 
-**Sample**: A sample is a sub-collection of units in the sampling frame actually selected for study.
+<!-- -   There are different mechanisms to collecting or drawing a sample -->
 
--   e.g., Gathering grades from an AP 7th-grade history class to estimate the academic progress of 7th grade students at Westlake Middle School.
+<!--     -   Based on the probability of being included in the sample also known as **inclusion probabilities** $p_i$. -->
 
--   e.g., Surveying the mortality rate among a flock of canary birds on Canary Island to assess the death rate of all canary birds in the Macaronesia region.
+<!-- ## 2. Defining Sampling -->
 
--   There are different mechanisms to collecting or drawing a sample
+<!-- **Sampling mechanisms**:The mechanism of obtaining a sample from the sampling frame -->
 
-    -   Based on the probability of being included in the sample also known as **inclusion probabilities** $p_i$.
+<!-- -   Sampling mechanisms include the following four: -->
 
-## 2. Defining Sampling
+<!--     -   **census** every unit is included -->
+<!--         -   $p_i = 1$ for every unit $i = 1,...,N$ -->
+<!--     -   **random sample** every unit has an equal probability to be included in the sample -->
+<!--         -   $p_i = p_j$ for every pair of $i$ and $j$ -->
+<!--         -   The most preferred sampling mechanism -->
+<!--     -   **probability sample** the probability of being included in the sample is unit dependent -->
+<!--         -   $p_i \neq p_j$ for at least one unit of $i$ and $j$ -->
+<!--     -   **non-random sample** there is no random mechanism -->
+<!--         -   $p_i = 1$ for $i \in S$ -->
 
-**Sampling mechanisms**:The mechanism of obtaining a sample from the sampling frame
 
--   Sampling mechanisms include the following four:
 
-    -   **census** every unit is included
-        -   $p_i = 1$ for every unit $i = 1,...,N$
-    -   **random sample** every unit has an equal probability to be included in the sample
-        -   $p_i = p_j$ for every pair of $i$ and $j$
-        -   The most preferred sampling mechanism
-    -   **probability sample** the probability of being included in the sample is unit dependent
-        -   $p_i \neq p_j$ for at least one unit of $i$ and $j$
-    -   **non-random sample** there is no random mechanism
-        -   $p_i = 1$ for $i \in S$
-
-## 2. Defining Sampling: Discussion
-
-Take 5 minutes to discuss in your groups:
-
--   Why is random sampling the most preferred sampling mechanism?
-
--   How might random sampling promote ethical data science practices?
-
--   Is it appropriate for researchers to use other sampling techniques? When?
-
--   As data scientists, what problems (e.g., analytically, communicating results, societal impact) do you anticipate experiencing when an inappropriate sampling mechanism is used?
-
-<iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:03:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
+<center><iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:03:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen><.center>
 
 </iframe>
 
@@ -266,19 +525,7 @@ ggplot(black_freq_full, aes(x = black_count)) +
            label = "Swain's Panel = 8", color = "red", angle = 90)
 ```
 
-## 3. Jury Pool Discussion
 
-Discuss in your groups (5 minutes):
-
--   What do you observe in the plot?
-
--   What do you concluded about random sampling in this scenario?
-
--   What does the distribution and actual count of jurors suggests about the Jury panel in Swain's case? Is the difference small?
-
-<iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:03:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
-
-</iframe>
 
 ## 3. Jury Pool
 
@@ -350,11 +597,20 @@ j2 / j3
 :::
 :::::
 
-::: notes
-There were 52 simulated jury panels which had 15 or less and 1,599 simulated jury panels with 21 or less impaneled Black jurors.
-:::
+## {.instructor-discussion}
 
-## 4. Sampling Bias: Defined
+Some discussion questions:
+
+-   What are some advantages of random sampling in this context? How might random sampling promote ethical practices?
+
+- You can use use the jury panel examples to discuss how random sampling only leads to racial balance **on average** and how chance variability can lead to imbalance.
+
+- How many black males need to be on the panel for you to be convinced that the sampling process was followed fairly? Can use this question to motivate the gray area in defining notions of significance.
+
+- Is random sampling the fairest way to select the panel? Alternative: can use some kind of conditional random sampling to explicitly balance along certain demographic characteristiscs.
+
+
+## Sampling Bias
 
 What is sampling bias?
 
@@ -363,6 +619,8 @@ What is sampling bias?
 -   Consequently, statistical bias in estimates may be observed. In other words, estimates cannot be trusted as reflecting or representing the population.
 
 -   **Not investigating and addressing sampling issues raises ethical concerns**
+
+## {.instructor-note}
 
 ## 5. Sampling and Representativeness
 
@@ -421,13 +679,13 @@ tm_shape(region_map) +
 
 
 
-## 5. Sampling and Representativeness
+## Sampling and Representativeness
 
--   Small and large random samples can also lead to findings that do not represent the population.
+-   Random samples are not guaranteed to be representive of the population. Why?
 
 -   Hypothetical Example 2: You have a large sampling frame that includes California housing sales and related housing information from C.A.R. for the month of May; however, you randomly select 10 out of 53 counties to evaluate. The small sample will not be representative of the housing market.
 
-## 5. Sampling and Representativeness: Example
+## Flint Michigan
 
 -   In late 2014, the residents of Flint Michigan had noticed and reported that children and adults were experiencing lead poisoning after the city had switched to Flint River for the city's water supply.
 
@@ -455,13 +713,9 @@ tm_shape(region_map) +
 
 ## 5. Sampling and Representativeness: Example
 
-Visualization of Findings:
-
 ![](figures/FigureA_Flint.png){style="float: left;" width="30%"} ![](figures/FigureB_Flint.png){style="float: center;" width="30%"} ![](figures/FigureC_Flint.png){style="float: right;" width="30%"}
 
 ## 5. Sampling and Representativeness: Example
-
-Visualization of Findings:
 
 ![](figures/FigureD_Flint.png){style="float: left;" width="30%"} ![](figures/FigureE_Flint.png){width="30%"} ![](figures/FigureF_Flint.png){width="30%"}
 
@@ -493,13 +747,13 @@ Discuss in your groups (3 minutes):
 :::
 :::::
 
-## 5. Sampling and Representativeness: Different types of random sampling techniques
+## Beyond Simple Random Sampling
 
 -   Stratified Random Sampling: If the population of interest consists of smaller groups, arrange the population into those groups and then randomly sample from each group. The sampling probability may be proportional to the size of another group to ensure equal representation across all groups [@som2014].
 
     -   Ex. Dividing Los Angeles house sales by geographical sub-divisions or by city socioeconomic classes.
 
-## 5. Sampling and Representativeness: Different types of random sampling techniques
+## Beyond Simple Random Sampling
 
 -   Cluster Random Sampling: Divide a population into clusters based on some natural characteristic. Then randomly select the number of clusters (predetermined by researcher) to be included in the sample.
 
@@ -625,6 +879,7 @@ Unethical practices related to sampling:
 
 ## "Natural" Experiments
 
+- Convenien sample, observational data
 
 
 ## 7. The Simpson's Paradox: UC Berkeley Graduate Admissions
@@ -637,7 +892,7 @@ Unethical practices related to sampling:
 
     -   Ex. In the following histograms the total number of men and women who were admitted to UC Berkeley (1973) are displayed, which shows a concerning trend. The data is further broken down by department and tells a different story.
 
-## 7. The Simpson's Paradox: UC Berkeley Graduate Admissions
+## UC Berkeley Graduate Admissions
 
 -   Figure A is a bar graph that shows the total of admitted applicants by gender (Blue/Male, Orange/Female).
 
