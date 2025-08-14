@@ -1,0 +1,17 @@
+.instructor-note {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%) !important;
+}
+
+.instructor-note h2::after {
+  content: "📝 Instructor Note 📝";
+  color: #e74c3c;
+}
+
+.instructor-discussion {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%) !important;
+}
+
+.instructor-discussion h2::after {
+  content: "💬 Possible Discussion Questions 💬";
+  color: #e74c3c;
+}
