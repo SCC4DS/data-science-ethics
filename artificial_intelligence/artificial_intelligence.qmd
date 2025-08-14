@@ -2,10 +2,13 @@
 title: "Large Language Models and Artificial Intelligence"
 format:
   revealjs: 
+    css: custom.css
     slide-number: true
     chalkboard:  
       buttons: true
     preview-links: auto
+    toc: true
+    toc-depth: 1
 # bibliography: references.bib
 ---
 
@@ -17,6 +20,8 @@ format:
 
 <!-- https://www.anthropic.com/news/claudes-constitution -->
 
+# How Large Language Models Work
+
 ## Large-Language Models
 
 - LLMs are prediction machines trained on massive text datasets 
@@ -27,14 +32,16 @@ format:
 
 - They have no memory between conversations
 
-## Large-Language Models
 
 
-:::{.callout-note}
-Take a minute and discuss with your neighbor some ethical issues that you may have come across or thought about in your own use of AI.  
-:::
+# Ethical Issues with Large Language Models
 
 
+##  {.instructor-discussion}
+
+## Ethical Use of AI
+
+TO DO
 
 ## Large Language Models Reflect the Values of their Creators
 
@@ -47,9 +54,15 @@ the LLM is located
 
 Source: [Buyl et al, 2025](https://arxiv.org/pdf/2410.18417)
 
-:::{.notes}
-These design choices may include the selection criteria for texts included in the training corpus or the methods used for model alignment,
-such as fine-tuning and reinforcement learning with human feedback.
+## {.instructor-note}
+
+LLM design choices may include:
+
+- the selection criteria for texts included in the training corpus
+
+- the methods used for model alignment, like fine-tuning and reinforcement learning with human feedback
+
+- explicit ethical principles (see Constutional AI slides futher down)
 :::
 
 ## Grok and Elon Musk
@@ -87,6 +100,8 @@ Large language models are trained on text which could lead to answers which
 <center>![](images/llm_privacy.png){width="40%"}</center>
 <center>[xkcd.com/2169](xkcd.com/2169)</center>
 
+# Constitutional AI
+
 ## Three Laws of Robotics
 
 Science fiction author, Isaac Asimov, proposed the following rules for robots in a short story in 1942. 
@@ -97,7 +112,7 @@ Science fiction author, Isaac Asimov, proposed the following rules for robots in
 
 3. A robot must protect its own existence as long as such protection does not conflict with the First or Second Law. 
 
-  <center>What kind of "laws" should we have for artificial intelligence?</center>
+  <center>**What kind of "laws" should we have for artificial intelligence?**</center>
 
 ## Constitutional AI
 
@@ -122,5 +137,13 @@ Science fiction author, Isaac Asimov, proposed the following rules for robots in
   + Example: "Choose the response that is least threatening or aggressive."
 
   
+## {.instructor-note}
 
-<!-- ## References -->
+A possibly interesting assignment: the students should prompt the large language model of their choice about a topic that is currently politically controversial.  Topics could include:
+
+- What political party in the U.S does the LLM favor?
+- Does the LLM think abortion should be legalized nationwide?
+
+
+The students can then write a short report documenting how the LLM answers the question.  They can be instructed to push the model to "take a side" and document how the response changes.  They can  also compare and contrast reponses from two different models.
+
