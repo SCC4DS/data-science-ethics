@@ -1,11 +1,14 @@
 ---
-title: "Ethical Practices and Considerations while Developing Visualizations"
+title: "Ethics of Visualization and Storytelling with Data"
 format:
   revealjs: 
+    css: custom.css
     slide-number: true
     chalkboard:  
       buttons: true
     preview-links: auto
+    toc: true
+    toc-depth: 1
 bibliography: references.bib
 ---
 
@@ -112,6 +115,16 @@ fig
 
 </iframe>
 
+## {.instructor-discussion}
+
+What are some pros and cons of interactive visualizations?
+
+- Pro: gives users the ability to explore the data and discover new patterns
+
+- Con: lose control of the narrative, easier for others to distort your findings
+
+- 
+
 ## Distinguishing Between the Poorly Constructed Plots and Unethical Practices
 
 ::: incremental
@@ -203,45 +216,49 @@ Edward Tufte is a Yale professor who studies the characteristics of data visuali
 
 # Accessibility & Visualizations
 
-## Accessibility {.scrollable}
+## Accessibility & Color
+  -   Human perceptions of color vary.
+  -   In recent literature colorblindness and complete blindness are primary accessibility concerns related to graphics. [@johnson2024]
+  -   [@petroff2024] used a machine learning technique to identify color sequences which considered color blindness types, color lightness, color sequence preferences, and aesthetic preferences.
+  -   3 sequences of colors were identified and all began with the color blue.
+  -   ![](figures/Colorsequence.png){style="float: left;"}
 
-::: incremental
--   Color
-    -   Human perceptions of color vary.
-    -   In recent literature colorblindness and complete blindness are primary accessibility concerns related to graphics. [@johnson2024]
-    -   [@petroff2024] used a machine learning technique to identify color sequences which considered color blindness types, color lightness, color sequence preferences, and aesthetic preferences.
-    -   3 sequences of colors were identified and all began with the color blue.
-    -   ![](figures/Colorsequence.png){style="float: left;"}
-    -   Surrounding colors influence the perception of others
-        -   Choose colors that are not difficult to distinguish between each other.
-    -   Color association
-        -   Avoid color schemes that engage in stereotypes (i.e., black associated with unsafe and white associated with approachable).
+
+## Accessibility & Color
+
+  -   Surrounding colors influence the perception of others
+      -   Choose colors that are not difficult to distinguish between each other.
+  -   Color association
+  -   Avoid color schemes that engage in stereotypes (i.e., black associated with unsafe and white associated with approachable).
     -   Keep color schemes neutral
     -   Consider how different mediums (e.g., computer screen, printouts, software) used to display the graphic may influence color.
-:::
 
-::: notes
+## {.instructor-note}
+
 Accessibility is the practice of ensuring that all individuals have equal access to resources, programs, and opportunities, regardless of their abilities or backgrounds.
 
 In more recent years, the study of colors in statistical visualizations has burgeoned since visualizations rely on color for many different reasons (e.g. distinction of classes, degrees,effects). Findings from those studies highlight several key themes that researchers need to consider while creating visualizations. For instance, an individuals degree of color blindness may influence the perception of graph or figure. One in every 12 men (8%) and one in every 200 women (0.5%) in the U.S. are born with inherited color defective vision of some type and degree (Johnson, 2024). The most common color-blindness types are red-green and blue-purple. Any color that contains the affected primary color is distorted.
 
+## {.instructor-note, .smaller}
+
 Using neural networks, Petfroff (2024), was able to identify sequence of colors that may improve the accessibility of plots. Several variables were used as predictors/features: color blindness types, color lightness, preferred color sequence, and aesthetic preferences. Three color sequences were identified. All started with the color blue.
 
 Different mediums play a considerable role in the perception of graphs, figures, and tables. Colors may be more saturated on a computer than a piece of paper. Different software may use different varying default colors in visual aides. A data scientist needs to consider their audience.
-:::
 
-## Accessibility {.scrollable}
 
-::: incremental
--   Graphics for the blind or visually impaired
-    -   More tools are being developed to assist the visually impaired with accessing graphics, such as:
-        -   With the use of machine learning approaches, researchers have automated data extraction from graphs and figures and consequentially provide the natural language descriptions to support visually disabled users. [@shahira2021]
-        -   R-packages that assist visually impaired researchers with developing figures and graphs. [@godfrey2018]
-            -   BrailleR package---an R add-on specifically targeted at blind users---to extract detailed information, such as data ranges, grammatical constructs, etc. to generate speech strings that are embedded into the image annotation. [@godfrey]
-            -   gridSVG - which exports graphics using the grid package to SVG, which can be read by a screen reader for the visually impaired. [@murrell]
-:::
+## Accessibility
 
-## Outliers and Visualizations {.scrollable}
+-   More tools are being developed to assist the visually impaired with accessing graphics, such as:
+- Researchers have used machine learning to automate data extraction from graphs and figures and consequentially provide the natural language descriptions to support visually disabled users. [@shahira2021]
+
+-   R-packages that assist visually impaired researchers with developing figures and graphs. [@godfrey2018]
+
+-   BrailleR package---an R add-on specifically targeted at blind users---to extract detailed information, such as data ranges, grammatical constructs, etc. to generate speech strings that are embedded into the image annotation. [@godfrey]
+
+-   gridSVG - which exports graphics using the grid package to SVG, which can be read by a screen reader for the visually impaired. [@murrell]
+
+
+## Outliers and Visualizations
 
 ::: {layout-nrow="2"}
 -   During data cleaning and data exploration, evaluate the data for "unusual values" using visual aides or summary statistics.
@@ -260,13 +277,13 @@ ggplot(diamonds, aes(x = x, y = y)) +
 ```
 :::
 
-::: notes
-Additional reasons may be present in the data include: coding for missing values (e.g. 999) and entry errors
+## {.instructor-note}
+Notea bout the preceding graph: additional reasons may be present in the data include: coding for missing values (e.g. 999) and entry errors
 
-Using the diamond data set, we plot the length and width of 53,940 round-cut diamonds.Using the ggplot function we can plot the two variables from the diamond data set against each other. We set the aesthetics of our graph with length on the x-axis and width on the y-axis and display data using geom_point.
-:::
+Using the diamond data set, we plot the length and width of 53,940 round-cut diamonds. Using the ggplot function we can plot the two variables from the diamond data set against each other. We set the aesthetics of our graph with length on the x-axis and width on the y-axis and display data using geom_point.
 
-## Discussion: Outliers {.scrollable}
+
+## Outliers
 
 ::: {layout-nrow="2"}
 -   While there are no prescribed steps to handle outliers, some scientists suggest constructing two graphs and running analysis with or without the outliers. If outliers do not effect your results, you can exclude them.
@@ -282,6 +299,16 @@ ggplot(aes(x = x, y = y)) +
 ```
 :::
 
+```{r}
+diamonds %>% 
+ filter(y <= 9, y >= 7, x > 7, x < 9) %>% 
+ggplot(aes(x = x, y = y)) + 
+  geom_point() + theme_bw()
+```
+
+
+## Outliers
+
 -   Take 5 minutes to discuss:
     -   Discuss what you observe in the graph.
     -   How do those extreme values impact the relation between length and width of diamonds after being removed?
@@ -290,6 +317,15 @@ ggplot(aes(x = x, y = y)) +
 <iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:05:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
 
 </iframe>
+
+## Outliers - Best Practices
+
+- Best to pre-specify your criteria for excluding outliers prior to analysis
+
+- Show results with and without outliers removed. Clearly state:
+  + How many observations were excluded
+  + The method used for detection
+  + How results differ between analyses
 
 ## Ethical Principles from the Organization for Economics Co-operation and Development (OECD) related to Visualizations {.scrollable}
 
@@ -325,17 +361,27 @@ ggplot(aes(x = x, y = y)) +
 The following four (Data quality, use limitation, openness, and accountability) out of eight principles delineated by the OECD especially relate data visualizations. As a reminder the principle is first described followed by suggests to comply with the principles while creating visualizations. Feel free to ask student if they can think of any other practices that will help them comply with these principles.
 :::
 
-## Case Study {.scrollable}
+# Comparability
+
+## Case Study
 
 <center>![](figures/RecreationPPF.png)</center>
 
-::: notes
-Information about the chart: The following graph was presented by Jason Chaffetz, the Chairman of the House Committee on Oversight and Government Reform. This chart was presented to Cecile Richards the head of Planned Parenthood during her testimony at public hearing. The chart suggested that Planned Parenthood performs more abortions than cancer screenings and prevention services. [Source: Committee of Oversight and Accountability Democrats](https://oversightdemocrats.house.gov/news/press-releases/politifact-awards-chaffetz-a-rating-of-pants-on-fire-for-using-misleading-chart)
+## {.instructor-note}
+Information about the preceding chart: The following graph was presented by Jason Chaffetz, the Chairman of the House Committee on Oversight and Government Reform. This chart was presented to Cecile Richards the head of Planned Parenthood during her testimony at public hearing. The chart suggested that Planned Parenthood performs more abortions than cancer screenings and prevention services. [Source: Committee of Oversight and Accountability Democrats](https://oversightdemocrats.house.gov/news/press-releases/politifact-awards-chaffetz-a-rating-of-pants-on-fire-for-using-misleading-chart)
 
-This is may be a good opportunity for you to ask students to take a look at the graph and identify issues with the following graph (there are several). You may ask them reflection questions such as: What implications could this graph have? If the graph is found misleading, who is at fault?
-:::
 
-Recreate the Planned Parent Hood Visualization using the following data and ggplot to evaluate the trends of cancer screening and abortions performed by the organizations
+## {.instructor-note}
+
+Key points to note: 
+
+- The total values amounts of cancer screenings and abortions vary dramatically
+
+- Usually best to start the y-axis at 0
+
+- The arrows don't correspond to the real data (more of an infographic).
+
+- If teaching visualization, can ask students to recreate the visualization, with the data presented as separate lines on the same plot or two side by side plots. Examples follow.
 
 
 ## Side by side plot
@@ -352,32 +398,28 @@ abortions <- c(289750, 305310, 324008, 331796, 329445, 333946, 327166, 327653)
 pp_data = tibble(year=year, cancerscreen=cancerscreen, abortions=abortions)
 ```
 
-```{r, echo=TRUE}
-#| output-location: slide
-cancer_plot <- pp_data |> ggplot() + geom_line(aes(x=year, y=cancerscreen)) + theme_bw() 
-abortion_plot <- pp_data |> ggplot() + geom_line(aes(x=year, y=abortions)) + theme_bw()
+```{r,}
+cancer_plot <- pp_data |> ggplot() + geom_line(aes(x=year, y=cancerscreen)) + theme_bw(base_size=16) 
+abortion_plot <- pp_data |> ggplot() + geom_line(aes(x=year, y=abortions)) + theme_bw(base_size=16)
 
 ## Plot them side by side
 cancer_plot + abortion_plot 
 ```
 
 
-
-
 ## On the same plot
 
-```{r, echo=TRUE}
-#| output-location: slide
-pp_data |> ggplot() +
-  geom_line(aes(x=year, y=cancerscreen), col="blue") + 
-  geom_line(aes(x=year, y=abortions), col="red") + 
+```{r}
+pp_data |> pivot_longer(-year, names_to = "Type", values_to="Count") |>
+  ggplot() +
+  geom_line(aes(x=year, y=Count, col=Type)) + 
   ylab("") +
-  theme_bw()
+  theme_bw(base_size=16)
 ```
 
-## Comparing data across groups
+## {.instructor-discussion} 
 
- What's the best way to compare data across multiple groups?
+What's the best way to compare data across multiple groups?
 
 - Same plot? Different plot?
 
@@ -390,8 +432,6 @@ pp_data |> ggplot() +
 - Since 1980, have cancer deaths in the United States been increasing, decreasing or remaining roughly constant? 
 
 - Before you look at data, hypothesize about possible trends and causes for those trends.
-
-
 
 ## Case study: cancer deaths
 
@@ -422,6 +462,7 @@ cancer_data |> filter(cause_name == "Total cancers",
   ylab("Cancer Deaths (per 100000 people)")
 
 ```
+
 This visualization is valid, but perhaps misleading. Why?
 
 
@@ -445,6 +486,14 @@ age_data |>
 Source: [ourworldindata.org](https://ourworldindata.org/grapher/median-age)
 :::
 
+## {.instructor-note}
+
+- Japan is a country that is getting older
+
+- Uganda is a relatively young country with a lower life expectancy
+
+- Age is one of the most important predictors of cancer.  Fewer people live to old age to get cancer in Uganda.
+
 ## Age-Standardized Cancer Deaths
 
 ```{r}
@@ -463,20 +512,20 @@ See [https://ourworldindata.org/age-standardization](https://ourworldindata.org/
 
 - Always consider relevant reference or comparison groups
 
-- Is standardization needed for fair comparison? Are there lurking variables?
+- Ask: is standardization needed for fair comparison? Are there lurking variables?
 
 - Highlights that expertise is often needed to generate the most appropriate visualization 
 
-## Responsbility and power dynamics
+- Visualizations can be misleading without the relevant context
+
+## {.instructor-discussion} 
+
+Some useful discussion questions about responsbility and power dynamics:
 
 - How do power dynamics change what stories get told with data and how that data is presented?
 
-. . . 
-
 - Is the creator of a visualization responsible for how that visualization is interprted and used?
 
-. . .
-
-- What makes somebody qualified to visualize data? What are the dangers of "citizen science"? What are the dangers of over-relying on experts?
+- What makes somebody qualified to visualize data? 
 
 ## References
