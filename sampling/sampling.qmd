@@ -63,7 +63,7 @@ The following module focuses on ethical issues that stem from sampling technique
 
 # Amazon's Automated Hiring
 
-## 1. Amazon's Automated Hiring Tool
+## Amazon's Automated Hiring Tool
 
 In 2014, Amazon engineers developed an algorithm using the resumes of current employees from the past decade to expedite the hiring process. The algorithm reviewed applicants' resumes and provided job candidate scores (1-5), with higher scores indicating a more well-qualified candidate.
 
@@ -89,8 +89,9 @@ Take an additional 5 minutes to discuss with the whole class your group's conver
 
 </iframe>
 
-::: notes
--   There are several points related ethical or social justices practices that can be discussed:
+## {.instructor-note}
+
+There are several points related ethical or social justices practices that can be discussed:
 
 -   what and how much additional information would be important to collect from current employees to develop an accurate classification tool?
 
@@ -99,7 +100,7 @@ Take an additional 5 minutes to discuss with the whole class your group's conver
 -   Amazon did not provide information related to the number of and quality of resumes that were used to create the hiring algorithm or any additional features. However, the number and the quality of the sample of resumes is key.
 
 -   You could spend time discussing how the data scientists could mitigate bias, besides using female resumes.
-:::
+
 
 ## 1. Amazon's Automated Hiring Tool: Final comments
 
@@ -113,15 +114,15 @@ Take an additional 5 minutes to discuss with the whole class your group's conver
 
 -   Using probabilistic sampling approaches would have led to a more representative sample of resumes, which staff could have used to infer the qualifications of the population of applicants. A substantial body of research has demonstrated that non-probabilistic data collection can lead to biased analysis, and methodologists generally do not recommend making inferences about the population.
 
-# Defining Sampling
+# Definitions and Terminology
 
-## 2. Defining Sampling
+<!-- ## 2. Defining Sampling -->
 
-What is sampling?
+<!-- What is sampling? -->
 
--   Sampling is a technique for collecting data that requires a sampling design to collect data from a small group that is part of the larger group of interest.
+<!-- -   Sampling is a technique for collecting data that requires a sampling design to collect data from a small group that is part of the larger group of interest. -->
 
-![](figures/Sample.png)
+<!-- ![](figures/Sample.png) -->
 
 [@fielding2025]
 
@@ -442,6 +443,8 @@ What is a sampling design?
 <center><iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:03:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen><.center>
 
 </iframe>
+
+# Case study: Swain's Jury Panel
 
 ## 3. Swain's Jury Panel Case Study
 
