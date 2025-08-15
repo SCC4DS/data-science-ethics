@@ -12,7 +12,34 @@ format:
 bibliography: references.bib
 ---
 
-## Real World Example
+# Storytelling with Data
+
+## Storytelling with data 
+
+After data analysis, how should we communicate our findings?
+
+- Effective communication often involves telling a story
+
+- The story should reflect what you believe to be true based on a rigorous analysis of the data
+  - The story should reflect not just your conclusions but all assumptions and your process
+
+- Prepare visualizations that support your story and make a clear point
+
+## What is a story?
+
+A story is a collection of observations, facts, or events presented in a specific order such that they create an **emotional reaction**.
+[Clause Wilke](https://clauswilke.com/lectures/slides/effective-visualization-2025-04-02.html#/what-is-a-story)
+
+## {.instructor-discussion}
+
+- The previous quote is somewhat provocative in the context of communicating conclusions from data.
+  + Why should we seek to create an **emotional reaction**? Shouldn't the goal be honest and clear reporting of evidence?
+  + A story can create an **emotional reaction** but be misleading!
+  + Discuss the phrase ["Lies, damn lies and statistics!"](https://en.wikipedia.org/wiki/Lies,_damned_lies,_and_statistics)
+
+- We like to say "let the data speak for itself".  Is that really possible? What would that require?
+
+## A Story About Climate Change
 
 ::::: columns
 ::: {.column width="50%"}
@@ -20,11 +47,11 @@ bibliography: references.bib
 :::
 
 ::: {.column width="50%"}
-   In 2015, the National Review tweeted a chart that displayed the global temperature in Fahrenheit from 1800 to 2015. Noting that it was the only chart that someone needed to see.
+   In 2015, the National Review, a conservative editoral magazine, tweeted a chart that displayed the global temperature in Fahrenheit from 1800 to 2015. Noting that it was the only chart that someone needed to see.
 :::
 :::::
 
-## Real World Example: Discussion
+## A Story About Climate Change
 
 ::::: columns
 ::: {.column width="50%"}
@@ -32,17 +59,12 @@ bibliography: references.bib
 :::
 
 ::: {.column width="50%"}
--   Take a minute to reflect on the tweet and 5 minutes to discuss.
-
--   Discuss in groups your observations, questions, and thoughts.
-
-<iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:05:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
-
-</iframe>
+-  Does this visualization make a point in a service of a larger story?
+- Is the point fair or potentially misleading?
 :::
 :::::
 
-## Real World Example: Background {.scrollable}
+## A Story About Climate Change
 
 ::: incremental
 -   The data are from NASA's Goddard Institute for Space Studies (GISS) analysis of global surface temperature change. [@hansen2010]
@@ -60,10 +82,12 @@ bibliography: references.bib
 -   The National Review failed to address how they treated to the data to get the Fahrenheit values.
 :::
 
-## Real World Example: Plot {.scrollable}
+## Interactive Visualizations
 
-::: {layout-nrow="1"}
+
 ```{r}
+#| fig-align: center
+
 library(readr)
 library(plotly)
 library(tidyr)
@@ -97,7 +121,7 @@ fig <- plot_ly(NASAdata, x = ~date)
 fig <- fig %>% add_lines(y = ~temperature)
 
 fig <- fig %>% layout(
-    title = "Global Surface Temperature Transformed from Celsius to Fahrenheit",
+    title = "Global Surface Temperature Transformed",
     yaxis = list(
       rangeslider = list(type = "Temperature",
                          title = "Global Temperature",
@@ -106,14 +130,9 @@ fig <- fig %>% layout(
 fig
 
 ```
-:::
 
--   Manipulate the plot by zooming in and out and evaluate temperature at time intervals.
--   Describe the trend as a class.
 
-<iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:05:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
-
-</iframe>
+<center>Manipulate the plot by zooming in and out and evaluate temperature at time intervals.</center>
 
 ## {.instructor-discussion}
 
@@ -123,20 +142,26 @@ What are some pros and cons of interactive visualizations?
 
 - Con: lose control of the narrative, easier for others to distort your findings
 
-- 
+  + Figures should be designed to tell a story and have a clear purpose.  
 
-## Distinguishing Between the Poorly Constructed Plots and Unethical Practices
 
-::: incremental
--   There is a fine line between creating a poorly constructed figure and unethically presenting findings.
+
+## Poorly constructed vs unethical visualizations
+
+
+- There is a difference between an ugly visualization and a bad visualization
+  + Ugly visualizations are aesthetically unappealing but can still effectively convey information
+  + Bad visualizations are misleading or confusing because of they way they are constructed
+
+-   There is also a fine line between poorly constructed visualizations and unethically presentations.
+
 -   Data scientists should remain honest, provide clarity and avoid violations of openness or objectivity.
--   Ensure that your audience has enough information to make an informed decision not influence by the data scientist's background (values, experience, etc.). [@schroeder2022]
-:::
 
-## Common Characteristics of Poorly Constructed Plots [@szafir2018] {.scrollable}
+-   Ensure that your audience has enough information to make an informed decision that is not unduly influenced by the presenter's values and biases. [@schroeder2022]
 
-:::::::: panel-tabset
-### The use of 3D Graphs {.scrollable}
+# Features of Poorly Constructed Plots
+
+## The use of 3D Graphs {.scrollable}
 
 ::::: columns
 ::: {.column width="50%"}
@@ -153,31 +178,35 @@ What are some pros and cons of interactive visualizations?
 :::
 :::::
 
-### Lack of Information
+## Exclcuding Information
 
-Lack of information:
+- Excluding information that may impact a readers understanding includes:
+  -   x- and y-axis labels,
+  -   variable scale of measurement (e.g. kg., log-transformation, etc.),
+  -   clear title or figure labels.
+    
+- Deliberately excluding data or information that might influence the conclusions would be unethical
 
--   The exclusion of information that may impact a readers understanding which include the following:
-    -   x- and y-axis labels,
-    -   variable scale of measurement (e.g. kg., log-transformation, etc.),
-    -   clear title or figure labels.
+## Including too Much Information
 
-### Inclusion of too Much Information
+<center>![](figures/toomuchinformation2.png)</center>
 
--   The inclusion of too much information can have the same effect as leaving out information.
+## Including too Much Information
+
+-   Including too much information can have the same effect as leaving out information.
     -   Leaving the audience with more questions and confusion.
     -   General rule:
         -   Provide enough information so that your audience can make an informed decision.
     -   Exclude unnecessary text (subtitles, long title, jargon).
     -   Address disproportionate number of numerical values than actual (i.e.,too many values on the y-axis).
 
-![](figures/toomuchinformation2.png)
+
 
 ::: notes
 In the primary graph 19 MLS soccer teams and values spent on players salaries. The graph is broken down by several groups: players, players position. The full length of the bars suggest the total amount spent on players salaries. Individual bar can also be used to compare the relative amount invested on each player within a team. In the sub graph, the data is broken down by: players position and dollar amount spent.
 :::
 
-### Not Starting Axes at 0
+## Not Starting Axes at 0
 
 Not starting axes at 0:
 
@@ -201,27 +230,28 @@ Highlight how this 3d graph starts at 65% rather than 0. Note that a more approp
 
 ## Tufte's graphic principles to creating useful figures:
 
-::: incremental
 -   The physical representation of numbers on a surface should be proportional to numerical quantities represented.
 -   Use clear and comprehensive labels.
 -   Write out explanations of the data (e.g., in the text, notes immediately following the graph).
 -   Show data variation not design variation.
 -   The number of dimensions presented should not exceed the number of dimensions in the data.
 -   Graphics should not quote data out of context.
-:::
 
 ::: notes
 Edward Tufte is a Yale professor who studies the characteristics of data visualizations and how such characteristics impact readers. His book ''The Visual Display of Quantitative Information'' (1983) review several principles to creating informative data graphics.
 :::
 
-# Accessibility & Visualizations
+# Accessibility
 
 ## Accessibility & Color
-  -   Human perceptions of color vary.
-  -   In recent literature colorblindness and complete blindness are primary accessibility concerns related to graphics. [@johnson2024]
+  -   Human perceptions of color vary. Upwards of 5-8% of men are colorblind! (less common for women)
+  -   Colorblindness and complete blindness present accessibility concerns related to visual presenation of information. [@johnson2024]
   -   [@petroff2024] used a machine learning technique to identify color sequences which considered color blindness types, color lightness, color sequence preferences, and aesthetic preferences.
   -   3 sequences of colors were identified and all began with the color blue.
-  -   ![](figures/Colorsequence.png){style="float: left;"}
+
+## Accessibility & Visualizations
+
+<center>![](figures/Colorsequence.png)</center>
 
 
 ## Accessibility & Color
@@ -239,7 +269,7 @@ Accessibility is the practice of ensuring that all individuals have equal access
 
 In more recent years, the study of colors in statistical visualizations has burgeoned since visualizations rely on color for many different reasons (e.g. distinction of classes, degrees,effects). Findings from those studies highlight several key themes that researchers need to consider while creating visualizations. For instance, an individuals degree of color blindness may influence the perception of graph or figure. One in every 12 men (8%) and one in every 200 women (0.5%) in the U.S. are born with inherited color defective vision of some type and degree (Johnson, 2024). The most common color-blindness types are red-green and blue-purple. Any color that contains the affected primary color is distorted.
 
-## {.instructor-note, .smaller}
+## {.instructor-note}
 
 Using neural networks, Petfroff (2024), was able to identify sequence of colors that may improve the accessibility of plots. Several variables were used as predictors/features: color blindness types, color lightness, preferred color sequence, and aesthetic preferences. Three color sequences were identified. All started with the color blue.
 
@@ -258,7 +288,7 @@ Different mediums play a considerable role in the perception of graphs, figures,
 -   gridSVG - which exports graphics using the grid package to SVG, which can be read by a screen reader for the visually impaired. [@murrell]
 
 
-## Outliers and Visualizations
+## Outliers
 
 ::: {layout-nrow="2"}
 -   During data cleaning and data exploration, evaluate the data for "unusual values" using visual aides or summary statistics.
@@ -278,7 +308,8 @@ ggplot(diamonds, aes(x = x, y = y)) +
 :::
 
 ## {.instructor-note}
-Notea bout the preceding graph: additional reasons may be present in the data include: coding for missing values (e.g. 999) and entry errors
+
+Note about the preceding graph: additional reasons may be present in the data include: coding for missing values (e.g. 999) and entry errors
 
 Using the diamond data set, we plot the length and width of 53,940 round-cut diamonds. Using the ggplot function we can plot the two variables from the diamond data set against each other. We set the aesthetics of our graph with length on the x-axis and width on the y-axis and display data using geom_point.
 
@@ -318,7 +349,7 @@ ggplot(aes(x = x, y = y)) +
 
 </iframe>
 
-## Outliers - Best Practices
+## Outliers
 
 - Best to pre-specify your criteria for excluding outliers prior to analysis
 
@@ -327,7 +358,13 @@ ggplot(aes(x = x, y = y)) +
   + The method used for detection
   + How results differ between analyses
 
-## Ethical Principles from the Organization for Economics Co-operation and Development (OECD) related to Visualizations {.scrollable}
+# Ethical Principles from the OECD
+
+## Organization for Economics Co-operation and Development 
+
+The Organization for Economics Co-operation and Development (OECD)
+
+## Data Quality
 
 ::: {layout-nrow="4"}
 2.Data Quality
@@ -363,25 +400,25 @@ The following four (Data quality, use limitation, openness, and accountability) 
 
 # Comparability
 
-## Case Study
+## How is this figure misleading?
 
 <center>![](figures/RecreationPPF.png)</center>
 
 ## {.instructor-note}
-Information about the preceding chart: The following graph was presented by Jason Chaffetz, the Chairman of the House Committee on Oversight and Government Reform. This chart was presented to Cecile Richards the head of Planned Parenthood during her testimony at public hearing. The chart suggested that Planned Parenthood performs more abortions than cancer screenings and prevention services. [Source: Committee of Oversight and Accountability Democrats](https://oversightdemocrats.house.gov/news/press-releases/politifact-awards-chaffetz-a-rating-of-pants-on-fire-for-using-misleading-chart)
+Context about the preceding chart: the infographic was presented in 2015 by Republican Jason Chaffetz, the Chairman of the House Committee on Oversight and Government Reform. This chart was presented to Cecile Richards the head of Planned Parenthood during her testimony at public hearing. The chart suggested that Planned Parenthood performs more abortions than cancer screenings and prevention services. [Source: Committee of Oversight and Accountability Democrats](https://oversightdemocrats.house.gov/news/press-releases/politifact-awards-chaffetz-a-rating-of-pants-on-fire-for-using-misleading-chart)
 
 
 ## {.instructor-note}
 
 Key points to note: 
 
-- The total values amounts of cancer screenings and abortions vary dramatically
+- The total number of cancer screenings and abortions vary dramatically
 
 - Usually best to start the y-axis at 0
 
-- The arrows don't correspond to the real data (more of an infographic).
+- The arrows don't correspond to the real data (graphic is an infographic, not a visualization of real data).
 
-- If teaching visualization, can ask students to recreate the visualization, with the data presented as separate lines on the same plot or two side by side plots. Examples follow.
+- Can ask students to recreate the visualization, with the data presented as separate lines on the same plot or two side by side plots and discuss how presenting the data in different can be used to tell different stories. Examples follow.
 
 
 ## Side by side plot
@@ -423,15 +460,17 @@ What's the best way to compare data across multiple groups?
 
 - Same plot? Different plot?
 
-- Absolute vs relative?
-
+- Absolute vs relative? Depends on the goal.
+  - Cancer screenings did indeed drop by almost a factor of 2 over the 7 year span, likely due to changes in access to healthcare.
+  - Cancer screenings still represent far more of the services provided 
+  
 - What is the best way to accurately and ethically convey the meaning of this data?
 
 ## Case study: cancer deaths
 
 - Since 1980, have cancer deaths in the United States been increasing, decreasing or remaining roughly constant? 
 
-- Before you look at data, hypothesize about possible trends and causes for those trends.
+- Before you look at data, hypothesize about possible trends and suggest reasons for those trends.
 
 ## Case study: cancer deaths
 
