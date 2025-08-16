@@ -26,13 +26,15 @@ After data analysis, how should we communicate our findings?
 - Prepare visualizations that support your story and make a clear point
 
 ## What is a story?
+<br>
+<br>
 
-A story is a collection of observations, facts, or events presented in a specific order such that they create an **emotional reaction**.
-[Clause Wilke](https://clauswilke.com/lectures/slides/effective-visualization-2025-04-02.html#/what-is-a-story)
+> A story is a collection of observations, facts, or events presented in a specific order such that they create an **emotional reaction**.
+> - [Clause Wilke](https://clauswilke.com/lectures/slides/effective-visualization-2025-04-02.html#/what-is-a-story)
 
 ## {.instructor-discussion}
 
-- The previous quote is somewhat provocative in the context of communicating conclusions from data.
+- The previous slide is somewhat provocative in the context of storytelling with data.
   + Why should we seek to create an **emotional reaction**? Shouldn't the goal be honest and clear reporting of evidence?
   + A story can create an **emotional reaction** but be misleading!
   + Discuss the phrase ["Lies, damn lies and statistics!"](https://en.wikipedia.org/wiki/Lies,_damned_lies,_and_statistics)
@@ -47,7 +49,7 @@ A story is a collection of observations, facts, or events presented in a specifi
 :::
 
 ::: {.column width="50%"}
-   In 2015, the National Review, a conservative editoral magazine, tweeted a chart that displayed the global temperature in Fahrenheit from 1800 to 2015. Noting that it was the only chart that someone needed to see.
+   In 2015, the National Review, a conservative editoral magazine, tweeted a chart that displayed the global temperature in Fahrenheit from 1800 to 2015. Noting that "it was the only chart you need to see".
 :::
 :::::
 
@@ -59,14 +61,14 @@ A story is a collection of observations, facts, or events presented in a specifi
 :::
 
 ::: {.column width="50%"}
--  Does this visualization make a point in a service of a larger story?
-- Is the point fair or potentially misleading?
+-  Does this visualization make a point in service of a larger story?
+- Is the point made by this graphic fair or misleading?
 :::
 :::::
 
 ## A Story About Climate Change
 
-::: incremental
+
 -   The data are from NASA's Goddard Institute for Space Studies (GISS) analysis of global surface temperature change. [@hansen2010]
 
 -   The world's temperature is initial recorded in Celsius.
@@ -80,7 +82,6 @@ A story is a collection of observations, facts, or events presented in a specifi
 -   The Washington Post addressed the tweet by identifying that the National Reviewer had scaled the plot to "hide the actual change in temperature."
 
 -   The National Review failed to address how they treated to the data to get the Fahrenheit values.
-:::
 
 ## Interactive Visualizations
 
@@ -140,9 +141,9 @@ What are some pros and cons of interactive visualizations?
 
 - Pro: gives users the ability to explore the data and discover new patterns
 
-- Con: lose control of the narrative, easier for others to distort your findings
+- Con: lose control of the narrative, easier for others to distort findings
 
-  + Figures should be designed to tell a story and have a clear purpose.  
+  + Figures should be designed to tell a story and have a clear purpose.  Simply sharing an interactive visualization might make communication harder.
 
 
 
@@ -152,6 +153,8 @@ What are some pros and cons of interactive visualizations?
 - There is a difference between an ugly visualization and a bad visualization
   + Ugly visualizations are aesthetically unappealing but can still effectively convey information
   + Bad visualizations are misleading or confusing because of they way they are constructed
+
+## Poorly constructed vs unethical visualizations
 
 -   There is also a fine line between poorly constructed visualizations and unethically presentations.
 
@@ -206,15 +209,17 @@ What are some pros and cons of interactive visualizations?
 In the primary graph 19 MLS soccer teams and values spent on players salaries. The graph is broken down by several groups: players, players position. The full length of the bars suggest the total amount spent on players salaries. Individual bar can also be used to compare the relative amount invested on each player within a team. In the sub graph, the data is broken down by: players position and dollar amount spent.
 :::
 
-## Not Starting Axes at 0
-
-Not starting axes at 0:
+## Distorted axis limits
 
 -   Some functions by default fit axis ranges to natural data scales.
 -   Non-zero y-axes may suggest that small differences to appear much larger than truth.
 -   When dealing with normalized data ensure that the variables are placed on the same scale.
 
+## Distorted axis limits
+
 ![](figures/3d%20graph.png)
+
+## Improved axis limits
 
 ![](figures/Improvedgraph.png){style="float: left;" width="60%"}
 
@@ -223,10 +228,19 @@ Highlight how this 3d graph starts at 65% rather than 0. Note that a more approp
 :::
 ::::::::
 
-##
+## Visual Communication
+
+<br>
+<br>
+
+> Excellence in statistical graphics consists of complex ideas communicated with clarity, precision, and efficiency." - [@tufte2001]
+
+## {.instructor-note}
 
 
-> Excellence in statistical graphics consists of complex ideas communicated with clarity, precision, and efficiency." [@tufte2001]
+Edward Tufte is a Yale professor who is well known for his studies on the characteristics of data visualizations and how such characteristics impact readers. His foundational book ''The Visual Display of Quantitative Information'' (1983) reviews several principles to creating informative data graphics.
+
+How does Tufte's quote on communicating with clarity, precision and efficiency relate to some of the previous discussions around storytelling with data and creating an emotional reaction?
 
 ## Tufte's graphic principles to creating useful figures:
 
@@ -237,9 +251,6 @@ Highlight how this 3d graph starts at 65% rather than 0. Note that a more approp
 -   The number of dimensions presented should not exceed the number of dimensions in the data.
 -   Graphics should not quote data out of context.
 
-::: notes
-Edward Tufte is a Yale professor who studies the characteristics of data visualizations and how such characteristics impact readers. His book ''The Visual Display of Quantitative Information'' (1983) review several principles to creating informative data graphics.
-:::
 
 # Accessibility
 
@@ -287,17 +298,14 @@ Different mediums play a considerable role in the perception of graphs, figures,
 
 -   gridSVG - which exports graphics using the grid package to SVG, which can be read by a screen reader for the visually impaired. [@murrell]
 
+# Outliers and anomalies
 
-## Outliers
+## Outliers and Anomalies
 
-::: {layout-nrow="2"}
 -   During data cleaning and data exploration, evaluate the data for "unusual values" using visual aides or summary statistics.
-    -   Participants with recorded extreme high or low values are classified as outliers.
+    -   Units with extreme high, low, or otherwise unusual values are classified as outliers.
 
 ```{r}
-#| code-fold: true
-#| echo: true
-
 data("diamonds")
 ggplot(diamonds, aes(x = x, y = y)) + 
   geom_point()+
@@ -305,7 +313,7 @@ ggplot(diamonds, aes(x = x, y = y)) +
   geom_text(data = subset(diamonds, y > 30), aes(label = y), nudge_y = 2) + 
   theme_bw()
 ```
-:::
+
 
 ## {.instructor-note}
 
@@ -313,29 +321,18 @@ Note about the preceding graph: additional reasons may be present in the data in
 
 Using the diamond data set, we plot the length and width of 53,940 round-cut diamonds. Using the ggplot function we can plot the two variables from the diamond data set against each other. We set the aesthetics of our graph with length on the x-axis and width on the y-axis and display data using geom_point.
 
-
-## Outliers
-
-::: {layout-nrow="2"}
--   While there are no prescribed steps to handle outliers, some scientists suggest constructing two graphs and running analysis with or without the outliers. If outliers do not effect your results, you can exclude them.
+## Outliers and anomalies
 
 ```{r}
-#| code-fold: true
-#| echo: true
+#| echo: false
 
 diamonds %>% 
  filter(y <= 30, x >= 3) %>% 
 ggplot(aes(x = x, y = y)) + 
   geom_point() + theme_bw()
 ```
-:::
 
-```{r}
-diamonds %>% 
- filter(y <= 9, y >= 7, x > 7, x < 9) %>% 
-ggplot(aes(x = x, y = y)) + 
-  geom_point() + theme_bw()
-```
+
 
 
 ## Outliers
@@ -357,6 +354,47 @@ ggplot(aes(x = x, y = y)) +
   + How many observations were excluded
   + The method used for detection
   + How results differ between analyses
+
+## Anomalies
+
+```{r}
+diamonds %>% 
+ filter(y <= 9, y >= 7, x > 7, x < 9) %>% 
+ggplot(aes(x = x, y = y)) + 
+  geom_point() + theme_bw()
+```
+
+Zooming in on $7 < x < 9$ and $7 < y < 9$ reveals a band where there are no observations.
+
+## Anomalies
+
+Looking at a different feature, the price of the diamond, shows a lack of diamonds priced at $1500.
+
+```{r}
+diamonds %>% 
+ filter(price < 2000, price >= 1000) %>% 
+ggplot(aes(x = price)) + 
+  geom_histogram() + theme_bw()
+```
+
+## Anomalies
+
+Buried in a reddit thread:
+
+<center>![](figures/diamonds1.png){width="70%"}</center>
+
+<center>![](figures/diamonds2.png){width="70%"}</center>
+
+## {.instructor-discussion}
+
+- What role does the data collector have ensuring the quality, representativeness, and completeness of the data?
+
+- What role does the analyst have in identifying any anomalies or data collection errors?
+
+- Can return to a discussion on stories/explanations and [Occam's Razor](https://en.wikipedia.org/wiki/Occam%27s_razor).  It's easy to come up with compelling stories about the data, but often it's something as simple as a mistake in data collection.
+
+
+
 
 # Ethical Principles from the OECD
 
