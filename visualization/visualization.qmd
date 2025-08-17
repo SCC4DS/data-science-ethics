@@ -85,7 +85,6 @@ After data analysis, how should we communicate our findings?
 
 ## Interactive Visualizations
 
-
 ```{r}
 #| fig-align: center
 
@@ -131,8 +130,6 @@ fig <- fig %>% layout(
 fig
 
 ```
-
-
 <center>Manipulate the plot by zooming in and out and evaluate temperature at time intervals.</center>
 
 ## {.instructor-discussion}
@@ -264,7 +261,6 @@ How does Tufte's quote on communicating with clarity, precision and efficiency r
 
 <center>![](figures/Colorsequence.png)</center>
 
-
 ## Accessibility & Color
 
   -   Surrounding colors influence the perception of others
@@ -286,6 +282,21 @@ Using neural networks, Petfroff (2024), was able to identify sequence of colors 
 
 Different mediums play a considerable role in the perception of graphs, figures, and tables. Colors may be more saturated on a computer than a piece of paper. Different software may use different varying default colors in visual aides. A data scientist needs to consider their audience.
 
+## {.instructor-note}
+
+Deuteranomaly, protanomaly, and tritanomaly are three types of color blindness. Deuteranomaly and protanomaly are red-green color blindness conditions that cause difficulty distinguishing between reds and greens, with deuteranomaly making green appear redder and protanomaly making red appear dimmer and more green. Tritanomaly is a less common blue-yellow color blindness.
+
+## Red-Green Colorblindness
+
+<center>![](figures/red_green.png)</center>
+
+## Blue-Yellow Colorblindness
+
+<center>![](figures/blue_yellow.png)</center>
+
+## Accessible Color Palettes
+
+<center>![](figures/accessible_colors.png)</center>
 
 ## Accessibility
 
@@ -300,10 +311,8 @@ Different mediums play a considerable role in the perception of graphs, figures,
 
 # Outliers and anomalies
 
-## Outliers and Anomalies
-
--   During data cleaning and data exploration, evaluate the data for "unusual values" using visual aides or summary statistics.
-    -   Units with extreme high, low, or otherwise unusual values are classified as outliers.
+## Diamonds Data
+Length (x) and width (y) of diamonds listed by online jewelers.
 
 ```{r}
 data("diamonds")
@@ -313,13 +322,22 @@ ggplot(diamonds, aes(x = x, y = y)) +
   geom_text(data = subset(diamonds, y > 30), aes(label = y), nudge_y = 2) + 
   theme_bw()
 ```
+## Outliers
 
+-   Take 5 minutes to discuss:
+    -   Discuss what you observe in the graph.
+    -   How do those extreme values impact the relation between length and width of diamonds after being removed?
+    -   Would you drop the outliers and all their additional observed scores?
+
+<iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:05:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
+
+</iframe>
 
 ## {.instructor-note}
 
-Note about the preceding graph: additional reasons may be present in the data include: coding for missing values (e.g. 999) and entry errors
+The diamond data set contains prices and other attributes of over 50,000 diamonds.  Most diamonds are "square-ish" so x (length) and y (width) tend to be very similar.
 
-Using the diamond data set, we plot the length and width of 53,940 round-cut diamonds. Using the ggplot function we can plot the two variables from the diamond data set against each other. We set the aesthetics of our graph with length on the x-axis and width on the y-axis and display data using geom_point.
+Mistakes could have been introduced by coding for missing values (e.g. 0 or 999) and simple data entry errors
 
 ## Outliers and anomalies
 
@@ -332,19 +350,14 @@ ggplot(aes(x = x, y = y)) +
   geom_point() + theme_bw()
 ```
 
+## Outliers and Anomalies
+
+-   During data cleaning and data exploration, evaluate the data for "unusual values" using visual aides or summary statistics.
+
+-   Units with extreme high, low, or otherwise unusual values are classified as outliers.
 
 
 
-## Outliers
-
--   Take 5 minutes to discuss:
-    -   Discuss what you observe in the graph.
-    -   How do those extreme values impact the relation between length and width of diamonds after being removed?
-    -   Would you drop the outliers and all their additional observed scores?
-
-<iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:05:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
-
-</iframe>
 
 ## Outliers
 
