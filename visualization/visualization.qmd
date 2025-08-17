@@ -298,9 +298,8 @@ Deuteranomaly, protanomaly, and tritanomaly are three types of color blindness. 
 
 <center>![](figures/accessible_colors.png)</center>
 
-## Accessibility
+## Accessibility {.smaller}
 
--   More tools are being developed to assist the visually impaired with accessing graphics, such as:
 - Researchers have used machine learning to automate data extraction from graphs and figures and consequentially provide the natural language descriptions to support visually disabled users. [@shahira2021]
 
 -   R-packages that assist visually impaired researchers with developing figures and graphs. [@godfrey2018]
@@ -340,7 +339,7 @@ The diamond data set contains prices and other attributes of over 50,000 diamond
 Mistakes could have been introduced by coding for missing values (e.g. 0 or 999) and simple data entry errors
 
 ## Outliers and anomalies
-
+Dropping outliers and zooming in reveals the relationship more clearly.
 ```{r}
 #| echo: false
 
