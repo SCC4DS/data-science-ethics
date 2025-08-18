@@ -142,6 +142,8 @@ What are some pros and cons of interactive visualizations?
 
   + Figures should be designed to tell a story and have a clear purpose.  Simply sharing an interactive visualization might make communication harder.
 
+- Should a static visualization start the y-axis at 0 in this plot? Why or why not?
+
 ## {.instructor-discussion}
 Interpretation:
 
@@ -221,16 +223,15 @@ In the primary graph 19 MLS soccer teams and values spent on players salaries. T
 
 ## Distorted axis limits
 
-![](figures/3d%20graph.png)
+<center>![](figures/3d%20graph.png)</center>
 
 ## Improved axis limits
 
-![](figures/Improvedgraph.png){style="float: left;" width="60%"}
+<center>![](figures/Improvedgraph.png){style="float: left;" width="60%"}</center>
 
 ::: notes
 Highlight how this 3d graph starts at 65% rather than 0. Note that a more appropriate graph would contain data points (65% and 74% accuracy) with an y-axis that began at 0, which is seen in the second photo. By shrinking the y-axis we create the effect that one method has twice as much than the other.
 :::
-::::::::
 
 ## Visual Communication
 
