@@ -882,24 +882,12 @@ Unethical practices related to sampling:
 
 ## "Natural" Experiments
 
-- Convenien sample, observational data
+- Convenience sample, observational data
 
 
-## 7. The Simpson's Paradox: UC Berkeley Graduate Admissions
 
--   The Simpson’s Paradox is a statistical phenomenon in which a trend that appears in different groups tends to reverse or disappear when the groups are combined.
-
--   Populations are naturally characteristically complex. Therefore, sampling should aim to mirror such complexities. However, often researchers develop research questions to address and collect data from a larger population.
-
--   Data scientists and researchers have the skills and techniques to discover the subtle distinctions within smaller groups.
-
-    -   Ex. In the following histograms the total number of men and women who were admitted to UC Berkeley (1973) are displayed, which shows a concerning trend. The data is further broken down by department and tells a different story.
 
 ## UC Berkeley Graduate Admissions
-
--   Figure A is a bar graph that shows the total of admitted applicants by gender (Blue/Male, Orange/Female).
-
-Figure A.
 
 ```{r, width = 300, height = 700}
 #| fig-align: center
@@ -936,21 +924,32 @@ group_summary <- admissions %>%
             Admitted = sum(Admitted),
             AdmitRate = Admitted / Applicants)
 # Plot bar chart of total admitted
-TotalGA<- ggplot(group_summary, aes(x = Group, y = Admitted, fill = Group)) +
+TotalGA<- ggplot(group_summary, aes(x = Group, y = 100*AdmitRate, fill = Group)) +
   geom_bar(stat = "identity") +
-  labs(title = "Total Admitted Applicants by Group",
+  labs(title = "Perecentage of Applicants Admitted by Gender",
        x = "Group",
-       y = "Number Admitted") +
+       y = "Percentage Admitted") +
   theme_bw(base_size=16) +
   # scale_fill_manual(values = c("Men" = "#1f77b4", "Women" = "#ff7f0e")) +
-  theme(legend.position = "none")
+  theme(legend.position = "none") + 
+  ylim(c(0, 100))
 
 TotalGA
 ```
+## {.instructor-discussion}
 
-## 7. The Simpson's Paradox: UC Berkeley Graduate Admissions
+What are some possible explanations for the discrepancy in the previous plot?
 
-Figure B is a histogram of the percent of male and female applicants admitted into departments.
+Possibilities:
+
+- The difference is due to random chance (sampling variability)
+- Female applicants were less qualified than male applicants
+- UC Berkeley was biased
+- Confounding or lurker variables (the real explanation, described in the following slides)
+
+This example can also fit into the storytelling and visualization module to highlight the number of different conclusions one may draw from the same (limited) set of data.
+
+## UC Berkeley Graduate Admissions
 
 ```{r, width = 300, height = 700 }
 #| fig-align: center
@@ -982,12 +981,12 @@ total_women <- df %>% filter(Department == "Total") %>% pull(Women_AdmitRate)
 # Step 4: Plot
 BGS<- ggplot(df_long, aes(x = Department, y = AdmitRate, fill = Gender)) +
   geom_bar(stat = "identity", position = "dodge") +
-  geom_hline(yintercept = total_men, linetype = "dashed", color = "#1f77b4", linewidth = 1) +
-  geom_hline(yintercept = total_women, linetype = "dashed", color = "#ff7f0e", linewidth = 1) +
+  geom_hline(yintercept = total_men, linetype = "dashed", color = "#F8766D", linewidth = 1) +
+  geom_hline(yintercept = total_women, linetype = "dashed", color = "#00BFC4", linewidth = 1) +
   scale_y_continuous(labels = scales::percent, limits = c(0, 1)) +
   labs(
-    title = "UC Berkeley Admissions: Simpson's Paradox",
-    subtitle = "Percent of applicants admitted by gender and deparment (dashed lines = total admission rate per gender)",
+    title = "Percent of applicants admitted by gender and deparment",
+    subtitle = "Dashed lines indicate otal admission rate by gender)",
     x = "Department",
     y = "Admission Rate"
   ) +
@@ -999,19 +998,71 @@ BGS<- ggplot(df_long, aes(x = Department, y = AdmitRate, fill = Gender)) +
 
 BGS
 ```
+<center>How is this possible?</center>
 
-## 7. The Simpson's Paradox: UC Berkeley Graduate Admissions: Discussion
+## Berkeley Gender Discrimination
 
--   Take a minute to reflect on the figures.
+```{r}
+prop_applying <- admissions |> group_by(Group) |> mutate(Applied = Applicants/sum(Applicants)) |> ungroup() |>
+  group_by(Department) |> mutate(OverallAdmit = sum(Admitted)/sum(Applicants)) |> ungroup() |>
+  ggplot(aes(x=Department, y=Applied, fill=Group)) + geom_bar(stat="identity", position="dodge") +
+  ylab("Proportion Applying")
 
--   Discuss in groups your observations, questions, and thoughts relate to ethics.
+admissions_rate <- admissions |> group_by(Group) |> mutate(Applied = Applicants/sum(Applicants)) |> ungroup() |>
+  group_by(Department) |> mutate(OverallAdmit = sum(Admitted)/sum(Applicants)) |> ungroup() |>
+  ggplot(aes(x=Department, y=OverallAdmit)) + geom_bar(stat="identity", position="dodge") + ylab("Percent Admitted") + ylim(c(0, 1))
 
--   Take 2 minutes to discuss within your groups.
+prop_applying / admissions_rate
+```
 
--   Take 5 minutes to discuss groups findings with the class.
 
-<iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:05:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
 
-</iframe>
+<!-- ## Berkeley Gender Discrimination {.smaller} -->
+
+
+<!-- | Department | All |  | Men |  | Women |  | -->
+<!-- |------------|------|------|------|------|---------|------| -->
+<!-- |            | Applicants | Admitted | Applicants | Admitted | Applicants | Admitted | -->
+<!-- | A | 933 | 64% | <span style="background-color: #FFEB99">825</span> | 62% | 108 | <span style="background-color: #90EE90">82%</span> | -->
+<!-- | B | 585 | 63% | <span style="background-color: #FFEB99">560</span> | 63% | 25 | <span style="background-color: #90EE90">68%</span> | -->
+<!-- | C | 918 | 35% | 325 | <span style="background-color: #90EE90">37%</span> | <span style="background-color: #FFEB99">593</span> | 34% | -->
+<!-- | D | 792 | 34% | <span style="background-color: #FFEB99">417</span> | 33% | 375 | <span style="background-color: #90EE90">35%</span> | -->
+<!-- | E | 584 | 25% | 191 | <span style="background-color: #90EE90">28%</span> | <span style="background-color: #FFEB99">393</span> | 24% | -->
+<!-- | F | 714 | 6% | <span style="background-color: #FFEB99">373</span> | 6% | 341 | <span style="background-color: #90EE90">7%</span> | -->
+<!-- | Total | 4526 | 39% |  <span style="background-color: #FFEB99">2691</span> |  <span style="background-color: #90EE90">45%</span> | 1835 | 30% | -->
+
+<!-- - <span style="background-color: #90EE90">Green</span>: greater percentage of successful applicants than  -->
+<!-- the other gender -->
+
+<!-- - <span style="background-color: #FFEB99">Yellow</span>: greater number of applicants than the other gender -->
+
+## {.instructor-note}
+
+The previous plots indicate that women tended to apply to departments that had much lower acceptance rate.  There was no discrimination, once accounting for departmental preference.
+
+
+
+## The Simpson's Paradox
+
+-   Simpson’s Paradox is a statistical phenomenon in which a trend that appears in different groups tends to reverse or disappear when the groups are combined.
+
+-   Populations are naturally characteristically complex. Therefore, sampling should aim to mirror such complexities. However, often researchers develop research questions to address and collect data from a larger population.
+
+-   Data scientists and researchers have the skills and techniques to discover the subtle distinctions within smaller groups.
+
+## {.instructor-discussion}
+
+Summary discussion questions
+
+- Discuss some of the tradeoffs between conducting a randomized experiment and using observational data. 
+
+- What are the ethical benefits and barriers in running randomized experiments?
+  + Results will reflect the population (on average)
+  + Previously discussed issues with the ethics of assigning treatments
+
+- What are the ethical concerns associated with "natural experiments"? 
+  + Data collection & privacy concerns
+  + Dangers in drawing conclusions with reasoning over relevant confounders.  May not know what confounders to include. Expertise needed to reason about results carefully.
+  + Can increase prevalance of misinformation or misleading conclusions if not reported carefully.
 
 ## References
