@@ -2,10 +2,15 @@
 title: "Ethical Considerations for Classificaiton Algorithms"
 format:
   revealjs: 
+    css: custom.css
     slide-number: true
     preview-links: auto
+    toc: true
+    toc-depth: 1
 bibliography: reference.bib 
 ---
+
+# Introduction to Classification
 
 ## Classification Algorithms
 
@@ -15,7 +20,7 @@ bibliography: reference.bib
 
   + Example: consider a medical test that returns "positive for cancer" or "negative for cancer"
 
-. . . 
+. . .
 
 - Most machine learning classifiers have tunable threshold parameters which allow us to increase (or decrease) the number of positive predictions which necessarily decreases (increases) the negative predictions
 
@@ -60,48 +65,31 @@ Consider a breast cancer screening procedure, e.g. mammography.
 - True Negative: No cancer detected when no cancer is present
 - False Negative: No cancer detected when cancer is present
 
-. . . 
+## {.instructor-note}
 
-:::{.callout-note}
-## Note
 These screening procedures may or may not actually involve AI or machine learning algoriths, but the example is still a useful one for understanding the ethical tradeoffs and considerations for classification accuracy.
-:::
 
-## Example: Breast Cancer Screening
+## {.instructor-discussion}
 
-<br>
-<br>
-
-:::callout-note
-## False positives
 What are some possible consequences of a false positive result?
-:::
 
-::: notes
-False positives: 
+Some possible consequences to discuss:
+
 - psychological harm: anxiety, depression, and reduced quality of life from false alarms
 - physical harm: Unnecessary biopsies, additional radiation exposure, potential surgical complications
 - economic burden: Costs of follow-up testing, lost work time, insurance implications
 - healthcare resource allocation: Overuse of limited medical resources
-:::
 
-## Example: Breast Cancer Screening
+## {.instructor-discussion}
 
-<br>
-<br>
-
-:::callout-note
-## False negative
 What are some possible consequences of a false negative result?
-:::
 
-::: notes
-False negatives:
+Possible consequences of false negatives:
+
 - delayed treatment: Cancer progresses while undetected, potentially becoming more aggressive or metastatic
 - survival implications: later-stage diagnosis often means worse prognosis
 - trust in medical systems: patients may lose confidence in screening programs
 - legal and professional liability: malpractice concerns for missed diagnoses
-:::
 
 ## Example: Breast Cancer Screening
 
@@ -110,16 +98,21 @@ False negatives:
 
 :::callout-note
 ## Equity
-Cancer risk and screening accuracy vary depending on a number of factors like race and ethnicity, age and breast density.  Further, not all populations have equal access to state-of-the-art screening technologies. Why do these inequities exist? How might we ensure more equitable access and more fair screenings? 
+Cancer risk and screening accuracy vary depending on a number of factors like race and ethnicity, age and breast density.  In addition, not all populations have equal access to state-of-the-art screening technologies. 
+- Why do these inequities exist? 
+- How might we ensure more equitable access and more fair screenings? 
 :::
 
-::: notes
-Some discussion points:
-- access to advanced Screening: advanced technologies are more expensive and less available in underserved communities. 
+## {.instructor-discussion}
+
+- access to advanced screening: advanced technologies are more expensive and less available in underserved communities. 
 - geographic disparities: rural and low-income urban areas often lack specialized breast imaging centers, forcing women to travel long distances for screening or rely on older, less accurate equipment. Mobile screening units may use different (often older) technology with different accuracy profiles.
-insurance and economic barriers: Even when screening is covered by insturance, costs of follow-up testing after false positives can lead women with limited resources may skip recommended follow-up, turning false positives into dangerous delays.
-- Is it ethical to have different screening protocols for different populations if it improves overall accuracy? Could this be considered discriminatory?
-:::
+- insurance and economic barriers: Even when screening is covered by insturance, costs of follow-up testing after false positives can lead women with limited resources may skip recommended follow-up, turning false positives into dangerous delays.
+
+## {.instructor-discussion}
+
+Is it ethical to have different screening protocols for different populations if it improves overall accuracy? Could this be considered discriminatory?
+
 
 ## Case study: Criminal Risk Assessment Algorithms 
 
@@ -505,7 +498,5 @@ ProPublica discusses two different incidents in Broward County:
   - [Methodology for the analyses used in "Machine Bias"](https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm)
   - [Fairness and Algorithmic Decision Making - COMPAS Chapter](https://afraenkel.github.io/fairness-book/content/04-compas.html)
 
-
-## Summary
 
 
