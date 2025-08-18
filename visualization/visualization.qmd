@@ -142,7 +142,14 @@ What are some pros and cons of interactive visualizations?
 
   + Figures should be designed to tell a story and have a clear purpose.  Simply sharing an interactive visualization might make communication harder.
 
+## {.instructor-discussion}
+Interpretation:
 
+- Is a 1 degree change a lot? Based on day to day experience it seems like not, but there is more to the story.
+
+- Additional plots or results could drive home the story about impact of a 1 degree change.  Hypothetical plots: how much does a 1 degree increase in global temperature impact the prevalance of wildfires? How much does a 1 degree increase impact the abundance of important species in the ecosystem?
+
+- Domain expertise needed to contexualize findings!
 
 ## Poorly constructed vs unethical visualizations
 
