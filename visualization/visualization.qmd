@@ -34,7 +34,7 @@ After data analysis, how should we communicate our findings?
 
 ## {.instructor-discussion}
 
-- The previous slide is somewhat provocative in the context of storytelling with data.
+- The previous quote is somewhat provocative in the context of storytelling with data.
   + Why should we seek to create an **emotional reaction**? Shouldn't the goal be honest and clear reporting of evidence?
   + A story can create an **emotional reaction** but be misleading!
   + Discuss the phrase ["Lies, damn lies and statistics!"](https://en.wikipedia.org/wiki/Lies,_damned_lies,_and_statistics)
@@ -195,7 +195,7 @@ What are some pros and cons of interactive visualizations?
 :::
 :::::
 
-## Exclcuding Information
+## Excluding Information
 
 - Excluding information that may impact a readers understanding includes:
   -   x- and y-axis labels,
