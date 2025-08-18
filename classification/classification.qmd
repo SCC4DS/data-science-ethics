@@ -55,6 +55,7 @@ In this module, we'll focus on the tradeoff between false positive rate and fals
 
 <center>![Source: Wikipedia, "Receiver operating characteristic"](figures/Roc_curve.svg.png){width=75%}</center>
 
+# Breast Cancer Screening
 
 ## Example: Breast Cancer Screening
 
@@ -113,8 +114,9 @@ Cancer risk and screening accuracy vary depending on a number of factors like ra
 
 Is it ethical to have different screening protocols for different populations if it improves overall accuracy? Could this be considered discriminatory?
 
+# Criminal Risk Assessment Algorithms 
 
-## Case study: Criminal Risk Assessment Algorithms 
+## Criminal Risk Assessment Algorithms 
 
 - Machine learning is increasingly used to to inform decisions about individuals in the criminal justice system
   - Setting bond amounts
