@@ -95,44 +95,59 @@ library(tidyverse)
 
 
 #this is me calling in the data 
-NASAdata <- read_csv("data/NASAdata.csv")
-NASAdata <- NASAdata |> replace_na(replace = 
+nasa_data <- read_csv("data/NASAdata.csv")
+nasa_data <- nasa_data |> replace_na(replace = 
                          list(Aug=c("****"),
                               Sep=c("****"),
                               Oct=c("****"),
                               Nov=c("****"),
                               Dec =c("****"))) |> 
+  select(Year:Dec) |>
   mutate(across(-Year, as.double))
 
-#this is me changing the data into long form using the pivot_longer function in tidyr 
-NASAdata <- NASAdata |> 
-  pivot_longer(-Year, names_to = "month", values_to="temperature")
 
+nasa_data <- nasa_data |> 
+  pivot_longer(-Year, names_to = "Month", values_to="Temperature_Anomaly") |>
+  mutate(Date = ym(paste0(Year, "-", Month)))
+## Global yearly Average Temp in F
+nasa_data <- nasa_data |> mutate(Temperature_Average = (Temperature_Anomaly + 14)*1.8 + 32) 
 
-# Transform all numeric columns by multiplying by 1.8 and adding 32
-NASAdata <- NASAdata |> 
-  mutate(fahrenheit_temperature = temperature*1.8 + 32) |> 
-  mutate(date = ym(paste0(Year, "-", month)))
-
-
-#this is me 
- 
-fig <- plot_ly(NASAdata, x = ~date)
-fig <- fig %>% add_lines(y = ~temperature)
+fig <- plot_ly(nasa_data, x = ~Date)
+fig <- fig %>% add_lines(y = ~Temperature_Average)
 
 fig <- fig %>% layout(
-    title = "Global Surface Temperature Transformed",
+    title = "Average Global Surface Temperature (F)",
     yaxis = list(
+      title = "Average Temperature",
       rangeslider = list(type = "Temperature",
-                         title = "Global Temperature",
-                          range = list(-100, 300))))
+                         title = "Global Temperature"
+                         ),
+      range = list(0, 100)))
 
 fig
 
 ```
 <center>Manipulate the plot by zooming in and out and evaluate temperature at time intervals.</center>
 
+## {.instructor-note}
+
+- We start with default ylimits to match the tweet, but show how the story changes some if we zoom in
+- Use the "autoscale" button at the top to zoom in or zoom in manually.  Double clickcing on the plot resets to the default.
+
+- Why is it maybe not a good idea to start the y-axis at 0 in this example?
+
 ## {.instructor-discussion}
+Interpretation:
+
+- Is a 1 degree change a lot? Based on day to day experience it seems like not, but there is more to the story.
+
+- Additional plots or results could drive home the story about impact of a 1 degree change.  Hypothetical plots: how much does a 1 degree increase in global temperature impact the prevalance of wildfires? How much does a 1 degree increase impact the abundance of important species in the ecosystem?
+
+- Domain expertise needed to contexualize findings!
+
+- GISS show "temperature anomalies" by subtracting the mean temperature over some baseline period (1951-1980).  Why might this be more desirable?
+
+## {.instructor-discussion} 
 
 What are some pros and cons of interactive visualizations?
 
@@ -144,14 +159,7 @@ What are some pros and cons of interactive visualizations?
 
 - Should a static visualization start the y-axis at 0 in this plot? Why or why not?
 
-## {.instructor-discussion}
-Interpretation:
 
-- Is a 1 degree change a lot? Based on day to day experience it seems like not, but there is more to the story.
-
-- Additional plots or results could drive home the story about impact of a 1 degree change.  Hypothetical plots: how much does a 1 degree increase in global temperature impact the prevalance of wildfires? How much does a 1 degree increase impact the abundance of important species in the ecosystem?
-
-- Domain expertise needed to contexualize findings!
 
 ## Poorly constructed vs unethical visualizations
 
@@ -227,7 +235,7 @@ In the primary graph 19 MLS soccer teams and values spent on players salaries. T
 
 ## Improved axis limits
 
-<center>![](figures/Improvedgraph.png){style="float: left;" width="60%"}</center>
+<center>![](figures/Improvedgraph.png){width="60%"}</center>
 
 ::: notes
 Highlight how this 3d graph starts at 65% rather than 0. Note that a more appropriate graph would contain data points (65% and 74% accuracy) with an y-axis that began at 0, which is seen in the second photo. By shrinking the y-axis we create the effect that one method has twice as much than the other.
@@ -282,7 +290,10 @@ How does Tufte's quote on communicating with clarity, precision and efficiency r
 
 Accessibility is the practice of ensuring that all individuals have equal access to resources, programs, and opportunities, regardless of their abilities or backgrounds.
 
-In more recent years, the study of colors in statistical visualizations has burgeoned since visualizations rely on color for many different reasons (e.g. distinction of classes, degrees,effects). Findings from those studies highlight several key themes that researchers need to consider while creating visualizations. For instance, an individuals degree of color blindness may influence the perception of graph or figure. One in every 12 men (8%) and one in every 200 women (0.5%) in the U.S. are born with inherited color defective vision of some type and degree (Johnson, 2024). The most common color-blindness types are red-green and blue-purple. Any color that contains the affected primary color is distorted.
+In more recent years, the study of colors in statistical visualizations has burgeoned since visualizations rely on color for many different reasons (e.g. distinction of classes, degrees,effects). Findings from those studies highlight several key themes that researchers need to consider while creating visualizations. 
+
+## {.instructor-note}
+For instance, an individuals degree of color blindness may influence the perception of graph or figure. One in every 12 men (8%) and one in every 200 women (0.5%) in the U.S. are born with inherited color defective vision of some type and degree (Johnson, 2024). The most common color-blindness types are red-green and blue-purple. Any color that contains the affected primary color is distorted.
 
 ## {.instructor-note}
 
