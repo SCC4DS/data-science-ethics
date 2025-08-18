@@ -339,7 +339,7 @@ The diamond data set contains prices and other attributes of over 50,000 diamond
 Mistakes could have been introduced by coding for missing values (e.g. 0 or 999) and simple data entry errors
 
 ## Outliers and anomalies
-Dropping outliers and zooming in reveals the relationship more clearly.
+Zooming in and excluding outliers from the plot reveals the fundamental relationship more clearly.
 ```{r}
 #| echo: false
 
@@ -376,7 +376,7 @@ ggplot(aes(x = x, y = y)) +
   geom_point() + theme_bw()
 ```
 
-Zooming in on $7 < x < 9$ and $7 < y < 9$ reveals a band where there are no observations.
+Zooming in further on $7 < x < 9$ and $7 < y < 9$ reveals a band where there are no observations.
 
 ## Anomalies
 
@@ -399,54 +399,56 @@ Buried in a reddit thread:
 
 ## {.instructor-discussion}
 
-- What role does the data collector have ensuring the quality, representativeness, and completeness of the data?
+- What role does the *data collector* have ensuring the quality, representativeness, and completeness of the data?
 
-- What role does the analyst have in identifying any anomalies or data collection errors?
+- What role does the *data analyst* have in identifying any anomalies or data collection errors?
 
-- Can return to a discussion on stories/explanations and [Occam's Razor](https://en.wikipedia.org/wiki/Occam%27s_razor).  It's easy to come up with compelling stories about the data, but often it's something as simple as a mistake in data collection.
-
-
+- May consider returning to a discussion on stories/explanations and [Occam's Razor](https://en.wikipedia.org/wiki/Occam%27s_razor).  It's easy to come up with compelling stories about the data, but often it's something as simple as a mistake in data collection.
 
 
 # Ethical Principles from the OECD
 
-## Organization for Economics Co-operation and Development 
+## {.instructor-note}
 
-The Organization for Economics Co-operation and Development (OECD)
+The following four out of eight [privacy principles established by the Organization for Economics Co-operation and Development (OECD)](http://oecdprivacy.org/) especially relate data visualizations. The principle is first described followed by suggestion to comply with the principles while creating visualizations. Feel free to ask student if they can think of any other practices that will help them comply with these principles.
 
 ## Data Quality
 
-::: {layout-nrow="4"}
-2.Data Quality
-
 -   Principle: Be sure that the data are accurate, complete and kept up-to-date.
+
 -   Poor data will create poor graphics [@tufte2001], which may confuse readers and lead to a wrong conclusion.
+
 -   Evaluate the data for errors, missing values, and extreme values prior to graphing.
 
-3.Use Limitation
+## Use Limitation
 
 -   Principle: Personal data should not be disclosed, made available or otherwise used for purposes other than those specified in accordance.
+
 -   Ensure that graphics do not contain personal participant information or that given information can not be directly related to participants.
 
-6.Openness Principle
+## Openness Principle
 
 -   Principle: There should be a general policy of openness about developments, practices and policies with respect to personal data.
+
 -   Remain transparent about the data used in figures.
+
 -   Be transparent about how your background may have influenced the graphic.
+
 -   Describe the procedures used to create graphics, including the transformation of data and the removing of outliers.
+
 -   Do not manipulate graphics that change the patterns of the data.
 
-8.Accountability principles
+## Accountability principles
 
 -   Principle: A data controller should be accountable for complying with measures which give effect to the principles stated above.
--   If the data in a figure are wrong ensure that your superior knows and the graphic is corrected.
--   Do not let others influence the procedures used to present data or findings.
--   Ensure that you use the proper graphic to display your data.
-:::
 
-::: notes
-The following four (Data quality, use limitation, openness, and accountability) out of eight principles delineated by the OECD especially relate data visualizations. As a reminder the principle is first described followed by suggests to comply with the principles while creating visualizations. Feel free to ask student if they can think of any other practices that will help them comply with these principles.
-:::
+-   If the data in a figure are wrong ensure that your superior knows and the graphic is corrected.
+
+-   Do not let others influence the procedures used to present data or findings.
+
+-   Ensure that you use the proper graphic to display your data.
+
+
 
 # Comparability
 
