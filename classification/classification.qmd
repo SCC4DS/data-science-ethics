@@ -24,7 +24,6 @@ bibliography: reference.bib
 
 - Most machine learning classifiers have tunable threshold parameters which allow us to increase (or decrease) the number of positive predictions which necessarily decreases (increases) the negative predictions
 
-- In this lecture, we'll take a deep dive into the consequences of different types of misclassifications
 
 ## Evaluating Classifiers
 
