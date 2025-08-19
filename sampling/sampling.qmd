@@ -613,7 +613,7 @@ Some discussion questions:
 - Is random sampling the fairest way to select the panel? Alternative: can use some kind of conditional random sampling to explicitly balance along certain demographic characteristiscs.
 
 
-## Sampling Bias
+# Sampling Bias
 
 What is sampling bias?
 
@@ -623,9 +623,7 @@ What is sampling bias?
 
 -   **Not investigating and addressing sampling issues raises ethical concerns**
 
-## {.instructor-note}
-
-## 5. Sampling and Representativeness
+## Sampling and Representativeness
 
 -   After using a sampling mechanism, it is important to determine how well the sample represents the population [@kotu2019].
 
@@ -635,7 +633,7 @@ What is sampling bias?
 
 -   Sampling frame and sample size matters! Ensure that the sampling frame is representative of population and that the final sample is characteristically similar to the population, even in the presence of a large sample [@sauro2012].
 
-## 5. Sampling and Representativeness
+## Sampling and Representativeness
  
 -   A sampling frame should include units that strongly represent or are characteristic of the population .
 
@@ -686,18 +684,19 @@ tm_shape(region_map) +
 
 -   Random samples are not guaranteed to be representive of the population. Why?
 
--   Hypothetical Example 2: You have a large sampling frame that includes California housing sales and related housing information from C.A.R. for the month of May; however, you randomly select 10 out of 53 counties to evaluate. The small sample will not be representative of the housing market.
+-   Hypothetical Example 2: You have a large sampling frame that includes California housing sales and related housing information from C.A.R. for the month of May; however, you randomly select 10 out of 53 counties to evaluate. The small sample may not be representative of the housing market.
 
-## Flint Michigan
+## Flint, Michigan
 
 -   In late 2014, the residents of Flint Michigan had noticed and reported that children and adults were experiencing lead poisoning after the city had switched to Flint River for the city's water supply.
 
--   An investigation into the drinking water supply, identified that that some of the water pipes were leaded brass. The city resumed services to the water supply after it noted that they would start a task force.
+-   An investigation into the drinking water supply, identified that that some of the water pipes were made from leaded brass. The city resumed services to the water supply after it noted that they would start a task force.
 
-## 5. Sampling and Representativeness: Example
+## Sampling and Representativeness
+
 -   In 2015, the Flint Drinking Water Task Force collected water and information from 156 out of 1951 volunteer households bi-weekly.
 
-    -   The Sentinel Sites sampling technique: The members of the task force went door-to-door asking for volunteering households and additional sites that met different criteria (e.g., households from different spatial distributions in city, predicted household experiencing high levels of lead in blood, and etc.). These households were categorized as Sentinel Sites.
+-   The Sentinel Sites sampling technique: The members of the task force went door-to-door asking for volunteering households and additional sites that met different criteria (e.g., households from different spatial distributions in city, predicted household experiencing high levels of lead in blood, and etc.). These households were categorized as Sentinel Sites.
 
     -   Volunteer Sample: concerned homeowners throughout the city also volunteered to provide samples and information.
 
@@ -784,7 +783,9 @@ Discuss in your groups (3 minutes):
 
 -   To help data scientists engage in ethical practices when analyzing data and reporting findings, even in cases where sampling information is unknown or highly complex, institutions and organizations have developed guiding principles.
 
-## 6. Ethics and Sampling: ASA principle
+# ASA principles
+
+## ASA principles
 
 Ethical Principles related to Sampling by the American Statistical Association [(ASA, 2022)](https://www.amstat.org/your-career/ethical-guidelines-for-statistical-practice) :
 
@@ -796,7 +797,7 @@ The ethical statistical practitioner seeks to understand and mitigate known or s
 
 The ethical statistical practitioner does not misuse or condone the misuse of data. They protect and respect the rights and interests of human and animal subjects. These responsibilities extend to those who will be directly affected by statistical practices.
 
-## 6. Ethics and Sampling: ASA principle
+## ASA principles
 
 The following are recommended practices that may help meet Principle B:
 
@@ -812,7 +813,7 @@ The following are recommended practices that may help meet Principle B:
 
 -   Be transparent about the extent to which findings can generalized to population of interest and other groups.
 
-## 6. Ethics and Sampling: ASA principle
+## ASA principles
 
 The following are recommended practices that may help meet Principle D:
 
@@ -820,7 +821,7 @@ The following are recommended practices that may help meet Principle D:
 
 -   Critically reflect on research question and consider how the sampled population of interest and those excluded may be impacted by findings and future policy.
 
-## 6. Ethics and Sampling: Discussion
+## 
 
 Often times, data scientists are tasked with analyzing data with little information about sampling methods. To engage in ethical data science practices, scientists should ask questions about how the data were collected.
 
@@ -838,7 +839,7 @@ Consider answering the following questions when working with a new data set:
 
 To determine the efficacy for future implementation of HSP at other schools and support nationwide policy change, researchers collected data from participating schools from 2007 through 2014.
 
-## 6. Ethics and Sampling: Discussion
+## Ethics and Sampling: Discussion
 
 Take 2 minutes to read through HSP_Codebook (pg. 3) to determine sampling procedures used to collect data from participating schools for the "Healthy Schools Program Participation and Inventory Data" and answer the questions:
 
@@ -858,7 +859,7 @@ Take 4 minutes to discuss as a class your group's reflection and additional ques
 
 </iframe>
 
-## 6. Ethics and Sampling: Practices related to sampling
+## Ethics and Sampling: Practices related to sampling
 
 Unethical practices related to sampling:
 
@@ -868,7 +869,7 @@ Unethical practices related to sampling:
 -   Using sampling techniques known to produce bias.
     -   E.g., Rouke et al. (1989) determined that men are considerably under-sampled, fostering gender bias, using a sampling technique that relies on a random selection of telephone numbers and surveying the last birthday in the household [@rourke1989].
 
-## 6. Ethics and Sampling: Practices related to sampling
+## Ethics and Sampling: Practices related to sampling
 
 -   Purposefully altering data of one or more observations to meet sampling expectations
     -   After implementing a sampling technique, manipulating or fabricating data.
@@ -876,15 +877,182 @@ Unethical practices related to sampling:
 -   Knowingly fail to disclose observed patterns beyond aggregated data to stakeholders
     -   By focusing on a large population, data scientists can fail to recognize patterns or heterogeneity across smaller groups.
 
-## Randomized Controlled Trials (RCTs)
+# Randomized Controlled Trials
+
+## Randomized Controlled Trials
+::::: Columns
+::: {.column width="40%"}
+<center>![](figures/Random_Assignment.png){width="100%}</center>
+:::
+
+::: {.column width="60%"}
+-   Random sampling plays a crucial role in true experiments, also known as randomized controlled trials (RCTs).
+    -   In the simplest RCT, researchers randomly assign observations to either receive a treatment/intervention (Tx) or no treatment (control group) [@gurusamy2025].
+    -   Goals of RCTs using data science techniques:
+        1.  Determine if a Tx had an effect on the observations that were assigned to the group.
+        2.  If so, assess how large of an effect the Tx had on an outcome that can be measured and compared in both the Tx and control group.
+        
+:::
+:::::
+
+## Randomized Controlled Trials
+
+::::: Columns
+::: {.column width="40%"}
+<center>![](figures/Random_Assignment.png){width="100%}</center>
+:::
+
+::: {.column width="60%"}
+-   Randomizaiton is a crucial tool: *on average*, treatment group and control group should be similar along important characters (age, race, gender, health etc)
+
+- Without randomziation, the treatment and the control group could yield different outcomes because the groups are fundamentally different (e.g. one group is younger than the other) not because the Tx had any effect.
+
+- This is why we say "correlation does not imply causation!"
+        
+:::
+:::::
+
+## Randomized Controlled Trials
+
+Hypotheticall example: researchers are interested in the effects of caffeine dosage on cyclists performance [@beedie2006].
+
+-   Researchers took a sample of up-and-coming cyclists
+
+-   Cyclists were randomly assigned to three different groups, two Tx groups and one control group
+
+    -   Tx group 1: received 4.5 mg of caffeine capsule - moderate caffeine group
+
+    -   Tx group 2: received 9 mg of caffeine capsule - high caffeine group
+
+    -   Control group (Placebo): received a powder capsule with no caffeine
+
+-   After consuming the capsule cyclist were then put in a simulated cycling performance test
+
+##  {.instructor-discussion}
+
+- Assume that the results suggested that cyclists assigned to the moderate caffeine group completed the cycling simulation faster than all others. Can we conclucde that moderate caffeine benefits all cyclists in the population?
+  + If the sampling frame is the same as the population, and the sample size was large, we could probably conclude that moderate caffeine was beneficial.
+  + If the sampling frame was not the same as the population then we can only make statements about the frame.
+  + If the sample size was small, then the treatment groups may differ by chance (randomization only guarantees balance on average)
+  
+- Assume, the researchers noticed that one randomly assigned cyclist in the moderate group was a winner of the Giro d'Italia Grand Tour and had the fastest completion time across all observations. Can we still conclude that moderate caffeine benefits cyclists?
+  + Depends on the sampling frame and the sample size.  If the Giro winner was just one of many cyclists in the moderate group, his results might not skew our estimates.
+  + If the sampling frame includes only professional cyclists then it may be find that this rider is included.
+
+<center>The example is an adaptation of [@beedie2006].</center>
+
+## Randomized Controlled Trials
+
+-   Statistical differences are valid only if the sampling frame matches the population and if the sample is "balanced" across the treatment groups.
+
+-   If one or more observations do not represent the population, confounding variables (variables not apart of the study that influence results) may explain any differences found between the Tx and control group on the outcome of interest.
+
+
+## Ethical Issues with RCTs
+
+-   Data scientists should inquire about sampling methods because different techniques could influence the finding of statistical differences between the Tx and control groups.
+
+-   Consequently, a data scientist may wrongfully, knowingly, or unknowingly report invalid results.
+
+-   In addition to sampling techniques, data scientists should also aim to understand additional methodological processes and practices used to construct the RCT.
+
+-   Engaging in morally good data science also includes purposefully inquiring about the RCT design, such as participant consent, deception/harmful practices participants had to endure, and benefits/compensation.
+
+-   Consider that all steps taken during the research or RCT process may influence findings.
+
+## Randomized Controlled Trials: Ethics
+
+The Helsinki report is a historically unparalleled report that outlined a code of research ethics which inform RCTs. The World Medical Assembly established the document in 1964 [@18thworldmedicalassembly1964] in response to the Nuremberg trails and ethical concerns and documentation that spurred from experimental atrocities that occurred during the Holocaust [@schmidt2010].
+
+## Randomized Controlled Trials: Ethics
+
+The WMA Declaration of Helsinki is now in its tenth revision. There are currently 37 principles which are categorized under 10 broad categories [WMA Declaration of Helsinki](https://www.wma.net/policies-post/wma-declaration-of-helsinki/). The following categories and summarized principles which may closely relate to data, analytics, and sampling:
+
+-   Free and Informed Consent theme suggests that:
+
+    -   consent to participate in a research study must be voluntary
+
+    -   participants are aware that they may withdraw at any point throughout the study
+
+    -   researchers need to confirm that participants understand the consent forms
+
+-   Risks, Burdens, and Benefits theme suggests that:
+
+    -   research including human participants may be conducted if the importance of the research objective outweighs the risk to the participants.
+
+-   Minimizing Harm theme suggests that:
+
+    -   research should be conducted in a manner that avoids or minimizes harm to the environment and participants
+
+    -   participants who are harmed as a result of participating in a study are give appropriate compensation and treatment.
 
 ## Tuskegee Syphilis Study
 
-## "Natural" Experiments
+The Tuskegee Syphilis study is a primary example that demonstrates the implications of not upholding research ethics [@tuskegee1997].
 
-- Convenience sample, observational data
+-   Conducted by the [U.S. Public Health Service (USPHS)](https://www.cdc.gov/tuskegee/about/index.html) from 1932 to 1972.
 
+-   399 Black males with late latent-syphilis and 201 Black males without the disease were recruited to participate in an "experimental study" that would provide treatment for their "bad blood".
 
+-   However, researchers used deception and never provided treatment and prevented participants to receive treatment outside of the study.
+
+-   Participants' compensation included free meals, free medical exams, and burial insurance.
+
+-   According to records approximately 28-100 participants died from their syphilis diagnosis.
+
+# Observational Studies
+
+## Observational Studies
+
+<br>
+<br>
+
+> "Excellent methods of analysis will not salvage a poorly designed *observational* study"
+>
+> -- Rosenbaum, 2010
+
+## Observational Study
+
+-   Simple observational study:
+
+    -   is an empiric study of effects caused by treatments when a randomized RCT is unethical or not feasible [@rosenbaum2010]. 
+
+    - Observations are not subjected to randomization, but rather natural circumstances divide individuals into groups, those with and/or without the natural circumstance.
+
+## {.instructor-discussion}
+
+- What are some examples where observational studies may be needed because randomization is not ethical?
+  + Classic examples include measuring the effect of smoking or drinking alcohol on health.  In general, cannot etehically randomly assign any exposure that may cause harm.  
+  + Randomly denying access to helpful treatments etc when it is reliably availabe would also be unethical. This includes denying access to basic needs and rights around education, housing etc.
+  + Examples that may violate autonomy and personal choice?
+  
+## Observational Studies  
+
+- Two types: natural or structured: 
+  -  Natural: observe people or other units in an environment in which behaviors naturally occur.
+     - Ex. documenting shoppers behaviors at a mall. 
+
+  - Structured: carefully document one or more specific behaviors in a particular setting. 
+
+    - Most medical observational studies are structured. 
+
+- Researchers take extreme caution and use various methodological techniques when using an observational study to evaluate Tx effects.
+
+- Methodological practices include participant matching based on background features of interest, such as age, sex, ethnicity. Creating pairs is key to determine if the Tx truly impacted the participants in the Tx group.
+      
+
+## Observational Study
+
+-   Observational studies face many challenges
+
+    -   In general, data scientists should pay special attention to observations recruitment, study procedures, and survey/assessment selection.
+
+    -   Since, observational studies are not true experiments, researchers and data scientists can expect bias in samples and lower confidence in analytic findings along with other limitations [Jhangiani, Cuttler, Leighton, 2019](https://kpu.pressbooks.pub/psychmethods4e/chapter/overview-of-non-experimental-research/).
+    
+    - Ethical practices that data scienists can engage while working with data from observational studies includes: 
+      - Communicating with stakeholders that findings are not absolute truths.
+      - Educating readers that correlation does not equal causation
+      - Use statistical techniques, such as weights or conservative statistics, to deal with unequal representation and analytical confidence.  
 
 
 ## UC Berkeley Graduate Admissions
@@ -936,6 +1104,8 @@ TotalGA<- ggplot(group_summary, aes(x = Group, y = 100*AdmitRate, fill = Group))
 
 TotalGA
 ```
+## {.instructor-note}
+
 ## {.instructor-discussion}
 
 What are some possible explanations for the discrepancy in the previous plot?
@@ -944,10 +1114,10 @@ Possibilities:
 
 - The difference is due to random chance (sampling variability)
 - Female applicants were less qualified than male applicants
-- UC Berkeley was biased
+- UC Berkeley was biased against women
 - Confounding or lurker variables (the real explanation, described in the following slides)
 
-This example can also fit into the storytelling and visualization module to highlight the number of different conclusions one may draw from the same (limited) set of data.
+This example can also fit into the [storytelling and visualization module](https://github.com/SCC4DS/data-science-ethics/tree/main/visualization) to highlight the number of different possible explanations for the same (limited) set of data.
 
 ## UC Berkeley Graduate Admissions
 
@@ -1038,17 +1208,19 @@ prop_applying / admissions_rate
 
 ## {.instructor-note}
 
-The previous plots indicate that women tended to apply to departments that had much lower acceptance rate.  There was no discrimination, once accounting for departmental preference.
+For the previous plots, point out that that women tended to apply to departments that had much lower acceptance rate.  There was no major gender differences, once accounting for departmental preference.
 
 
 
 ## The Simpson's Paradox
 
--   Simpson’s Paradox is a statistical phenomenon in which a trend that appears in different groups tends to reverse or disappear when the groups are combined.
+-   Simpson’s Paradox is a statistical phenomenon in which a trend that appears across multiple subgroups tends to reverse or disappear when the groups are combined.
 
--   Populations are naturally characteristically complex. Therefore, sampling should aim to mirror such complexities. However, often researchers develop research questions to address and collect data from a larger population.
+-   Correlations between variables can exist for many different reasons.  Sometimes correlation is due to some kind of causation, but often there is a simple explanation related to confounding variables or selection effects. Stratifying according to confounding variables can make associations disappear.
 
--   Data scientists and researchers have the skills and techniques to discover the subtle distinctions within smaller groups.
+- Randomized control trials balance balance confounders (e.g. departmental preference) across groups, but aren't always ethically feasible.
+
+- Simpson's paradox highlights one way in which statistics (from observational data) can be misused or misinterpreted.
 
 ## {.instructor-discussion}
 
@@ -1057,8 +1229,8 @@ Summary discussion questions
 - Discuss some of the tradeoffs between conducting a randomized experiment and using observational data. 
 
 - What are the ethical benefits and barriers in running randomized experiments?
-  + Results will reflect the population (on average)
-  + Previously discussed issues with the ethics of assigning treatments
+  + Pro: Results will reflect the population (on average)
+  + Challenges: previously discussed issues with the ethics of assigning treatments
 
 - What are the ethical concerns associated with "natural experiments"? 
   + Data collection & privacy concerns
