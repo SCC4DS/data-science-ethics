@@ -232,11 +232,11 @@ In the primary graph 19 MLS soccer teams and values spent on players salaries. T
 
 ## Distorted axis limits
 
-<center>![](figures/3d%20graph.png)</center>
+<center>![](figures/3d%20graph.png){height=5in}</center>
 
 ## Improved axis limits
 
-<center>![](figures/Improvedgraph.png){width="60%"}</center>
+<center>![](figures/Improvedgraph.png){width="50%"}</center>
 
 ::: notes
 Highlight how this 3d graph starts at 65% rather than 0. Note that a more appropriate graph would contain data points (65% and 74% accuracy) with an y-axis that began at 0, which is seen in the second plot. By shrinking the y-axis we create the effect that one method seems to have twice as much accuracy than the other.
@@ -276,16 +276,18 @@ How does Tufte's quote on communicating with clarity, precision and efficiency r
 
 ## Accessibility & Visualizations
 
-<center>![](figures/Colorsequence.png)</center>
+<center>![](figures/Colorsequence.png){height=5in}</center>
 
 ## Accessibility & Color
 
   -   Surrounding colors influence the perception of others
-      -   Choose colors that are not difficult to distinguish between each other.
-  -   Color association
-  -   Avoid color schemes that engage in stereotypes (i.e., black associated with unsafe and white associated with approachable).
-    -   Keep color schemes neutral
-    -   Consider how different mediums (e.g., computer screen, printouts, software) used to display the graphic may influence color.
+      -   Choose colors that are not difficult to distinguish among.
+  -   Color *association*: 
+  
+       - avoid color schemes that engage in stereotypes (e.g., black associated with unsafe and white associated with approachable).
+  
+      -   Keep color schemes neutral
+      -   Consider how different mediums (e.g., computer screen, printouts, software) used to display the graphic may influence color.
 
 ## {.instructor-note}
 
