@@ -49,7 +49,7 @@ After data analysis, how should we communicate our findings?
 :::
 
 ::: {.column width="50%"}
-   In 2015, the National Review, a conservative editoral magazine, tweeted a chart that displayed the global temperature in Fahrenheit from 1800 to 2015. Noting that "it was the only chart you need to see".
+   In 2015, the National Review, a conservative  magazine, tweeted a chart that displayed the global temperature in Fahrenheit from 1800 to 2015. Noting that it was "the only chart you need to see".
 :::
 :::::
 
@@ -71,7 +71,7 @@ After data analysis, how should we communicate our findings?
 
 -   The data are from NASA's Goddard Institute for Space Studies (GISS) analysis of global surface temperature change. [@hansen2010]
 
--   The world's temperature is initial recorded in Celsius.
+-   The world's temperature is initially recorded in degrees Celsius.
 
 -   The GISS analysis combines available sea surface temperature records with meteorological station measurements of temperature.
 
@@ -81,7 +81,7 @@ After data analysis, how should we communicate our findings?
 
 -   The Washington Post addressed the tweet by identifying that the National Reviewer had scaled the plot to "hide the actual change in temperature."
 
--   The National Review failed to address how they treated to the data to get the Fahrenheit values.
+-   The National Review failed to address how they treated the data to get the Fahrenheit values.
 
 ## Interactive Visualizations
 
@@ -131,8 +131,9 @@ fig
 
 ## {.instructor-note}
 
-- We start with default ylimits to match the tweet, but show how the story changes some if we zoom in
-- Use the "autoscale" button at the top to zoom in or zoom in manually.  Double clickcing on the plot resets to the default.
+- We start with default ylimits to match the tweet, but show how the story changes 
+if we zoom in
+- Use the "autoscale" button at the top to zoom in or zoom in manually.  Double clicking on the plot resets to the default.
 
 - Why is it maybe not a good idea to start the y-axis at 0 in this example?
 
@@ -141,9 +142,9 @@ Interpretation:
 
 - Is a 1 degree change a lot? Based on day to day experience it seems like not, but there is more to the story.
 
-- Additional plots or results could drive home the story about impact of a 1 degree change.  Hypothetical plots: how much does a 1 degree increase in global temperature impact the prevalance of wildfires? How much does a 1 degree increase impact the abundance of important species in the ecosystem?
+- Additional plots or results could drive home the story about impact of a 1 degree change.  Hypothetical plots: how much does a 1 degree increase in global temperature impact the prevalence of wildfires? How much does a 1 degree increase impact the abundance of important species in the ecosystem?
 
-- Domain expertise needed to contexualize findings!
+- Domain expertise needed to contextualize findings!
 
 - GISS show "temperature anomalies" by subtracting the mean temperature over some baseline period (1951-1980).  Why might this be more desirable?
 
@@ -170,7 +171,7 @@ What are some pros and cons of interactive visualizations?
 
 ## Poorly constructed vs unethical visualizations
 
--   There is also a fine line between poorly constructed visualizations and unethically presentations.
+-   There is also a fine line between poorly constructed visualizations and unethical presentations.
 
 -   Data scientists should remain honest, provide clarity and avoid violations of openness or objectivity.
 
@@ -190,19 +191,19 @@ What are some pros and cons of interactive visualizations?
 
 -   are often difficult to read.
 -   appear to pop out of the page.
--   axes marks appear to be overlapping, which make some marks more difficult to view than others.
+-   axes marks appear to be overlapping, which makes some marks more difficult to view than others.
 -   lose and distort information when changing between 3d and 2d.
 :::
 :::::
 
 ## Excluding Information
 
-- Excluding information that may impact a readers understanding includes:
+- Excluding information that may impact a reader's understanding includes:
   -   x- and y-axis labels,
   -   variable scale of measurement (e.g. kg., log-transformation, etc.),
   -   clear title or figure labels.
     
-- Deliberately excluding data or information that might influence the conclusions would be unethical
+- **Deliberately** excluding data or information that might influence the conclusions would be unethical
 
 ## Including too Much Information
 
@@ -210,7 +211,7 @@ What are some pros and cons of interactive visualizations?
 
 ## Including too Much Information
 
--   Including too much information can have the same effect as leaving out information.
+-   Including **too much** information can have the same effect as leaving out information.
     -   Leaving the audience with more questions and confusion.
     -   General rule:
         -   Provide enough information so that your audience can make an informed decision.
@@ -220,14 +221,14 @@ What are some pros and cons of interactive visualizations?
 
 
 ::: notes
-In the primary graph 19 MLS soccer teams and values spent on players salaries. The graph is broken down by several groups: players, players position. The full length of the bars suggest the total amount spent on players salaries. Individual bar can also be used to compare the relative amount invested on each player within a team. In the sub graph, the data is broken down by: players position and dollar amount spent.
+In the primary graph 19 MLS soccer teams and values spent on players salaries. The graph is broken down by several groups: players, players position. The full length of the bars suggest the total amount spent on players salaries. Individual bar can also be used to compare the relative amount invested on each player within a team. In the sub graph, the data is broken down by players position and dollar amount spent.
 :::
 
 ## Distorted axis limits
 
 -   Some functions by default fit axis ranges to natural data scales.
--   Non-zero y-axes may suggest that small differences to appear much larger than truth.
--   When dealing with normalized data ensure that the variables are placed on the same scale.
+-   Non-zero y-axes may cause small differences to appear much larger than truth.
+-   When dealing with normalized data ensure that the variables are placed on the same **scale**.
 
 ## Distorted axis limits
 
@@ -238,7 +239,7 @@ In the primary graph 19 MLS soccer teams and values spent on players salaries. T
 <center>![](figures/Improvedgraph.png){width="60%"}</center>
 
 ::: notes
-Highlight how this 3d graph starts at 65% rather than 0. Note that a more appropriate graph would contain data points (65% and 74% accuracy) with an y-axis that began at 0, which is seen in the second photo. By shrinking the y-axis we create the effect that one method has twice as much than the other.
+Highlight how this 3d graph starts at 65% rather than 0. Note that a more appropriate graph would contain data points (65% and 74% accuracy) with an y-axis that began at 0, which is seen in the second plot. By shrinking the y-axis we create the effect that one method seems to have twice as much accuracy than the other.
 :::
 
 ## Visual Communication
@@ -293,11 +294,11 @@ Accessibility is the practice of ensuring that all individuals have equal access
 In more recent years, the study of colors in statistical visualizations has burgeoned since visualizations rely on color for many different reasons (e.g. distinction of classes, degrees,effects). Findings from those studies highlight several key themes that researchers need to consider while creating visualizations. 
 
 ## {.instructor-note}
-For instance, an individuals degree of color blindness may influence the perception of graph or figure. One in every 12 men (8%) and one in every 200 women (0.5%) in the U.S. are born with inherited color defective vision of some type and degree (Johnson, 2024). The most common color-blindness types are red-green and blue-purple. Any color that contains the affected primary color is distorted.
+For instance, an individual's degree of color blindness may influence the perception of graph or figure. One in every 12 men (8%) and one in every 200 women (0.5%) in the U.S. are born with inherited color defective vision of some type and degree (Johnson, 2024). The most common color-blindness types are red-green and blue-purple. Any color that contains the affected primary color is *distorted*.
 
 ## {.instructor-note}
 
-Using neural networks, Petfroff (2024), was able to identify sequence of colors that may improve the accessibility of plots. Several variables were used as predictors/features: color blindness types, color lightness, preferred color sequence, and aesthetic preferences. Three color sequences were identified. All started with the color blue.
+Using neural networks, Petroff (2024), was able to identify sequence of colors that may improve the accessibility of plots. Several variables were used as predictors/features: color blindness types, color lightness, preferred color sequence, and aesthetic preferences. Three color sequences were identified. All started with the color blue.
 
 Different mediums play a considerable role in the perception of graphs, figures, and tables. Colors may be more saturated on a computer than a piece of paper. Different software may use different varying default colors in visual aides. A data scientist needs to consider their audience.
 
@@ -489,7 +490,7 @@ Key points to note:
 
 - The arrows don't correspond to the real data (graphic is an infographic, not a visualization of real data).
 
-- Can ask students to recreate the visualization, with the data presented as separate lines on the same plot or two side by side plots and discuss how presenting the data in different can be used to tell different stories. Examples follow.
+- Can ask students to recreate the visualization, with the data presented as separate lines on the same plot or as two side by side plots and discuss how presenting the data in different formats can be used to tell different stories. Examples follow.
 
 
 ## Side by side plot
@@ -498,7 +499,7 @@ Key points to note:
 suppressPackageStartupMessages(library(tidyverse))
 library(patchwork)
 
-## The following data are collected from Planned Parenthood Federation of American Annual Report from 2006-2013
+## The following data are collected from Planned Parenthood Federation of America Annual Report from 2006-2013
 
 year <- c(2006, 2007, 2008, 2009, 2010, 2011, 2012,2013)
 cancerscreen <- c(2007371, 1900850, 1860413, 1830811, 1596741, 1307570, 1121580, 935573)
@@ -598,11 +599,11 @@ Source: [ourworldindata.org](https://ourworldindata.org/grapher/median-age)
 
 ## {.instructor-note}
 
-- Japan is a country that is getting older
+- Japan is a country that is rapidly aging
 
 - Uganda is a relatively young country with a lower life expectancy
 
-- Age is one of the most important predictors of cancer.  Fewer people live to old age to get cancer in Uganda.
+- Age is one of the most important predictors of cancer prevalence.  Fewer people live to old age to get cancer in Uganda.
 
 ## Age-Standardized Cancer Deaths
 
@@ -622,7 +623,7 @@ See [https://ourworldindata.org/age-standardization](https://ourworldindata.org/
 
 - Always consider relevant reference or comparison groups
 
-- Ask: is standardization needed for fair comparison? Are there lurking variables?
+- Ask: is **standardization** needed for fair comparison? Are there lurking variables?
 
 - Highlights that expertise is often needed to generate the most appropriate visualization 
 
@@ -630,11 +631,11 @@ See [https://ourworldindata.org/age-standardization](https://ourworldindata.org/
 
 ## {.instructor-discussion} 
 
-Some useful discussion questions about responsbility and power dynamics:
+Some useful discussion questions about responsibility and power dynamics:
 
 - How do power dynamics change what stories get told with data and how that data is presented?
 
-- Is the creator of a visualization responsible for how that visualization is interprted and used?
+- Is the creator of a visualization responsible for how that visualization is interpreted and used?
 
 - What makes somebody qualified to visualize data? 
 
