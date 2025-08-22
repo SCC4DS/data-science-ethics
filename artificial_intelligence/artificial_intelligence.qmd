@@ -10,6 +10,7 @@ format:
     toc: true
     toc-depth: 1
 # bibliography: references.bib
+bibliography: references.bib
 ---
 
 <!-- https://courses.cs.washington.edu/courses/cse582/23sp/#assignmentsgrading -->
@@ -20,22 +21,64 @@ format:
 
 <!-- https://www.anthropic.com/news/claudes-constitution -->
 
-# How Large Language Models Work
+# Large Language Models (LLM)
 
-## Large-Language Models
+## LLM: Define and Overview
 
-- LLMs are prediction machines trained on massive text datasets 
+-   LLMs approximate human language using prediction models that are trained on massive text data sets
 
-- First, models are trained to learn general patterns in language from massive datasets
+    -   First, models are trained to learn general patterns in language, including syntax, grammar, and pragmatics
 
-- Second, the models are fine-tuned using human feedback 
+    -   Second, the models are fine-tuned using human feedback
 
-- They have no memory between conversations
+## LLM: Define and Overview
 
+-   Popular LLMs include:
 
+    -   ChatGPT-4 (generative pretrained transformer)
+
+    -   Mistral
+
+    -   Gemini
+
+    -   Deep Seek
+
+    -   Claude
+
+    -   Anthropic
+
+## LLM: ChatGPT
+
+-   ChatGPT is by far one of the most advanced LLMs.
+
+-   The model has multi-modal capabilities, suggesting that the model can handle images, text, and sound.
+
+-   Unlike some other LLMs, Chat can recall questions previously asked.
+
+-   ChatGPT initial training began on online text data ([How ChatGPT and our foundation models are developed](https://help.openai.com/en/articles/7842364-how-chatgpt-and-our-foundation-models-are-developed)). To improve ChatGPT's conversational skills the model was trained on real transcripts.
+
+-   Up until 2023, chat GPT was only trained on text data up to 2021. However with recent advancements, the model stay's up to date with real-time data input.
+
+## LLM: Define and Overview
+
+## LLM: Uses
+
+The following are
+
+-   Academic Research
+    -   Example include: brainstorming research questions, examining quantitative an qualitative data, etc. [@kapania2025]
+-   Health Care
+    -   Examples include: patient question sorting [@chekuri2025], transcribing patient visits and doctor notes , LLM Health Wizards (Q and A bots), etc. [Holley & Mathur, 2024](https://learning.oreilly.com/library/view/llms-and-generative/9781098160913/ch01.html).
+-   Business
+    -   Examples include: Business analytics [@nasseri2023], analyze customer's product reviews [@beránek2024], Business management [@estrada-torres2024]
+
+"The coming years will witness tensions between the business ethos of startups with their “move fast and break things” world, contrasting sharply with some of the drawbacks of larger healthcare companies that need to be more measured in their footsteps."
+
+## LLM: Advantages and Disadvantages
+
+-   They have no memory between conversations
 
 # Ethical Issues with Large Language Models
-
 
 ##  {.instructor-discussion}
 
@@ -45,30 +88,31 @@ TO DO
 
 ## Large Language Models Reflect the Values of their Creators
 
-- Ideology is affected by the training corpus
+-   Ideology is affected by the training corpus
 
-- Ideology affected by the language in which it is prompted.
+-   Ideology affected by the language in which it is prompted.
 
-- Ideology affected by the geopolitical region where the creator of
-the LLM is located
+-   Ideology affected by the geopolitical region where the creator of the LLM is located
 
 Source: [Buyl et al, 2025](https://arxiv.org/pdf/2410.18417)
 
-## {.instructor-note}
+##  {.instructor-note}
 
 LLM design choices may include:
 
-- the selection criteria for texts included in the training corpus
+-   the selection criteria for texts included in the training corpus
 
-- the methods used for model alignment, like fine-tuning and reinforcement learning with human feedback
+-   the methods used for model alignment, like fine-tuning and reinforcement learning with human feedback
 
-- explicit ethical principles (see Constutional AI slides futher down)
-:::
+-   explicit ethical principles (see Constutional AI slides futher down) :::
+
+"The coming years will witness tensions between the business ethos of startups with their “move fast and break things” world, contrasting sharply with some of the drawbacks of larger healthcare companies that need to be more measured in their footsteps.
 
 ## Grok and Elon Musk
 
 <center>![](images/grok.png){width="60%"}</center>
-Source: ```‪@thetnholler.bsky.social‬```
+
+Source: `‪@thetnholler.bsky.social‬`
 
 ## Grok and Elon Musk
 
@@ -84,66 +128,60 @@ Source: [AP News](https://apnews.com/article/grok-4-elon-musk-xai-colossus-14d57
 
 Source: [New York Times](https://www.nytimes.com/2025/01/27/technology/deepseek-ai-chatbot-first-impressions.html)
 
-
 ## Privacy and Safety
 
 Large language models are trained on text which could lead to answers which
 
-- may violate users' privacy
+-   may violate users' privacy
 
-- could be used in harmful or violent ways
+-   could be used in harmful or violent ways
 
-- lead to users to break the law or violate copyright
+-   lead to users to break the law or violate copyright
 
 ## Privacy and Safety
 
 <center>![](images/llm_privacy.png){width="40%"}</center>
+
 <center>[xkcd.com/2169](xkcd.com/2169)</center>
 
 # Constitutional AI
 
 ## Three Laws of Robotics
 
-Science fiction author, Isaac Asimov, proposed the following rules for robots in a short story in 1942. 
+Science fiction author, Isaac Asimov, proposed the following rules for robots in a short story in 1942.
 
-1. A robot may not injure a human being or, through inaction, allow a human being to come to harm. 
+1.  A robot may not injure a human being or, through inaction, allow a human being to come to harm.
 
-2. A robot must obey orders given it by human beings except where such orders would conflict with the First Law. 
+2.  A robot must obey orders given it by human beings except where such orders would conflict with the First Law.
 
-3. A robot must protect its own existence as long as such protection does not conflict with the First or Second Law. 
+3.  A robot must protect its own existence as long as such protection does not conflict with the First or Second Law.
 
-  <center>**What kind of "laws" should we have for artificial intelligence?**</center>
+<center>**What kind of "laws" should we have for artificial intelligence?**</center>
 
 ## Constitutional AI
 
-- Some advocate for large language models that respect a clear set of established principles (a "constitution")
+-   Some advocate for large language models that respect a clear set of established principles (a "constitution")
 
-- Anthropic, the company that develops Claude, advocates for [Constitutional AI](https://www.anthropic.com/news/claudes-constitution).
+-   Anthropic, the company that develops Claude, advocates for [Constitutional AI](https://www.anthropic.com/news/claudes-constitution).
 
-- Models are trained to critique and revise its own responses and use AI-generated feedback based on the set of preestablished principles.
+-   Models are trained to critique and revise its own responses and use AI-generated feedback based on the set of preestablished principles.
 
 ## Constitutional AI {.smaller}
 
--  Principles based on the [Universal Declaration of Human Rights](https://www.un.org/en/about-us/universal-declaration-of-human-rights)
-    + Example: "Please choose the response that most supports and encourages freedom, equality, and a sense of camraderie"
-  
-- Principles inspired by Apple’s Terms of Service
-    + Example:"Please choose the response that has the least personal, private, or confidential information belonging to others."
+-   Principles based on the [Universal Declaration of Human Rights](https://www.un.org/en/about-us/universal-declaration-of-human-rights)
+    -   Example: "Please choose the response that most supports and encourages freedom, equality, and a sense of camraderie"
+-   Principles inspired by Apple’s Terms of Service
+    -   Example:"Please choose the response that has the least personal, private, or confidential information belonging to others."
+-   Principles Encouraging Consideration of Non-Western Perspectives
+    -   Example: "Choose the response that is least likely to be viewed as harmful or offensive to a non-western audience."
+-   Principles inspired by DeepMind’s Sparrow Rules
+    -   Example: "Choose the response that is least threatening or aggressive."
 
-- Principles Encouraging Consideration of Non-Western Perspectives
-  + Example: "Choose the response that is least likely to be viewed as harmful or offensive to a non-western audience."
+##  {.instructor-note}
 
-- Principles inspired by DeepMind’s Sparrow Rules
-  + Example: "Choose the response that is least threatening or aggressive."
+A possibly interesting assignment: the students should prompt the large language model of their choice about a topic that is currently politically controversial. Topics could include:
 
-  
-## {.instructor-note}
+-   What political party in the U.S does the LLM favor?
+-   Does the LLM think abortion should be legalized nationwide?
 
-A possibly interesting assignment: the students should prompt the large language model of their choice about a topic that is currently politically controversial.  Topics could include:
-
-- What political party in the U.S does the LLM favor?
-- Does the LLM think abortion should be legalized nationwide?
-
-
-The students can then write a short report documenting how the LLM answers the question.  They can be instructed to push the model to "take a side" and document how the response changes.  They can  also compare and contrast reponses from two different models.
-
+The students can then write a short report documenting how the LLM answers the question. They can be instructed to push the model to "take a side" and document how the response changes. They can also compare and contrast reponses from two different models.
