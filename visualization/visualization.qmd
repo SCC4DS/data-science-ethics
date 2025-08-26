@@ -324,13 +324,18 @@ Deuteranomaly, protanomaly, and tritanomaly are three types of color blindness. 
 
 - Researchers have used machine learning to automate data extraction from graphs and figures and consequentially provide the natural language descriptions to support visually disabled users. [@shahira2021]
 
--   R-packages that assist visually impaired researchers with developing figures and graphs. [@godfrey2018]
+- R-packages that assist visually impaired researchers with developing figures and graphs. [@godfrey2018]
+    + `colorBlindness` package --- view your plots under different color-deficiency simulations
+    + `BrailleR` package---an R add-on specifically targeted at blind users---to extract detailed information, such as data ranges, grammatical constructs, etc. to generate speech strings that are embedded into the image annotation. [@godfrey]
 
--   BrailleR package---an R add-on specifically targeted at blind users---to extract detailed information, such as data ranges, grammatical constructs, etc. to generate speech strings that are embedded into the image annotation. [@godfrey]
-
--   gridSVG - which exports graphics using the grid package to SVG, which can be read by a screen reader for the visually impaired. [@murrell]
+    + `gridSVG` --- which exports graphics using the grid package to SVG, which can be read by a screen reader for the visually impaired. [@murrell]
 
 # Outliers and anomalies
+
+## {.instructor-note}
+
+Can have students simulate colorblindess on visualizations that students previously generated (e.g. using `colorBlindness`) or experiment with simulators online (e.g. [https://www.color-blindness.com/coblis-color-blindness-simulator/](https://www.color-blindness.com/coblis-color-blindness-simulator/))
+
 
 ## Diamonds Data
 Length (x) and width (y) of diamonds listed by online jewelers.
