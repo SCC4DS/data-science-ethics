@@ -1,22 +1,19 @@
 ---
 title: "Introduction to Ethics in Data Science"
-subtitle: "Ethical Practices and Considerations to Visualizations and Summary Statistics"
 format:
   revealjs: 
+    css: custom.css
     slide-number: true
     preview-links: auto
+    scrollable: false
+    toc: true
+    toc-depth: 1
+    number-sections: true
+    number-depth: 1
 bibliography: reference.bib 
 ---
 
-## Overview of Today's Lecture
-
-1.  Defining ethics
-2.  Historical ethical cases in science
-3.  Ethical issues related to computers and data
-4.  Legality and data science
-5.  Data Ethic Principles
-6.  Group Discussion
-7. Practice Ethical Decision Making with Visualizations and Summary Statistics
+# Defining Ethics
 
 ## "The subject matter of ethics is supplied by two intimately related terms, right and good" [@sharp1928a].
 
@@ -39,59 +36,67 @@ bibliography: reference.bib
 
 ## Advancements in computer and data communications technology have resulted in the need to reevaluate the application of ethical principles. - [@weiss1990] The XXII self-assessment: The ethics of computing
 
-## Discussion: Ethical Issues Related to Computers and Data
+## {.instructor-discussion}
 
-::: callout-note
-## Question
 What daily work-related responsibilities do data scientists have that rely on making an ethical choice?
-:::
-<center>Take 2 minutes to reflect and 6 minutes to discuss.</center>
 
-<center><iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:08:00&amp;enabled=0&amp;seconds=480&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen></center>
 
-</iframe>
+<!-- ## Discussion: Ethical Issues Related to Computers and Data -->
 
-## Ethical Issues Related to Computers and Data {.smaller}
+<!-- ::: callout-note -->
+<!-- ## Question -->
+<!-- What daily work-related responsibilities do data scientists have that rely on making an ethical choice? -->
+<!-- ::: -->
+<!-- <center>Take 2 minutes to reflect and 6 minutes to discuss.</center> -->
 
-::: {.panel-tabset}
-### Data privacy
+<!-- <center><iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:08:00&amp;enabled=0&amp;seconds=480&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen></center> -->
+
+<!-- </iframe> -->
+
+# Ethical Concepts in Data Science
+
+## Data privacy
 
 -   Data privacy legislation differs across jurisdictions.
 
 -   *Data privacy* in the [California Consumer Protection Act](https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?division=3.&part=4.&lawCode=CIV&title=1.81.5) is the protection of personal information (e.g., Name, email address, purchase and browsing history, location and employment data, IP address, sensitive personal information)
 
-### Social justice
+## Social justice
 
 -   *Social justice* in data science includes practices that promote equity and fairness, focusing on ensuring that data and reports accurately and adequately represent populations. Practicing reflexivity is especially important to identify personal bias while performing data science tasks.
 
-### Transparency
+## Transparency
 
 -   *Transparency* relates to communicating with customers about data collection (design, amount, and duration of storage) and the ease with which other data scientists can access collected information. Transparency related to data is especially important for building trust with customers and other data practitioners.
 
-### Consent
+## Consent
 
 -   *Consent* is an agreement before data collection that lists a participant's rights to information about a research study or organization's information collection. Participants can terminate their participation and opt out of data use at any time. Changes to informed consent have made it easier for companies to obtain broad consent, which does not require re-consent for the re-use of data [@froomkin2019] .
 
-### Accuracy
+## Accuracy
 
 -   *Accuracy* relates to the characteristics of high-quality data, which are highly complete, valid, and consistent.
 
-### Accountability
+## Accountability
 
 -   *Accountability* relates to a data scientist's quality of work, which delineates decisions and processes to create reproducible work that follows company guidelines and adheres to laws.
-:::
 
-## Ethical Issues Related to Computers and Data: Example
+## Examples
+
+What ethical concepts are relevant to these examples?
 
 -   Recently, Uber was fined millions by the Netherlands government after a watchdog found that the U.S. company was transferring data about drivers from the Netherlands to the U.S.
+
 -   Target was sued after a father was able to determine that his daughter was pregnant. A predictive algorithm determined that she was likely pregnant given the items she purchased and sent coupons for expecting mothers.
 
-## Ethical Issues Related to Computers and Data
+## Ethics in Data Science
 
 -   Greater public access of computers raised ethical concerns
 -   Ethical issues related to computers [@weiss1990] The XXII self-assessment: The ethics of computing:
     -   Ownership of assets/material (e.g., programs, code, visual material)
     -   The degree that programs, software, and computer users are held responsible for outcomes
+
+# Principles and Legal Frameworks
 
 ## Legal Frameworks which Regulate Data Science
 
@@ -166,77 +171,39 @@ a)  with the consent of the data subject; or b) by the authority of law.
 7.  Individual Participation Principle: An individual should have the right to obtain from a data controller, or otherwise, confirmation of whether or not the data controller has data relating to him; and to have communicated to him, data relating to him.
 8.  Accountability principles: A data controller should be accountable for complying with measures which give effect to the principles stated above.
 
-## Group Discussion
+## Example
 
-How does data science play a role in this example?
-
-::: callout-note
-## Discussion (3 minutes)
 In 2017, Meta announced that they analyze and flag user-generated content related to suicidal intent or risk (e.g., post and comments). Later, Meta announced that the company used the suicide predictions to notify local authorities and that over 100 wellness checks were conducted by law-enforcement. Meta also announced that the suicide detection program would expand across all other countries. In 2018, Meta revealed that they also scan the content of users' private messages for suicide risk.
-:::
-<center><iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:03:00&amp;enabled=0&amp;seconds=180&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen></center>
 
-</iframe>
 
-## Group Discussion
+## {.instructor-discussion}
 
-::: callout-note
-In pairs or smaller groups take 5 minutes to discuss and determine if there are any ethical issues in the real world example or potential for future dilemma. 
-:::
-<center><iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:05:00&amp;enabled=0&amp;seconds=420&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
-</iframe></center>
+- In pairs or smaller groups discuss the ethical issues in the previous example or potential for future dilemma. 
 
-## Group Discussion (5 minutes)
-
-Discuss as a class your findings, thoughts, and questions (5 minutes)
-
-<center><iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:05:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
-</iframe>
-</center>
+# Ethical Practice
 
 ## Ethical Practices and Considerations {.smaller}
 
-To meet data ethic principles and engage in socially-just data science, practitioners (e.g. data scientists, researchers) can practice the following:
+- Remain **honest** about level of competence related skill, content/subject, potential bias, and timeliness.
 
-::: panel-tabset
+- **Understand** responsibilities to ensure their skills can address the stakeholders (i.e., clients and participants) needs.
 
-### Honesty
-- Remain honest about level of competence related skill, content/subject, potential bias, and timeliness.
+- **Communicate** the limitations of the research design and analytic approach. Clearly convey steps, logic, and findings so that other data practitioners and the public understand.
 
-### Understanding
-- Understand responsibilities to ensure their skills can address the stakeholders (i.e., clients and participants) needs.
+- Engage in data science practices processes that **protect** humans and animals and minimize harmful impact 
 
-### Communication
-- Communicate the limitations of the research design and analytic approach.
+- **Acknowledge** the work of other data practitioners and researchers that were used.
 
-### Reporting
-- When reporting your findings, clearly convey steps, logic, and findings so that other data practitioners and the public understand.
+- **Report** ethical misconduct. Report to appropriate authority, which will investigate ethical issues and or violations. 
 
-### Protection
-- Engage in data science practices processes that protect humans and animals and minimize harmful impact 
-
-### Cite
-- Acknowledge the work of other data practitioners and researchers that were used.
-
-### Report
-- Address ethical misconduct by reporting to appropriate authority, which will investigate ethical issues and or violations. 
-::: 
-
-## Ethical Practices and Considerations 
+## {.instructor-discussion}
 
 Algorithms affect the lives of individuals, sometimes in profound ways
 <br>
 
-::: callout-note
-## Question
-What are example of algorithms that you've encountered in your life which have influenced your life or your behavior?
-:::
+- What are example of algorithms that you've encountered in your life which have influenced your life or your behavior?
 
-. . .
+- What are the ethical practices and considerations that you think the creator of algorithm(s) did or did not take into account? 
 
-::: callout-note
-## Question
-What are the ethical practices and considerations that you think the creator of algorithm(s) did or did not take into account? 
-:::
 
 ## References
