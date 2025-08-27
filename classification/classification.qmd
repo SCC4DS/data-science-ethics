@@ -14,7 +14,7 @@ bibliography: reference.bib
 
 ## Classification Algorithms
 
-- In this module, we'll consider binary classification algorithms which use data to predict one of two outcomes which we'll refer to **"positive"** and **"negative"** classes.
+- We'll consider binary classification algorithms which use data to predict one of two outcomes which we'll refer to **"positive"** and **"negative"** classes.
 
 - Most problems have a fundamental asymmetry: not all mistakes are created equal!
 
@@ -383,22 +383,12 @@ compas_scores %>% xtabs(data=., ~ score_factor + two_year_recid)
 - FNR: 1076 / (1733+1076) = 0.38
 - Accuracy: (2345 + 1733) / n = 0.66
 
-. . .
 
-::: {.callout-note}
-## Question
-What is the meaning of FPR and FNR in this context? Is one worse than the other?
-:::
+## {.instructor-discussion}
 
-## Examining FPR and FNR
+- What is the meaning of FPR and FNR in this context? Is one worse than the other?
 
-<br>
-<br>
-
-::: {.callout-note}
-In this example who decided what false positive rate and false negative rate is acceptable? Who *should* get to decide this? 
-:::
-
+- In this example who decided what false positive rate and false negative rate is acceptable? Who *should* get to decide this? 
 
 ## FPR and FNR for African-Americans
 ```{r, echo=TRUE}
@@ -466,7 +456,27 @@ tibble(Group = c("African-American", "Caucasian", "All"),
 
 Similar accuracy across the two race groups are attained in very different ways!
 
+## The Impossibility of Fairness
 
+- If race is not included as a predictor in the classifer it is not possible in general to match FPR and FNR across both groups!
+
+- If we use a "race-aware" classifier, we might be able to match FPR and FNR, but only if we use different classification criteria for each race (is that fair?)
+
+- In fairness literature these constraints are known as "the impossibility of fairness" [@kleinberg2016inherent]
+
+## {.instructor-note}
+
+This content is likely for more advanced students.
+
+- Can create two classifiers, one for each race group. If the ROCs intersect anywhere, then the FPR and FNR match at those intersection points (seemingly more fair).  This is known as *equalized odds*.
+
+- However, two individuals that match in all characteristics except race can receive a different prediction (seemingly unfair).  This violates *calibration*.
+
+## {.instructor-discussion}
+
+- If we can balance FPR and FNR, is that desirable even if we use different criteria for each race group to classify patient risk?
+
+- Alternatively, if we use a single "race-blind" classiffier, we could match either FPR or FNR across race groups but not both. Which would be preferable?
 
 ##  Putting a human face on it
 
