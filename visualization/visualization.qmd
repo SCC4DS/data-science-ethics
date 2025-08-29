@@ -4,11 +4,10 @@ format:
   revealjs: 
     css: custom.css
     slide-number: true
-    chalkboard:  
-      buttons: true
     preview-links: auto
     toc: true
     toc-depth: 1
+    embed-resources: true
 bibliography: references.bib
 ---
 
@@ -146,6 +145,10 @@ Interpretation:
 
 - Domain expertise needed to contextualize findings!
 
+## {.instructor-discussion}
+
+Interpretation:
+
 - GISS show "temperature anomalies" by subtracting the mean temperature over some baseline period (1951-1980).  Why might this be more desirable?
 
 ## {.instructor-discussion} 
@@ -166,7 +169,9 @@ What are some pros and cons of interactive visualizations?
 
 
 - There is a difference between an ugly visualization and a bad visualization
+
   + Ugly visualizations are aesthetically unappealing but can still effectively convey information
+
   + Bad visualizations are misleading or confusing because of they way they are constructed
 
 ## Poorly constructed vs unethical visualizations
@@ -247,7 +252,9 @@ Highlight how this 3d graph starts at 65% rather than 0. Note that a more approp
 <br>
 <br>
 
-> Excellence in statistical graphics consists of complex ideas communicated with clarity, precision, and efficiency." - [@tufte2001]
+> Excellence in statistical graphics consists of complex ideas communicated with clarity, precision, and efficiency." 
+>
+> -- [@tufte2001]
 
 ## {.instructor-note}
 
@@ -272,7 +279,6 @@ How does Tufte's quote on communicating with clarity, precision and efficiency r
   -   Human perceptions of color vary. Upwards of 5-8% of men are colorblind! (less common for women)
   -   Colorblindness and complete blindness present accessibility concerns related to visual presenation of information. [@johnson2024]
   -   [@petroff2024] used a machine learning technique to identify color sequences which considered color blindness types, color lightness, color sequence preferences, and aesthetic preferences.
-  -   3 sequences of colors were identified and all began with the color blue.
 
 ## Accessibility & Visualizations
 
@@ -348,22 +354,20 @@ ggplot(diamonds, aes(x = x, y = y)) +
   geom_text(data = subset(diamonds, y > 30), aes(label = y), nudge_y = 2) + 
   theme_bw()
 ```
-## Outliers
 
--   Take 5 minutes to discuss:
-    -   Discuss what you observe in the graph.
-    -   How do those extreme values impact the relation between length and width of diamonds after being removed?
-    -   Would you drop the outliers and all their additional observed scores?
 
-<iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:05:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
-
-</iframe>
 
 ## {.instructor-note}
 
 The diamond data set contains prices and other attributes of over 50,000 diamonds.  Most diamonds are "square-ish" so x (length) and y (width) tend to be very similar.
 
 Mistakes could have been introduced by coding for missing values (e.g. 0 or 999) and simple data entry errors
+
+## {.instructor-discussion}
+
+-   How do those extreme values impact the perceived relationship between length and width of diamonds after being removed?
+
+-   Would you drop the outliers and all their additional observed features? When is this appropriate?
 
 ## Outliers and anomalies
 Zooming in and excluding outliers from the plot reveals the fundamental relationship more clearly.
@@ -407,7 +411,7 @@ Zooming in further on $7 < x < 9$ and $7 < y < 9$ reveals a band where there are
 
 ## Anomalies
 
-Looking at a different feature, the price of the diamond, shows a lack of diamonds priced at $1500.
+Looking at a different feature, the price of the diamond, shows a lack of diamonds priced at $1500. Why?
 
 ```{r}
 diamonds %>% 
@@ -549,7 +553,7 @@ What's the best way to compare data across multiple groups?
 
 - Since 1980, have cancer deaths in the United States been increasing, decreasing or remaining roughly constant? 
 
-- Before you look at data, hypothesize about possible trends and suggest reasons for those trends.
+- Before you look at data, hypothesize about possible trends in cancer deaths and suggest reasons for those trends.
 
 ## Case study: cancer deaths
 
