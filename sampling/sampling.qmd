@@ -45,27 +45,12 @@ library(USAboundaries)
 
 The following module focuses on ethical issues that stem from sampling techniques and lack of representative samples. This module contains several real-world examples that aim to promote discussions around the importance and the consequences of sampling techniques and non-representative samples. Additionally, ethical principles from the American Statistical Association, along with recommended practices, are delineated. The module concludes with an acknowledgement that sampling is complex and that data scientists may have the tools to deal with and discern natural, nuanced patterns.
 
-## Agenda
+# Amazon's Hiring Algorithm: A Real World Example and Discussion on the Impact of Poorly Represented Populations
 
-1.  Amazon's Automated Hiring
-
-2.  Definitions and Terminology
-
-3.  Swain's Jury Panel Case Study
-
-4.  Sampling Bias
-
-5.  Sampling and Representativeness
-
-6.  Ethic Principles and Sampling
-
-7.  The Simpson's Paradox
-
-# Amazon's Automated Hiring
-
-## Amazon's Automated Hiring Tool
+## 1. Amazon's Automated Hiring Tool
 
 In 2014, Amazon engineers developed an algorithm using the resumes of current employees from the past decade to expedite the hiring process. The algorithm reviewed applicants' resumes and provided job candidate scores (1-5), with higher scores indicating a more well-qualified candidate.
+
 
 ## 1. Amazon's Automated Hiring Tool: Reflection
 
@@ -81,7 +66,7 @@ How might:
 
 ## 1. Amazon's Automated Hiring Tool: Discussion
 
-Take 5 minutes to discuss in groups any of your observations, questions, and thoughts related to ethics.
+Take 5 minutes to discuss in groups any of your observations, posed questions, and thoughts related to ethics.
 
 Take an additional 5 minutes to discuss with the whole class your group's conversation.
 
@@ -102,7 +87,7 @@ There are several points related ethical or social justices practices that can b
 -   You could spend time discussing how the data scientists could mitigate bias, besides using female resumes.
 
 
-## 1. Amazon's Automated Hiring Tool: Final comments
+## 1. Amazon's Automated Hiring Tool: Final Comments
 
 -   Findings: Amazon's researchers quickly discovered that fewer qualified women were not being considered for more technical positions, such as software engineering and data science roles. A review of the training data set and Amazon's employee resumes revealed that male employees held the majority of technical positions.
 
@@ -110,24 +95,17 @@ There are several points related ethical or social justices practices that can b
 
 -   Amazon took a non-probabilistic sampling approach to collect data.
 
-## 1. Amazon's Automated Hiring Tool: Final comments 
+##  {.instructor-note}
+
+- consider posing the question: "If researchers determined that more women were hired more overall in comparison to men, would you consider the hiring algorithm to be fair?" 
+
+## 1. Amazon's Automated Hiring Tool: Final Comments 
 
 -   Using probabilistic sampling approaches would have led to a more representative sample of resumes, which staff could have used to infer the qualifications of the population of applicants. A substantial body of research has demonstrated that non-probabilistic data collection can lead to biased analysis, and methodologists generally do not recommend making inferences about the population.
 
-# Definitions and Terminology
+# Defining Sampling
 
-<!-- ## 2. Defining Sampling -->
-
-<!-- What is sampling? -->
-
-<!-- -   Sampling is a technique for collecting data that requires a sampling design to collect data from a small group that is part of the larger group of interest. -->
-
-<!-- ![](figures/Sample.png) -->
-
-[@fielding2025]
-
-
-## Sampling terminology
+## 2. Defining Sampling
 
 All data are collected somehow. A **sampling design** is a _**way of selecting observational units for measurement**_. It can be construed as a particular relationship between:
 
@@ -139,9 +117,9 @@ All data are collected somehow. A **sampling design** is a _**way of selecting o
 
 ![](figures/terminology.jpg)
 
-## Population
+## 2. Defining Sampling: Population
 
-Last week, we introduced the terminology **observational unit** to mean _**the entity measured for a study**_ -- datasets consist of observations made on observational units.
+The **observational unit** is the _**the entity measured for a study**_ -- datasets consist of observations made on observational units.
 
 . . .
 
@@ -167,7 +145,7 @@ A statistical **population** is the _**collection of all units of interest**_. F
 
 :::
 
-## Sampling frame
+## 2. Defining Sampling: Sampling Frame
 
 There are usually some units in a population that can't be measured due to practical constraints -- for instance, many adult U.S. residents don't have phones or addresses.
 
@@ -189,7 +167,7 @@ For this reason, it is useful to introduce the concept of a **sampling frame**, 
 
 :::
 
-## Sample
+## 2. Defining Sampling: Sample
 
 Finally, it's rarely feasible to measure every observable unit due to limited data collection resources -- for instance, states don't have the time or money to call every phone number every year.
 
@@ -213,9 +191,7 @@ A **sample** is _**a subcollection of units in the sampling frame actually selec
 
 :::
 
-
-
-## Census
+## 2. Defining Sampling: Census
 
 The simplest scenario is a **population census**, where the entire population is observed. 
 
@@ -224,7 +200,7 @@ The simplest scenario is a **population census**, where the entire population is
 ::: {.column width="60%"}
 For a census: $S = F = P$
 
-*All properties of the population are definitevely **known** in a census.* So there is no need to sample.
+*All properties of the population are definitively **known** in a census.* So there is no need to sample.
 :::
 
 ::: {.column width="40%"}
@@ -235,7 +211,7 @@ For a census: $S = F = P$
 
 
 
-## Simple random sample
+## 2. Defining Sampling: Simple Random Sample
 
 The statistical gold standard for inference, modeling, and prediction is the **simple random sample** in which units are selected at random from the population. 
 
@@ -253,7 +229,7 @@ For a simple random sample, the frame equals the population, and the sample is a
 
 :::
 
-## 'Typical' sample
+## 2. Defining Sampling:'Typical' Sample
 
 More common in practice is a random sample from a sampling frame that overlaps but does not cover the population.
 
@@ -271,7 +247,7 @@ For a 'typical' sample: $S \subset F \quad\text{and}\quad F \cap P \neq \emptyse
 
 :::
 
-## 'Administrative' data
+## 2. Defining Sampling: 'Administrative' Data
 
 Also common is **administrative data** in which all units are selected from a convenient frame that partly covers the population. 
 
@@ -289,7 +265,17 @@ Also common is **administrative data** in which all units are selected from a co
 
 :::
 
-## Scope of inference
+## 2. Defining Sampling: Sampling Design
+
+What is a sampling design?
+
+-   **A sampling design** is a way of selecting observational units for measurement (individuals, groups, organizations, events, or other relevant elements).
+
+-   *General Goal*: Select a set of individuals (or any unit of measurement of interest) from a population in a way that can be used to learn about characteristics of the population.
+
+-   *Secondary Goal*: Sampling design is to yield maximize the accuracy of inferences about a population (i.e. not biased, minimum variance).
+
+## 2. Defining Sampling: Scope of Inference
 
 The relationships among the population, frame, and sample determine the **scope of inference**: the _**extent to which conclusions based on the sample are generalizable**_. 
 
@@ -307,7 +293,7 @@ A poor sampling design will produce samples that distort the statistical propert
 * sample statistics are subjet to bias
 * the scope of inference is *narrow*
 
-## Characterizing sampling designs
+## 2. Defining Sampling: Characterizing Sampling Designs
 
 The sampling scenarios above can be differentiated along two key attributes:
 
@@ -323,7 +309,7 @@ The sampling scenarios above can be differentiated along two key attributes:
 
 *If you can articulate these two points, you have fully characterized the sampling design.*
 
-## Sampling mechanisms
+## 2. Defining Sampling: Sampling Mechanisms
 
 In order to describe sampling mechanisms precisely, we need a little terminology.
 
@@ -342,7 +328,7 @@ $$
 
 The inclusion probability of each unit depends on the physical procedure of collecting data.
 
-## Sampling mechanisms
+## 2. Defining Sampling: Sampling Mechanisms
 
 **Sampling mechanisms** are _**methods of drawing samples**_ and are categorized into four types based on inclusion probabilities.
 
@@ -355,7 +341,7 @@ The inclusion probability of each unit depends on the physical procedure of coll
 * in a **nonrandom sample** there is no random mechanism
     + $p_i = 1$ for $i \in S$
 
-## Example
+## 2. Defining Sampling: Example
 
 Annual observations of GDP growth for 234 countries from 1961 - 2018.
 
@@ -370,7 +356,7 @@ So:
 
 *This is administrative data* with no scope of inference.
 
-## Example
+## 2. Defining Sampling: Example
 
 Phone surveys of 418K U.S. residents in 2019.
 
@@ -387,64 +373,14 @@ So:
 *This is a typical sample* with narrow inference to adult residents with phone numbers.
 
 ## {.instruction-discussion}
+Consider posing the following questions: 
 
-- Can you phone surveys to generalize about the U.S. population?
+- Can you use and trust phone surveys to make generalization about the U.S. population?
 
-- What types of people are excluded from phone surveys? What are the ethical implications of excluding these individuals? Some concrete examples that could be used include public health survey (health behaviors like smoking, exercise, and diet, access to healthcare or mental health indicators), quality of life study or survey related to market research.
-
-## Defining Sampling
-
-What is a sampling design?
-
--   **A sampling design** is a way of selecting observational units for measurement (individuals, groups, organizations, events, or other relevant elements).
-
--   *General Goal*: Select a set of individuals (or any unit of measurement of interest) from a population in a way that can be used to learn about characteristics of the population.
-
--   *Secondary Goal*: Sampling design is to yield maximumize the accuracy of inferences about a population (i.e. not biased, minimum variance).
+- What types of people are excluded from phone surveys? What are the ethical implications of excluding these individuals? Some concrete examples of common areas of research that use phone surveying include public health surveys (health behaviors like smoking, exercise, and diet, access to healthcare or mental health indicators), quality of life study or survey related to market research.
 
 
-<!-- ## 2. Defining Sampling -->
-
-<!-- **Sampling frame**: The collection of all units in a population that can be observed for a study. -->
-
-<!-- -   When the whole population of 7th graders at Westlake are not accessible, sampling frame consists of selecting some part of a population to observe so that one may estimate something about the whole population. -->
-<!-- -   E.g., three 7th grade classrooms (Mr.B's- AP English, Ms.C's- AP History, Ms. T's- Algebra) at Westlake were available and willing to provide data. -->
-
-<!-- ## 2. Defining Sampling -->
-
-<!-- **Sample**: A sample is a sub-collection of units in the sampling frame actually selected for study. -->
-
-<!-- -   e.g., Gathering grades from an AP 7th-grade history class to estimate the academic progress of 7th grade students at Westlake Middle School. -->
-
-<!-- -   e.g., Surveying the mortality rate among a flock of canary birds on Canary Island to assess the death rate of all canary birds in the Macaronesia region. -->
-
-<!-- -   There are different mechanisms to collecting or drawing a sample -->
-
-<!--     -   Based on the probability of being included in the sample also known as **inclusion probabilities** $p_i$. -->
-
-<!-- ## 2. Defining Sampling -->
-
-<!-- **Sampling mechanisms**:The mechanism of obtaining a sample from the sampling frame -->
-
-<!-- -   Sampling mechanisms include the following four: -->
-
-<!--     -   **census** every unit is included -->
-<!--         -   $p_i = 1$ for every unit $i = 1,...,N$ -->
-<!--     -   **random sample** every unit has an equal probability to be included in the sample -->
-<!--         -   $p_i = p_j$ for every pair of $i$ and $j$ -->
-<!--         -   The most preferred sampling mechanism -->
-<!--     -   **probability sample** the probability of being included in the sample is unit dependent -->
-<!--         -   $p_i \neq p_j$ for at least one unit of $i$ and $j$ -->
-<!--     -   **non-random sample** there is no random mechanism -->
-<!--         -   $p_i = 1$ for $i \in S$ -->
-
-
-
-<center><iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:03:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen><.center>
-
-</iframe>
-
-# Case study: Swain's Jury Panel
+# Swain's Jury Panel Case Study: A Real World Example and Activity that Demonstrates Representation in Samples
 
 ## 3. Swain's Jury Panel Case Study
 
@@ -468,7 +404,7 @@ The following case study highlights the ethical importance and implications surr
 
 -   Using simulations, we can evaluate the number of Black citizens in jury panels if they were randomly selected from a population that consisted of 26% Black and 74% White males. We can also evaluate a distribution in which 8% of the population, on average, were Black males.
 
-## 3. Jury Pool
+## 3. Swain's Jury Panel Case Study: Jury Pool
  
 The statistic of interest in these simulations is the count of Black males if randomly selected from a population similar to Talladega County and a population with an 8% Black male proportion. Each randomly selected sample consisted of 100 individuals, representing the number of citizens on a jury panel. There were 10,000 iterations of random selection.
 
@@ -528,9 +464,19 @@ ggplot(black_freq_full, aes(x = black_count)) +
            label = "Swain's Panel = 8", color = "red", angle = 90)
 ```
 
+## 3. Swain's Jury Panel Case Study: Jury Pool Discussion
 
+Discuss in your groups (5 minutes):
 
-## 3. Jury Pool
+-   What do you observe in the plot? Evaluate the range and average of possible number of Black males that could have been selected for the jury panel. 
+
+-   What does the distribution of random selected samples and actual count of jurors suggest about the jury panel in Swain's case? Is the difference small? 
+
+<iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:03:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
+
+</iframe>
+
+## 3. Swain's Jury Panel Case Study: Jury Pool
 
 ::::: Columns
 ::: {.column width="40%"}
@@ -612,8 +558,13 @@ Some discussion questions:
 
 - Is random sampling the fairest way to select the panel? Alternative: can use some kind of conditional random sampling to explicitly balance along certain demographic characteristiscs.
 
+## {.instructor-note}
+There were 52 simulated jury panels which had 15 or less and 1,599 simulated jury panels with 21 or less impaneled Black jurors.
 
-# Sampling Bias
+
+#  Defining Sampling Bias
+
+## 4. Sampling Bias: Defined
 
 What is sampling bias?
 
@@ -623,7 +574,9 @@ What is sampling bias?
 
 -   **Not investigating and addressing sampling issues raises ethical concerns**
 
-## Sampling and Representativeness
+# The Relationship between Sampling and Representativeness
+
+## 5. Sampling and Representativeness
 
 -   After using a sampling mechanism, it is important to determine how well the sample represents the population [@kotu2019].
 
@@ -633,76 +586,47 @@ What is sampling bias?
 
 -   Sampling frame and sample size matters! Ensure that the sampling frame is representative of population and that the final sample is characteristically similar to the population, even in the presence of a large sample [@sauro2012].
 
-## Sampling and Representativeness
- 
 -   A sampling frame should include units that strongly represent or are characteristic of the population .
 
--   Hypothetical Example 1 : You are interested in comparing California's housing inventory market across Northern, Central, and Southern state regions and plan on randomly selecting counties to represent the three different sectors, but California's Association of Realtor (C.A.R.) data only includes homes listed in central coastal counties (Monterey, San Luis Obispo,Santa Barbara, and Santa Cruz) excluding central valley counties. Therefore, the sampling frame is limited to central coast, which could lead to misleading findings.
+-   Small and large random samples can also lead to findings that do not represent the population.
 
-```{r}
-#| fig-width: 6
-#| fig-height: 2.5
-# 1. Get CA counties
-ca_counties <- us_counties(states = "California")
+- The following real world scenario demonstrates how small and under-representative samples can have an evident outcome on society. 
 
-# 2. Crop to Central CA
-central_bbox <- st_bbox(c(xmin = -122.5, xmax = -118.5, ymin = 35.5, ymax = 38), crs = st_crs(ca_counties))
-central_ca_counties <- st_crop(ca_counties, central_bbox)
-
-# 3. Label Coast vs Inland
-coast_names <- c("Santa Barbara", "Monterey", "San Luis Obispo", "Santa Cruz")
-central_ca_counties <- central_ca_counties %>%
-  mutate(region = ifelse(name %in% coast_names, "Coast", "Inland"))
-
-# 4. Summarize by region to merge counties into Coast / Inland
-region_map <- central_ca_counties %>%
-  mutate(region = ifelse(name %in% coast_names, "Central Coast", "Central Valley")) %>%
-  group_by(region) %>%
-  summarise(geometry = st_union(geometry), .groups = "drop") %>%  # now 2 rows
-  mutate(availability = case_when(
-    region == "Central Coast" ~ "2,091",
-    region == "Central Valley" ~ "11,212 "
-  ))
-
-# 5. Enable interactive mode
-tmap_mode("view")  # <- enables leaflet interactivity
-
-# 6. Plot with hover labels
-tm_shape(region_map) +
-  tm_polygons(
-    col = "region",
-    id = "region",  # hover label
-    popup.vars = c("Availability" = "availability"),
-    palette = c("skyblue", "tan")
-  ) +
-  tm_layout(title = "Click to See Region and Availability")
-```
-
-
-
-## Sampling and Representativeness
-
--   Random samples are not guaranteed to be representive of the population. Why?
-
--   Hypothetical Example 2: You have a large sampling frame that includes California housing sales and related housing information from C.A.R. for the month of May; however, you randomly select 10 out of 53 counties to evaluate. The small sample may not be representative of the housing market.
-
-## Flint, Michigan
+## 5. Sampling and Representativeness: Flint, Michigan Example
 
 -   In late 2014, the residents of Flint Michigan had noticed and reported that children and adults were experiencing lead poisoning after the city had switched to Flint River for the city's water supply.
 
--   An investigation into the drinking water supply, identified that that some of the water pipes were made from leaded brass. The city resumed services to the water supply after it noted that they would start a task force.
+-   An investigation into the drinking water supply, identified that that some of the water pipes were leaded brass. The city resumed services to the water supply after it noted that they would start a task force.
 
-## Sampling and Representativeness
+-   The same year the Flint Drinking Water Task Force was established to help monitor and assess the quality of the city's water. The goal of the group was to sample drinking water from homes in areas where lead was expected to prepare a drinking water quality report.
 
--   In 2015, the Flint Drinking Water Task Force collected water and information from 156 out of 1951 volunteer households bi-weekly.
+## 5. Sampling and Representativeness: Flint, Michigan Example
 
--   The Sentinel Sites sampling technique: The members of the task force went door-to-door asking for volunteering households and additional sites that met different criteria (e.g., households from different spatial distributions in city, predicted household experiencing high levels of lead in blood, and etc.). These households were categorized as Sentinel Sites.
+-   In 2015, the Flint Drinking Water Task Force went door-to-door distributing water and asked for volunteering homeowners to submit water samples. 
+
+- The task force did not specify if random selection was used to select homes from those who volunteered to participate in water collection. The site chosen by the task force were labeled sentinel sites. All other volunteers were labeled non-sentinel/volunteers.  
+
+- The initial water water collection and household information came from 156 out of 1951 volunteer households bi-weekly. 
+
+- More household were included in the sentinel sample across time with a total 759 sentinel homes and 4041 non-sentinel. 
+
+    -   The Sentinel Sites sampling technique: The members of the task force 
 
     -   Volunteer Sample: concerned homeowners throughout the city also volunteered to provide samples and information.
 
+##  {.instructor-note}
+
+The following real-world example can be used to highlight several important points.
+ -  Ask students whether they have enough information to make sense of the sampling technique. 
+ - Note that this is a form of convenience sampling (non-random), which can lead to bias in samples and real world consequences
+ - There is an opportunity to engage in a conversation about the representation and under-representation using this example. Please, see notes below. Ask students if results from the task force can be trusted
+ 
+ Notes:
+ - There are 51,045 residential properties in the city of flint. Therefore, the task force sampled .30% (156) of residents at the initial sample. The sample size has increased to 759 which is representative of  1.48% of the residents. Including volunteer houses 4 percent of household were sampled from flint residents in the initial sampling. Later sampling include 9 percent of the Flint household residents providing water samples. 
+
 ## 5. Sampling and Representativeness: Example
 
--   In 2017, Goovaerts [@goovaerts2017] compared the housing characteristics and geographical distribution of households that were sampled (Sentinel and Volunteer/Non-sentinel) by the Flint Safe Drinking Water Task Force over two month in 2016.
+-   In 2017, Goovaerts [@goovaerts2017] compared the housing characteristics and geographical distribution of households that were sampled (Sentinel and Volunteer/Non-sentinel) by the Flint Safe Drinking Water Task Force over two months in 2016.
 
 -   Visualizations illustrated sample differences between Sentinel Sites and volunteering sites (Non-sentinel), such as the:
 
@@ -721,59 +645,59 @@ tm_shape(region_map) +
 
 ![](figures/FigureD_Flint.png){style="float: left;" width="30%"} ![](figures/FigureE_Flint.png){width="30%"} ![](figures/FigureF_Flint.png){width="30%"}
 
+##  {.instructor-note}
+Figure A can be used as a comparison visualization. Figure A is a map of flint divided into 9 parts, which can be also be seen through out the other maps. Red points are sampled sites by the task force also labeled sentinel. The blue points are volunteer residents providing water samples. Comparing Figure A to Figure C, shows the year residents were built. Comparing Figure A to Figure B students can observe that most sentinel water sampling sites were built between 1935 to 1985. Homes built before 1935 were mostly identified as volunteer households. Consider also pointing out to students that both figure A and C show that there is a pattern of missing water sample information starting from the right hand corner of section 3 through the left hand corner of section 8. Comparing figure A to D, sentinel sites primarily are identified as having other or unknown water pipes.Some volunteer households were identified has having water serviced from lead pipes, but mostly were unknown and other pipes. In comparison to figure F, most sites sampled by the flint task force experienced low levels of elevated lead in blood. However, volunteer household residents were more likely to have elevated lead in their blood samples. 
+
+##  {.instructor-note}
+Figure E can be compared  to figure A, C, D. and F, which would help compare the percent poverty levels to sampling site,year the dwelling was built, service lines, and lead in blood levels. 
+
 ## 5. Sampling and Representativeness: Discussion
 
-Independently, review and compare all figure
+Discuss in your groups (5 minutes):
 
-::::: columns
-::: {.column width="50%"}
-Discuss in your groups (3 minutes):
+-   Figure B, is a density/heat map of the sampled water collected by task force. Does the map suggest that sampled water could be representative of the whole city? Are there subsections of the city that are more represented?
 
--   What patterns do you see within all figures?
+-   What characteristics are representative of those heavy sampled areas (year pipes were built, types of service line, the percent of residents who are at poverty level, and elevated blood lead levels)?
 
--   Visually what relationships do you observe between the samples and household characteristics?
+-   Does there appear to be any relationships between the house holds that were sampled versus those that were volunteered?
 
--   What would you concluded about the sampling done?
-:::
-
-::: {.column width="50%"}
-<iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:05:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
-
-</iframe>
+-   In figure A, the white space suggests that no samples were collected by the task force nor voluntarily. How do these areas compare to those that had been sampled?
 
 -   Take another 5 minutes to discuss as a class your conclusion, remaining questions, and thoughts.
 
 <iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:05:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
 
 </iframe>
-:::
-:::::
 
-## Beyond Simple Random Sampling
+#  Beyond Random Sampling 
+
+## 6. Beyond Simple Random Sampling: Stratified
 
 -   Stratified Random Sampling: If the population of interest consists of smaller groups, arrange the population into those groups and then randomly sample from each group. The sampling probability may be proportional to the size of another group to ensure equal representation across all groups [@som2014].
 
     -   Ex. Dividing Los Angeles house sales by geographical sub-divisions or by city socioeconomic classes.
 
-## Beyond Simple Random Sampling
+## 6. Beyond Simple Random Sampling: Clustering 
 
 -   Cluster Random Sampling: Divide a population into clusters based on some natural characteristic. Then randomly select the number of clusters (predetermined by researcher) to be included in the sample.
 
   - Ex. Cluster students based on ACT scores and then randomly select cluster to evaluate different cluster characteristics. 
 
-## 5. Sampling and Representativeness: Different types of random sampling techniques
+## 6. Beyond Simple Random Sampling: Different Types of Random Sampling Techniques
 
 -   Systematic Random Sampling: A variant of random sampling. First determine the percent of the population to sample. Then, randomly select an observation within an interval (1 and 1/percent). Starting from the randomly selected unit add the interval upper bound to that observation to determine the next observation to include in the sample [@shahzad2023].
 
     -   Ex. Suppose we are interested in sampling five percent of the population. A random number is first chosen between 1 and (1/0.05 =) 20 ; Then randomly select number is 12. Therefore, the first observation of the random sample is the 12th observation. Then the (12 + 20 =) 32nd, (32 + 20 =) 52nd etc [@som2014].
 
-## 5. Sampling and Representativeness
+## 6. Beyond Simple Random Sampling: Disadvantages of Random Sampling 
 
 -   There are disadvantages to random sampling from a population [@emerson2015] :
 
     -   Time consuming and expensive
     -   Not easy to implement with populations that have low-incidences
     -   Used to give an average representation of the population, when a data scientist is more concerned with the nuances.
+    
+## 6. Beyond Simple Random Sampling: Disadvantages of Random Sampling 
 
 -   Alternative non-random sampling (Convenience and Snowballing) mechanisms may help gather data from a smaller population.
 
@@ -783,9 +707,9 @@ Discuss in your groups (3 minutes):
 
 -   To help data scientists engage in ethical practices when analyzing data and reporting findings, even in cases where sampling information is unknown or highly complex, institutions and organizations have developed guiding principles.
 
-# ASA principles
+# Ethics and Sampling
 
-## ASA principles
+## 7. Ethics and Sampling: ASA principles
 
 Ethical Principles related to Sampling by the American Statistical Association [(ASA, 2022)](https://www.amstat.org/your-career/ethical-guidelines-for-statistical-practice) :
 
@@ -797,7 +721,7 @@ The ethical statistical practitioner seeks to understand and mitigate known or s
 
 The ethical statistical practitioner does not misuse or condone the misuse of data. They protect and respect the rights and interests of human and animal subjects. These responsibilities extend to those who will be directly affected by statistical practices.
 
-## ASA principles
+## 7. Ethics and Sampling: ASA principles
 
 The following are recommended practices that may help meet Principle B:
 
@@ -813,7 +737,7 @@ The following are recommended practices that may help meet Principle B:
 
 -   Be transparent about the extent to which findings can generalized to population of interest and other groups.
 
-## ASA principles
+## 7. Ethics and Sampling: ASA principles
 
 The following are recommended practices that may help meet Principle D:
 
@@ -821,7 +745,7 @@ The following are recommended practices that may help meet Principle D:
 
 -   Critically reflect on research question and consider how the sampled population of interest and those excluded may be impacted by findings and future policy.
 
-## 
+## 7. Ethics and Sampling: ASA principles
 
 Often times, data scientists are tasked with analyzing data with little information about sampling methods. To engage in ethical data science practices, scientists should ask questions about how the data were collected.
 
@@ -833,13 +757,13 @@ Consider answering the following questions when working with a new data set:
 
 -   How should a researcher or analyst use such data to make inferences about the larger population of interest? In other words, could there be issues with generalizing findings?
 
-## 6. Ethics and Sampling: Discussion
+## 7. Ethics and Sampling: Discussion
 
 ![](figures/Healthy School Program .png){style="float: right;" width="15%"}The American Heart Association and William J. Clinton Foundation, created the Healthy Schools Program (HSP) in 2006. The HSP aims to help administrators and teachers create an encouraging physically healthy and nutritious school environment for all.
 
 To determine the efficacy for future implementation of HSP at other schools and support nationwide policy change, researchers collected data from participating schools from 2007 through 2014.
 
-## Ethics and Sampling: Discussion
+## 7. Ethics and Sampling: Discussion
 
 Take 2 minutes to read through HSP_Codebook (pg. 3) to determine sampling procedures used to collect data from participating schools for the "Healthy Schools Program Participation and Inventory Data" and answer the questions:
 
@@ -849,7 +773,7 @@ Take 4 minutes to critically reflect on the following questions within your grou
 
 -   What are the apparent and unseen consequences related to the sampling method used? How might the sampling technique influence responses? How should a researcher or analyst use such data to make inferences about the larger population of interest? In other words, could there be issues with generalizing findings?
 
-## 6. Ethics and Sampling: Discussion
+## 7. Ethics and Sampling: Discussion
 
 -   What other questions may be helpful when determining the quality of data?
 
@@ -859,27 +783,34 @@ Take 4 minutes to discuss as a class your group's reflection and additional ques
 
 </iframe>
 
-## Ethics and Sampling: Practices related to sampling
+## 7. Ethics and Sampling: Practices Related to Sampling
 
 Unethical practices related to sampling:
 
 -   Under or over sampling a part of a population to confirm beliefs
+
     -   Purposefully or unintentionally excluding a minority group or oversampling a majority group which results in diminishing the perspective the minority group.
     -   E.g., A meta analysis revealed that the majority of skin cancer studies and data sets lack dark skin images which have contributed to the under-diagnosis of skin cancer in men and women of color [@wen2022].
 -   Using sampling techniques known to produce bias.
     -   E.g., Rouke et al. (1989) determined that men are considerably under-sampled, fostering gender bias, using a sampling technique that relies on a random selection of telephone numbers and surveying the last birthday in the household [@rourke1989].
 
-## Ethics and Sampling: Practices related to sampling
+## 7. Ethics and sampling: Practices Related to Sampling
+
+Unethical practices related to sampling:
 
 -   Purposefully altering data of one or more observations to meet sampling expectations
+
     -   After implementing a sampling technique, manipulating or fabricating data.
+    
     -   E.g., In 2010, a journalist had discovered that Andrew Wakefield had falsified data by picking and choosing data reported by children to find an association between the MMR vaccine and autism. Articles published in the British Medical Journal suggested that the data were manipulated for financial gain [@sathyanarayanarao2011].
+    
 -   Knowingly fail to disclose observed patterns beyond aggregated data to stakeholders
+
     -   By focusing on a large population, data scientists can fail to recognize patterns or heterogeneity across smaller groups.
 
 # Randomized Controlled Trials
 
-## Randomized Controlled Trials
+## 8. Randomized Controlled Trials
 ::::: Columns
 ::: {.column width="40%"}
 <center>![](figures/Random_Assignment.png){width="100%}</center>
@@ -895,7 +826,7 @@ Unethical practices related to sampling:
 :::
 :::::
 
-## Randomized Controlled Trials
+## 8. Randomized Controlled Trials
 
 ::::: Columns
 ::: {.column width="40%"}
@@ -912,7 +843,7 @@ Unethical practices related to sampling:
 :::
 :::::
 
-## Randomized Controlled Trials
+## 8. Randomized Controlled Trials
 
 Hypotheticall example: researchers are interested in the effects of caffeine dosage on cyclists performance [@beedie2006].
 
@@ -941,14 +872,14 @@ Hypotheticall example: researchers are interested in the effects of caffeine dos
 
 <center>The example is an adaptation of [@beedie2006].</center>
 
-## Randomized Controlled Trials
+## 8. Randomized Controlled Trials
 
 -   Statistical differences are valid only if the sampling frame matches the population and if the sample is "balanced" across the treatment groups.
 
 -   If one or more observations do not represent the population, confounding variables (variables not apart of the study that influence results) may explain any differences found between the Tx and control group on the outcome of interest.
 
 
-## Ethical Issues with RCTs
+## 8. Randomized Controlled Trials: Ethics
 
 -   Data scientists should inquire about sampling methods because different techniques could influence the finding of statistical differences between the Tx and control groups.
 
@@ -970,11 +901,13 @@ The WMA Declaration of Helsinki is now in its tenth revision. There are currentl
 
 -   Free and Informed Consent theme suggests that:
 
-    -   consent to participate in a research study must be voluntary
+    -   consent to participate in a research study must be voluntary.
 
-    -   participants are aware that they may withdraw at any point throughout the study
+    -   participants are aware that they may withdraw at any point throughout the study.
 
-    -   researchers need to confirm that participants understand the consent forms
+    -   researchers need to confirm that participants understand the consent forms.
+
+## Randomized Controlled Trials: Ethics
 
 -   Risks, Burdens, and Benefits theme suggests that:
 
@@ -982,11 +915,11 @@ The WMA Declaration of Helsinki is now in its tenth revision. There are currentl
 
 -   Minimizing Harm theme suggests that:
 
-    -   research should be conducted in a manner that avoids or minimizes harm to the environment and participants
+    -   research should be conducted in a manner that avoids or minimizes harm to the environment and participants.
 
-    -   participants who are harmed as a result of participating in a study are give appropriate compensation and treatment.
+    -   harmed participants due to study's treatment are give appropriate compensation.
 
-## Tuskegee Syphilis Study
+## 8. Randomized Controlled Trials: Tuskegee Syphilis Study
 
 The Tuskegee Syphilis study is a primary example that demonstrates the implications of not upholding research ethics [@tuskegee1997].
 
@@ -1002,7 +935,7 @@ The Tuskegee Syphilis study is a primary example that demonstrates the implicati
 
 # Observational Studies
 
-## Observational Studies
+## 9. Observational Studies
 
 <br>
 <br>
@@ -1011,7 +944,7 @@ The Tuskegee Syphilis study is a primary example that demonstrates the implicati
 >
 > -- Rosenbaum, 2010
 
-## Observational Study
+##  9. Observational Study
 
 -   Simple observational study:
 
@@ -1020,13 +953,13 @@ The Tuskegee Syphilis study is a primary example that demonstrates the implicati
     - Observations are not subjected to randomization, but rather natural circumstances divide individuals into groups, those with and/or without the natural circumstance.
 
 ## {.instructor-discussion}
-
+The following are questions for student and points to be made 
 - What are some examples where observational studies may be needed because randomization is not ethical?
-  + Classic examples include measuring the effect of smoking or drinking alcohol on health.  In general, cannot etehically randomly assign any exposure that may cause harm.  
-  + Randomly denying access to helpful treatments etc when it is reliably availabe would also be unethical. This includes denying access to basic needs and rights around education, housing etc.
+  + Classic examples include measuring the effect of smoking or drinking alcohol on health.  In general, cannot ethically randomly assign any exposure that may cause harm.  
+  + Randomly denying access to helpful treatments etc when it is reliably available would also be unethical. This includes denying access to basic needs and rights around education, housing etc.
   + Examples that may violate autonomy and personal choice?
   
-## Observational Studies  
+##  9. Observational Study  
 
 - Two types: natural or structured: 
   -  Natural: observe people or other units in an environment in which behaviors naturally occur.
@@ -1041,7 +974,7 @@ The Tuskegee Syphilis study is a primary example that demonstrates the implicati
 - Methodological practices include participant matching based on background features of interest, such as age, sex, ethnicity. Creating pairs is key to determine if the Tx truly impacted the participants in the Tx group.
       
 
-## Observational Study
+##  9. Observational Study
 
 -   Observational studies face many challenges
 
@@ -1055,7 +988,9 @@ The Tuskegee Syphilis study is a primary example that demonstrates the implicati
       - Use statistical techniques, such as weights or conservative statistics, to deal with unequal representation and analytical confidence.  
 
 
-## UC Berkeley Graduate Admissions
+# The Simpson's Paradox
+
+## 10. The Simpson's Paradox: UC Berkeley Graduate Admissions
 
 ```{r, width = 300, height = 700}
 #| fig-align: center
@@ -1119,7 +1054,7 @@ Possibilities:
 
 This example can also fit into the [storytelling and visualization module](https://github.com/SCC4DS/data-science-ethics/tree/main/visualization) to highlight the number of different possible explanations for the same (limited) set of data.
 
-## UC Berkeley Graduate Admissions
+## 10. The Simpson's Paradox: UC Berkeley Graduate Admissions
 
 ```{r, width = 300, height = 700 }
 #| fig-align: center
@@ -1170,7 +1105,7 @@ BGS
 ```
 <center>How is this possible?</center>
 
-## Berkeley Gender Discrimination
+## 10. The Simpson's Paradox: UC Berkeley Graduate Gender Discrimination
 
 ```{r}
 prop_applying <- admissions |> group_by(Group) |> mutate(Applied = Applicants/sum(Applicants)) |> ungroup() |>
@@ -1212,7 +1147,7 @@ For the previous plots, point out that that women tended to apply to departments
 
 
 
-## The Simpson's Paradox
+## 10. The Simpson's Paradox: Define
 
 -   Simpson’s Paradox is a statistical phenomenon in which a trend that appears across multiple subgroups tends to reverse or disappear when the groups are combined.
 
