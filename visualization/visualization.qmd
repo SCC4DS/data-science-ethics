@@ -17,12 +17,12 @@ bibliography: references.bib
 
 After data analysis, how should we communicate our findings?
 
-- Effective communication often involves telling a story
+- Effective communication often involves **telling a story**.
 
 - The story should reflect what you believe to be true based on a rigorous analysis of the data
-  - The story should reflect not just your conclusions but all assumptions and your process
+  - The story should reflect not just your conclusions but all assumptions and your process.
 
-- Prepare visualizations that support your story and make a clear point
+- Prepare visualizations that support your story and make a clear point.
 
 ## What is a story?
 <br>
@@ -65,7 +65,7 @@ After data analysis, how should we communicate our findings?
 :::
 :::::
 
-## A Story About Climate Change
+## A Story About Climate Change {.smaller}
 
 
 -   The data are from NASA's Goddard Institute for Space Studies (GISS) analysis of global surface temperature change. [@hansen2010]
@@ -76,7 +76,7 @@ After data analysis, how should we communicate our findings?
 
 -   Then compared to the years 1951–1980 as the base period to determine change.
 
--   Additional adjustments to the average global surface temperature change are made such as accounting for heterogeneity to minimize local non-climatic effects.
+-   Additional adjustments to the average global surface temperature are made, such as accounting for heterogeneity to minimize local non-climatic effects.
 
 -   The Washington Post addressed the tweet by identifying that the National Reviewer had scaled the plot to "hide the actual change in temperature."
 
@@ -128,15 +128,15 @@ fig
 ```
 <center>Manipulate the plot by zooming in and out and evaluate temperature at time intervals.</center>
 
-## {.instructor-note}
+## {.instructor-note .smaller}
 
 - We start with default ylimits to match the tweet, but show how the story changes 
-if we zoom in
+if we zoom in.
 - Use the "autoscale" button at the top to zoom in or zoom in manually.  Double clicking on the plot resets to the default.
 
 - Why is it maybe not a good idea to start the y-axis at 0 in this example?
 
-## {.instructor-discussion}
+## {.instructor-discussion .smaller}
 Interpretation:
 
 - Is a 1 degree change a lot? Based on day to day experience it seems like not, but there is more to the story.
@@ -144,10 +144,6 @@ Interpretation:
 - Additional plots or results could drive home the story about impact of a 1 degree change.  Hypothetical plots: how much does a 1 degree increase in global temperature impact the prevalence of wildfires? How much does a 1 degree increase impact the abundance of important species in the ecosystem?
 
 - Domain expertise needed to contextualize findings!
-
-## {.instructor-discussion}
-
-Interpretation:
 
 - GISS show "temperature anomalies" by subtracting the mean temperature over some baseline period (1951-1980).  Why might this be more desirable?
 
@@ -168,11 +164,11 @@ What are some pros and cons of interactive visualizations?
 ## Poorly constructed vs unethical visualizations
 
 
-- There is a difference between an ugly visualization and a bad visualization
+- There is a difference between an **ugly** visualization and a **bad** visualization.
 
-  + Ugly visualizations are aesthetically unappealing but can still effectively convey information
+  + Ugly visualizations are aesthetically unappealing but can still effectively convey information.
 
-  + Bad visualizations are misleading or confusing because of they way they are constructed
+  + Bad visualizations are misleading or confusing because of the way they are constructed.
 
 ## Poorly constructed vs unethical visualizations
 
@@ -205,10 +201,10 @@ What are some pros and cons of interactive visualizations?
 
 - Excluding information that may impact a reader's understanding includes:
   -   x- and y-axis labels,
-  -   variable scale of measurement (e.g. kg., log-transformation, etc.),
+  -   using a variable scale of measurement (e.g. kg., log-transformation, etc.),
   -   clear title or figure labels.
     
-- **Deliberately** excluding data or information that might influence the conclusions would be unethical
+- **Deliberately** excluding data or information that might influence the conclusions would be unethical.
 
 ## Including too Much Information
 
@@ -217,16 +213,16 @@ What are some pros and cons of interactive visualizations?
 ## Including too Much Information
 
 -   Including **too much** information can have the same effect as leaving out information.
-    -   Leaving the audience with more questions and confusion.
+    -   Leaves the audience with more questions and confusion.
     -   General rule:
         -   Provide enough information so that your audience can make an informed decision.
     -   Exclude unnecessary text (subtitles, long title, jargon).
-    -   Address disproportionate number of numerical values than actual (i.e.,too many values on the y-axis).
+    -   Address disproportionate number of numerical values  (i.e., too many values on the y-axis).
 
 
 
 ::: notes
-In the primary graph 19 MLS soccer teams and values spent on players salaries. The graph is broken down by several groups: players, players position. The full length of the bars suggest the total amount spent on players salaries. Individual bar can also be used to compare the relative amount invested on each player within a team. In the sub graph, the data is broken down by players position and dollar amount spent.
+The primary graph shows 19 MLS soccer teams and values spent on players salaries. The graph is broken down by several groups: players, players' position. The full length of the bars suggests the total amount spent on players salaries. Individual bars can also be used to compare the relative amount invested in each player within a team. In the sub graph, the data is broken down by player's position and dollar amount spent.
 :::
 
 ## Distorted axis limits
@@ -277,7 +273,7 @@ How does Tufte's quote on communicating with clarity, precision and efficiency r
 
 ## Accessibility & Color
   -   Human perceptions of color vary. Upwards of 5-8% of men are colorblind! (less common for women)
-  -   Colorblindness and complete blindness present accessibility concerns related to visual presenation of information. [@johnson2024]
+  -   Colorblindness and complete blindness present accessibility concerns related to visual presentation of information. [@johnson2024]
   -   [@petroff2024] used a machine learning technique to identify color sequences which considered color blindness types, color lightness, color sequence preferences, and aesthetic preferences.
 
 ## Accessibility & Visualizations
@@ -286,31 +282,30 @@ How does Tufte's quote on communicating with clarity, precision and efficiency r
 
 ## Accessibility & Color
 
-  -   Surrounding colors influence the perception of others
-      -   Choose colors that are not difficult to distinguish among.
+  -   Surrounding colors influence the perception of other colors:
+      -   Choose colors that are easier to distinguish among.
   -   Color *association*: 
   
-       - avoid color schemes that engage in stereotypes (e.g., black associated with unsafe and white associated with approachable).
+       - Avoid color schemes that engage in stereotypes (e.g., black associated with unsafe and white associated with approachable).
   
       -   Keep color schemes neutral
       -   Consider how different mediums (e.g., computer screen, printouts, software) used to display the graphic may influence color.
 
-## {.instructor-note}
+## {.instructor-note .smaller}
 
 Accessibility is the practice of ensuring that all individuals have equal access to resources, programs, and opportunities, regardless of their abilities or backgrounds.
 
 In more recent years, the study of colors in statistical visualizations has burgeoned since visualizations rely on color for many different reasons (e.g. distinction of classes, degrees,effects). Findings from those studies highlight several key themes that researchers need to consider while creating visualizations. 
 
-## {.instructor-note}
-For instance, an individual's degree of color blindness may influence the perception of graph or figure. One in every 12 men (8%) and one in every 200 women (0.5%) in the U.S. are born with inherited color defective vision of some type and degree (Johnson, 2024). The most common color-blindness types are red-green and blue-purple. Any color that contains the affected primary color is *distorted*.
 
-## {.instructor-note}
+For instance, an individual's degree of color blindness may influence the perception of a graph or figure. One in every 12 men (8%) and one in every 200 women (0.5%) in the U.S. are born with inherited color defective vision of some type and degree (Johnson, 2024). The most common color-blindness types are red-green and blue-purple. Any color that contains the affected primary color is *distorted*.
+
+## {.instructor-note .smaller}
 
 Using neural networks, Petroff (2024), was able to identify sequence of colors that may improve the accessibility of plots. Several variables were used as predictors/features: color blindness types, color lightness, preferred color sequence, and aesthetic preferences. Three color sequences were identified. All started with the color blue.
 
 Different mediums play a considerable role in the perception of graphs, figures, and tables. Colors may be more saturated on a computer than a piece of paper. Different software may use different varying default colors in visual aides. A data scientist needs to consider their audience.
 
-## {.instructor-note}
 
 Deuteranomaly, protanomaly, and tritanomaly are three types of color blindness. Deuteranomaly and protanomaly are red-green color blindness conditions that cause difficulty distinguishing between reds and greens, with deuteranomaly making green appear redder and protanomaly making red appear dimmer and more green. Tritanomaly is a less common blue-yellow color blindness.
 
@@ -330,17 +325,17 @@ Deuteranomaly, protanomaly, and tritanomaly are three types of color blindness. 
 
 - Researchers have used machine learning to automate data extraction from graphs and figures and consequentially provide the natural language descriptions to support visually disabled users. [@shahira2021]
 
-- R-packages that assist visually impaired researchers with developing figures and graphs. [@godfrey2018]
+- There are **R** packages that assist visually impaired researchers with developing figures and graphs. [@godfrey2018]
     + `colorBlindness` package --- view your plots under different color-deficiency simulations
     + `BrailleR` package---an R add-on specifically targeted at blind users---to extract detailed information, such as data ranges, grammatical constructs, etc. to generate speech strings that are embedded into the image annotation. [@godfrey]
 
-    + `gridSVG` --- which exports graphics using the grid package to SVG, which can be read by a screen reader for the visually impaired. [@murrell]
+    + `gridSVG` --- exports graphics using the grid package to SVG, which can be read by a screen reader for the visually impaired. [@murrell]
 
 # Outliers and anomalies
 
 ## {.instructor-note}
 
-Can have students simulate colorblindess on visualizations that students previously generated (e.g. using `colorBlindness`) or experiment with simulators online (e.g. [https://www.color-blindness.com/coblis-color-blindness-simulator/](https://www.color-blindness.com/coblis-color-blindness-simulator/))
+Can have students simulate colorblindness on visualizations that students previously generated (e.g. using `colorBlindness`) or experiment with simulators online (e.g. [https://www.color-blindness.com/coblis-color-blindness-simulator/](https://www.color-blindness.com/coblis-color-blindness-simulator/))
 
 
 ## Diamonds Data
@@ -359,9 +354,9 @@ ggplot(diamonds, aes(x = x, y = y)) +
 
 ## {.instructor-note}
 
-The diamond data set contains prices and other attributes of over 50,000 diamonds.  Most diamonds are "square-ish" so x (length) and y (width) tend to be very similar.
+The diamond data set contains prices and other attributes of over 50,000 diamonds.  Most diamonds are "square-ish" so $x$ (length) and $y$ (width) tend to be very similar.
 
-Mistakes could have been introduced by coding for missing values (e.g. 0 or 999) and simple data entry errors
+Mistakes could have been introduced by coding for missing values (e.g., 0 or 999) and simple data entry errors
 
 ## {.instructor-discussion}
 
@@ -391,7 +386,7 @@ ggplot(aes(x = x, y = y)) +
 
 ## Outliers
 
-- Best to pre-specify your criteria for excluding outliers prior to analysis
+- Best to pre-specify your criteria for excluding outliers prior to analysis.
 
 - Show results with and without outliers removed. Clearly state:
   + How many observations were excluded
@@ -422,7 +417,7 @@ ggplot(aes(x = price)) +
 
 ## Anomalies
 
-Buried in a reddit thread:
+Buried in a Reddit thread:
 
 <center>![](figures/diamonds1.png){width="70%"}</center>
 
@@ -430,7 +425,7 @@ Buried in a reddit thread:
 
 ## {.instructor-discussion}
 
-- What role does the *data collector* have ensuring the quality, representativeness, and completeness of the data?
+- What role does the *data collector* have in ensuring the quality, representativeness, and completeness of the data?
 
 - What role does the *data analyst* have in identifying any anomalies or data collection errors?
 
@@ -441,7 +436,7 @@ Buried in a reddit thread:
 
 ## {.instructor-note}
 
-The following four out of eight [privacy principles established by the Organization for Economics Co-operation and Development (OECD)](http://oecdprivacy.org/) especially relate data visualizations. The principle is first described followed by suggestion to comply with the principles while creating visualizations. Feel free to ask student if they can think of any other practices that will help them comply with these principles.
+The following four principles out of eight [privacy principles established by the Organization for Economics Co-operation and Development (OECD)](http://oecdprivacy.org/) especially relate to data visualizations. The principle is first described followed by suggestions to comply with it  while creating visualizations. Consider to ask students if they can think of any other practices that will help them comply with these principles.
 
 ## Data Quality
 
@@ -455,7 +450,7 @@ The following four out of eight [privacy principles established by the Organizat
 
 -   Principle: Personal data should not be disclosed, made available or otherwise used for purposes other than those specified in accordance.
 
--   Ensure that graphics do not contain personal participant information or that given information can not be directly related to participants.
+-   Ensure that graphics do not contain personal participant information or that given information cannot be directly related to participants.
 
 ## Openness Principle
 
@@ -487,11 +482,9 @@ The following four out of eight [privacy principles established by the Organizat
 
 <center>![](figures/RecreationPPF.png)</center>
 
-## {.instructor-note}
-Context about the preceding chart: the infographic was presented in 2015 by Republican Jason Chaffetz, the Chairman of the House Committee on Oversight and Government Reform. This chart was presented to Cecile Richards the head of Planned Parenthood during her testimony at public hearing. The chart suggested that Planned Parenthood performs more abortions than cancer screenings and prevention services. [Source: Committee of Oversight and Accountability Democrats](https://oversightdemocrats.house.gov/news/press-releases/politifact-awards-chaffetz-a-rating-of-pants-on-fire-for-using-misleading-chart)
+## {.instructor-note .smaller}
+Context about the preceding chart: the infographic was presented in 2015 by Republican congressman Jason Chaffetz, the Chairman of the House Committee on Oversight and Government Reform. This chart was presented to Cecile Richards, the head of Planned Parenthood, during her testimony at public hearing. The chart suggested that Planned Parenthood performs more abortions than cancer screenings and prevention services. [Source: Committee of Oversight and Accountability Democrats](https://oversightdemocrats.house.gov/news/press-releases/politifact-awards-chaffetz-a-rating-of-pants-on-fire-for-using-misleading-chart)
 
-
-## {.instructor-note}
 
 Key points to note: 
 
@@ -499,7 +492,7 @@ Key points to note:
 
 - Usually best to start the y-axis at 0
 
-- The arrows don't correspond to the real data (graphic is an infographic, not a visualization of real data).
+- The arrows don't correspond to real data (this is an infographic, not a visualization of real data).
 
 - Can ask students to recreate the visualization, with the data presented as separate lines on the same plot or as two side by side plots and discuss how presenting the data in different formats can be used to tell different stories. Examples follow.
 
