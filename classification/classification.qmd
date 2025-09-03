@@ -1,5 +1,5 @@
 ---
-title: "Ethical Considerations for Classificaiton Algorithms"
+title: "Ethical Considerations for Classification Algorithms"
 format:
   revealjs: 
     css: custom.css
@@ -29,9 +29,9 @@ bibliography: reference.bib
 
 ![](figures/confusion_matrix.png)
 
-- Accurary:TP + FP / (TP + FP + FN + TN)
-- False positive rate (FPR): FP / (FP + TN)
-- False negative rate (FNR): FN / (FN + TP)
+- **Accuracy**:TP + FP / (TP + FP + FN + TN)
+- False positive rate (**FPR**): FP / (FP + TN)
+- False negative rate (**FNR**): FN / (FN + TP)
 
 ## Evaluating Classifiers
 
@@ -44,15 +44,15 @@ In this module, we'll focus on the tradeoff between false positive rate and fals
 
 ## A Tradeoff: FPR vs FNR
 
-- Tunable threshold parameters which allow us to increase or decrease the number of positive predictions
+- Tunable threshold parameter which allow us to increase or decrease the number of positive predictions
 
 - Increasing positive predictions typically decreases the false negative rate but increases the false positive rate
 
-- This tradeoff is often displayed using a Receiver Operator Curve (ROC)
+- This tradeoff is often displayed using a Receiver Operator Curve (**ROC**)
 
 ## The ROC Curve
 
-<center>![Source: Wikipedia, "Receiver operating characteristic"](figures/Roc_curve.svg.png){width=75%}</center>
+<center>![Source: Wikipedia, "Receiver operating characteristic"](figures/Roc_curve.svg.png){width=60%}</center>
 
 # Breast Cancer Screening
 
@@ -67,9 +67,9 @@ Consider a breast cancer screening procedure, e.g. mammography.
 
 ## {.instructor-note}
 
-These screening procedures may or may not actually involve AI or machine learning algoriths, but the example is still a useful one for understanding the ethical tradeoffs and considerations for classification accuracy.
+These screening procedures may or may not actually involve AI or machine learning algorithms, but the example is still a useful one for understanding the ethical tradeoffs and considerations for classification accuracy.
 
-## {.instructor-discussion}
+## {.instructor-discussion .smaller}
 
 What are some possible consequences of a false positive result?
 
@@ -80,7 +80,7 @@ Some possible consequences to discuss:
 - economic burden: Costs of follow-up testing, lost work time, insurance implications
 - healthcare resource allocation: Overuse of limited medical resources
 
-## {.instructor-discussion}
+## {.instructor-discussion .smaller}
 
 What are some possible consequences of a false negative result?
 
@@ -99,15 +99,17 @@ Possible consequences of false negatives:
 :::callout-note
 ## Equity
 Cancer risk and screening accuracy vary depending on a number of factors like race and ethnicity, age and breast density.  In addition, not all populations have equal access to state-of-the-art screening technologies. 
+
 - Why do these inequities exist? 
+
 - How might we ensure more equitable access and more fair screenings? 
 :::
 
-## {.instructor-discussion}
+## {.instructor-discussion .smaller}
 
-- access to advanced screening: advanced technologies are more expensive and less available in underserved communities. 
-- geographic disparities: rural and low-income urban areas often lack specialized breast imaging centers, forcing women to travel long distances for screening or rely on older, less accurate equipment. Mobile screening units may use different (often older) technology with different accuracy profiles.
-- insurance and economic barriers: Even when screening is covered by insturance, costs of follow-up testing after false positives can lead women with limited resources may skip recommended follow-up, turning false positives into dangerous delays.
+- Access to advanced screening: advanced technologies are more expensive and less available in underserved communities. 
+- Geographic disparities: rural and low-income urban areas often lack specialized breast imaging centers, forcing women to travel long distances for screening or rely on older, less accurate equipment. Mobile screening units may use different (often older) technology with different accuracy profiles.
+- Insurance and economic barriers: Even when screening is covered by insurance, costs of follow-up testing after false positives can lead women with limited resources may skip recommended follow-up, turning false positives into dangerous delays.
 
 ## {.instructor-discussion}
 
@@ -123,13 +125,13 @@ Is it ethical to have different screening protocols for different populations if
 
 - One major component of these decisions is trying to evaluate a defendant's risk of future crime 
 
-- *Recidivism*: the tendency of a convicted criminal to reoffend.
+- *Recidivism*: the tendency of a convicted criminal to re-offend.
 
 ## The COMPAS recidvism algorithm
 
 - In 2016, [ProPublica published an a story](https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing) about one of the most used algorithms called 'COMPAS'
 
--   COMPAS stands for Correctional Offender Management Profiling for Alternative Sanctions, and was mostly used to assess the risk of a pretrial release
+-   COMPAS stands for Correctional Offender Management Profiling for Alternative Sanctions, and was mostly used to assess the risk of a pre-trial release
 
 - In their article, they conducted a rigorous analysis of possible bias by analyzing data and COMPAS predictions from more than 10,000 criminal defendants in Broward County, Florida
 
@@ -137,7 +139,7 @@ Is it ethical to have different screening protocols for different populations if
 
 - Fairness: ideally, COMPAS would have the same impact on all demographic subgroups.  Probably not possible!
 
--  Transparency: COMPAS is a closed-source algorithm. The public is not allowed to see how the algorithm works.
+-  Transparency: COMPAS is a *closed-source* algorithm. The public is not allowed to see how the algorithm works.
 
 ::: callout-note
 ## Question
@@ -147,7 +149,7 @@ What information about an individual do you think is "fair" to include in an alg
 
 ## COMPAS data
 
-The risk-scores are derived come from answers to a 137 question survey and the defendants criminal record.
+The risk-scores are derived come from answers to a **137 question survey** and the defendant's criminal record.
 
 Predictors used by COMPAS include:
 
@@ -160,7 +162,7 @@ Predictors used by COMPAS include:
 . . . 
 
 ::: callout-important
-Purportedly, race is not used as a predictor.
+Purportedly, **race** is not used as a predictor.
 :::
 
 ## Recidivism Data
@@ -237,12 +239,13 @@ compas_scores <- compas_scores %>% mutate(crime_factor = factor(c_charge_degree)
 
 ## Predictions
 
--   The COMPAS algorithm is closed-source but we can learn about the algorithm by fitting our own model to the COMPAS predictions.
+-   The COMPAS algorithm is closed-source but we can learn about the algorithm by fitting **our own model** to the COMPAS predictions.
 
--   Predict COMPAS score ("high" vs "low" risk) using data about the defendants collected by ProPublica.  
-  - Data includes age, race, and prior counts
+-   Predict COMPAS score ("high" vs "low" risk) using data about the defendants collected by ProPublica.  This yields an explainable **proxy** for the internal workings of COMPAS.
 
--   Compare the predictions for different inputs to the model
+  - Our data includes age, race, and prior counts
+
+-   Compare the predictions for different inputs to the model to impute how COMPAS seems to react to such changes
 
 
 
@@ -258,16 +261,16 @@ compas_scores$predictions <- predict(model, type="response")
 . . .
 
 ::: callout-note
-The classifier we used here is called a "logistic regression". You'll learn much more about this in later statistics courses.
+The classifier we use here is called a "logistic regression". You'll learn much more about this in later statistics courses.
 :::
 
 ## Exploring Predictions
 
-- Use our classifier to predict the probability that COMPAS would give an individual a high score 
+- Use our classifier to predict the *probability* that COMPAS would give an individual a high score 
 
 - Looks at inputs which are identical except in one characteristic
 
-- Compare predictions for different ages and different races
+- e.g., compare predictions for different ages and different races
 
 ## The importance of age
 
@@ -306,7 +309,7 @@ pred_df %>% select(gender_factor, age_factor, race_factor, priors_count, risk_pr
 
 ## The importance of race
 
-Compare predictions fro two hypothetical individuals identical in all characteristics except race.
+Compare predictions for two hypothetical individuals identical in all characteristics except race.
 
 <br>
 
@@ -367,7 +370,7 @@ How might the COMPAS algorithm implicitly factor racial information into its pre
 
 - ProPublica provides a binary variable named `two_year_recid` which indicates whether an individual committed a new crime within two years of the screening or not.
 
-- We can compare the COMPAS risk predictions to the `two_year_recid` variable which we'll assume is our "ground truth" to compute FPR and FNR
+- We can compare the collected COMPAS risk predictions to the `two_year_recid` variable which we'll assume is our "ground truth" to compute FPR and FNR
 
 - There is a tradeoff between FPR and FNR!
 
@@ -379,9 +382,9 @@ compas_scores %>% xtabs(data=., ~ score_factor + two_year_recid)
 ```
 . . .
 
-- FPR: 1018 / (2345 + 1018) = 0.30
-- FNR: 1076 / (1733+1076) = 0.38
-- Accuracy: (2345 + 1733) / n = 0.66
+- **FPR**: $1018 / (2345 + 1018) = 0.30$
+- **FNR**: $1076 / (1733+1076) = 0.38$
+- Accuracy: $(2345 + 1733) / n = 0.66$
 
 
 ## {.instructor-discussion}
@@ -399,9 +402,9 @@ compas_scores %>%
 ```
 <br>
 
-FPR = $641 / (873 + 641) = 0.57$
+**FPR** = $641 / (873 + 641) = 0.57$
 
-FNR = $473 / (473 + 1188) = 0.28$
+**FNR** = $473 / (473 + 1188) = 0.28$
 
 ACC = $(999+414)/(999+408+414+282) = 0.65$
 
@@ -416,9 +419,9 @@ compas_scores %>%
 
 <br>
 
-FPR = $282 / (282 + 999) = 0.22$
+**FPR** = $282 / (282 + 999) = 0.22$
 
-FNR = $408 / (408 + 414) = 0.50$
+**FNR** = $408 / (408 + 414) = 0.50$
 
 ACC = $(999+414)/(999+408+414+282) = 0.67$
 
@@ -435,7 +438,7 @@ tibble(Group = c("African-American", "Caucasian", "All"),
   tab_style(style = cell_borders(sides = c("bottom"),  weight = px(2)),
             locations = cells_body(rows = c(2))) %>% 
   opt_row_striping(row_striping = FALSE) %>%
-  tab_options(table.font.size = 48) %>%
+  tab_options(table.font.size = 40) %>%
    data_color(
     method = "numeric",
     domain = c(0.2, 0.8),
@@ -454,11 +457,13 @@ tibble(Group = c("African-American", "Caucasian", "All"),
 
 <br>
 
-Similar accuracy across the two race groups are attained in very different ways!
+**Similar accuracy** across the two race groups are attained in very different ways!
+
+High FPR for African-Americans and high FNR for Caucasians. 
 
 ## The Impossibility of Fairness
 
-- If race is not included as a predictor in the classifer it is not possible in general to match FPR and FNR across both groups!
+- If race is not included as a predictor in the classifier it is not possible in general to match FPR and FNR across both groups!
 
 - If we use a "race-aware" classifier, we might be able to match FPR and FNR, but only if we use different classification criteria for each race (is that fair?)
 
@@ -476,7 +481,7 @@ This content is likely for more advanced students.
 
 - If we can balance FPR and FNR, is that desirable even if we use different criteria for each race group to classify patient risk?
 
-- Alternatively, if we use a single "race-blind" classiffier, we could match either FPR or FNR across race groups but not both. Which would be preferable?
+- Alternatively, if we use a single "race-blind" classifier, we could match either FPR or FNR across race groups but not both. Which would be preferable?
 
 ##  Putting a human face on it
 
