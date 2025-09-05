@@ -20,21 +20,18 @@ bibliography: reference.bib
 ## Defining Ethics
 
 -   Definition:
-    -   The judgment upon actions which are categorized as right or wrong
-    -   The societal use of terms good and bad
--   Ethics derived from the Greek word ethos - spirit of the community.
--   Ethicists try to answer "What actions are regarded as right or wrong by the members of it's society?"
+    -   The judgment upon actions which are categorized as "**right**" or "**wrong**"
+    -   The societal use of the terms good and bad
+-   Ethics derived from the Greek word *ethos* -- spirit of the community.
+-   Ethicists try to answer "What actions are regarded as right or wrong by the members of society?"
 
 ## Establishment of Ethics in Science
 
 -   The study of ethics dates back to work of Socrates, Plato, and Aristotle
-    -   Hippocratic Oath
-        -   Established several medical principles that are still significant today, including consent.
+    -   Hippocratic Oath:   several medical principles such as ``do no harm'' that are still significant today, including consent.
 -   Ethics in experimental science was a global concern after WWII
-    -   Nuremberg Code (1947)
-        -   A set of ethical research principles for human experimentation as a result of the Nazi Nuremberg trials.
+    -   Nuremberg Code (1947):   A set of ethical research principles for human experimentation as a result of the Nazi Nuremberg trials.
 
-## Advancements in computer and data communications technology have resulted in the need to reevaluate the application of ethical principles. - [@weiss1990] The XXII self-assessment: The ethics of computing
 
 ## {.instructor-discussion}
 
@@ -55,11 +52,15 @@ What daily work-related responsibilities do data scientists have that rely on ma
 
 # Ethical Concepts in Data Science
 
+> Advancements in computer and data communications technology have resulted in the need to reevaluate the application of ethical principles. 
+> - [@weiss1990] The XXII self-assessment: The ethics of computing
+
+
 ## Data privacy
 
 -   Data privacy legislation differs across jurisdictions.
 
--   *Data privacy* in the [California Consumer Protection Act](https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?division=3.&part=4.&lawCode=CIV&title=1.81.5) is the protection of personal information (e.g., Name, email address, purchase and browsing history, location and employment data, IP address, sensitive personal information)
+-   *Data privacy* in the [California Consumer Protection Act](https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?division=3.&part=4.&lawCode=CIV&title=1.81.5) is the protection of personal information (e.g., Name, email address, purchase and browsing history, location and employment data, IP address, sensitive personal information).
 
 ## Social justice
 
@@ -85,14 +86,14 @@ What daily work-related responsibilities do data scientists have that rely on ma
 
 What ethical concepts are relevant to these examples?
 
--   Recently, Uber was fined millions by the Netherlands government after a watchdog found that the U.S. company was transferring data about drivers from the Netherlands to the U.S.
+-   Recently, **Uber** was fined millions by the Netherlands government after a watchdog found that the U.S. company was transferring data about drivers from the Netherlands to the U.S.
 
--   Target was sued after a father was able to determine that his daughter was pregnant. A predictive algorithm determined that she was likely pregnant given the items she purchased and sent coupons for expecting mothers.
+-   **Target** was sued after a father was able to determine that his daughter was pregnant. A predictive algorithm determined that she was likely pregnant given the items she purchased and sent coupons to the family address for expecting mothers.
 
 ## Ethics in Data Science
 
 -   Greater public access of computers raised ethical concerns
--   Ethical issues related to computers [@weiss1990] The XXII self-assessment: The ethics of computing:
+-   Ethical issues related to computers [@weiss1990]:
     -   Ownership of assets/material (e.g., programs, code, visual material)
     -   The degree that programs, software, and computer users are held responsible for outcomes
 
@@ -100,30 +101,33 @@ What ethical concepts are relevant to these examples?
 
 ## Legal Frameworks which Regulate Data Science
 
--   There is variation across jurisdictions in the laws relating to privacy protection and permissible data usage.
+-   There is variation in the laws across jurisdictions relating to privacy protection and permissible data usage.
 -   Two fundamental common themes in EU and US legislation which are fundamental to data protection :
     -   Anti-discrimination rights
-    -   Personal data protect rights
+    -   Personal data protection rights
 
 ## Legal Frameworks which Regulate Data Science
 
--   Anti-discrimination Rights in the U.S. - The Civil Rights Act of 1964 prohibits discrimination based on color, race, sex, religion, or nationality, - The Disabilities Act of 1990 prohibits discrimination based on disability
+-   Anti-discrimination Rights in the U.S.;
+- The Civil Rights Act of 1964 prohibits discrimination based on color, race, sex, religion, or nationality;
+- The Disabilities Act of 1990 prohibits discrimination based on disability.
 
 ## Legal Frameworks which Regulate Data Science
 
--   Personal data protect in the U.S.
+-   Personal data protection:
     -   In the United States, the [Fair Information Practice Principles](https://www.fpc.gov/resources/fipps/) (1973) delineate principles that agencies use when evaluating information systems, processes, programs, and activities that affect individual privacy
--   Since 2017, an increase in proposed laws and regulations related to AI have been proposed - [The US's Blueprint for an AI Bill of Rights](https://www.whitehouse.gov/ostp/ai-bill-of-rights/)\
+-   Since 2017, an increase in proposed laws and regulations related to AI have been proposed 
+- e.g., [The US's Blueprint for an AI Bill of Rights](https://www.whitehouse.gov/ostp/ai-bill-of-rights/)\
 
 ## Data Ethics Principles
 
--   To provide broad guidance,various organizations (e.g., [American Statistical Association](https://www.amstat.org/your-career/ethical-guidelines-for-statistical-practice), [@americanstatisticalassociation2022a]) and government agencies have proposed numerous data ethics principles.
+-   To provide broad guidance,various organizations, e.g., [ASA](https://www.amstat.org/your-career/ethical-guidelines-for-statistical-practice), [@americanstatisticalassociation2022a] and government agencies have proposed numerous data ethics principles.
 -   These principles vary in number, scope, and practicality
--   Different corporations may chose to uphold the principles that meet and fit the company's culture due to the lack of federal legislation
+-   Different corporations may chose to uphold the principles that meet and fit the company's culture due to the **lack of federal legislation**.
 
 ## Data Ethics Principles (OECD)
 
--   The Organization for Economics Co-operation and Development's (OECD) [@oecd2002] guidelines in the Protection of Privacy and Trans border Flows of Personal Data are one of the most supported set of principles by U.S. government agencies.
+-   The Organization for Economics Co-operation and Development's (OECD) [@oecd2002] guidelines in the Protection of Privacy and Transborder Flows of Personal Data are one of the most supported set of principles by U.S. government agencies.
 
 ::: columns
 ::: {.column width="25%"}
@@ -149,36 +153,34 @@ What ethical concepts are relevant to these examples?
 
 ## Data Ethics Principles (OECD)
 
-1.  Collection Limitation Principle: There should be limits to the collection of personal data and any such data should be obtained by lawful and fair means and, where appropriate, with the knowledge or consent of the data subject.
-2.  Data Quality Principle: Personal data should be relevant to the purposes for which they are to be used, and, to the extent necessary for those purposes, should be accurate, complete and kept up-to-date.
+1.  *Collection Limitation Principle*: There should be limits to the collection of personal data and any such data should be obtained by lawful and fair means and, where appropriate, with the knowledge or consent of the data subject.
+2.  *Data Quality Principle*: Personal data should be relevant to the purposes for which they are to be used, and, to the extent necessary for those purposes, should be accurate, complete and kept up-to-date.
 
 ## Data Ethics Principles (OECD)
 
-3.  Purpose Specification Principle: The purposes for which personal data are collected should be specified not later than at the time of data collection and the subsequent use limited to the fulfillment of those purposes or such others as are not incompatible with those purposes and as are specified on each occasion of change of purpose.
-4.  Personal data should not be disclosed, made available or otherwise used for purposes other than those specified in accordance with Principle 3, except:
-
-<!-- -->
-
-a)  with the consent of the data subject; or b) by the authority of law.
+3.  *Purpose Specification Principle*: The purposes for which personal data are collected should be specified not later than at the time of data collection and the subsequent use limited to the fulfillment of those purposes or such others as are not incompatible with those purposes and as are specified on each occasion of change of purpose.
+4.  Personal data should not be disclosed, made available or otherwise used for purposes other than those specified in accordance with Principle 3, except: 
+   a)  with the consent of the data subject; 
+or b. by the authority of law.
 
 ## Data Ethics Principles (OECD)
 
-5.  Security Safeguards Principle: Personal data should be protected by reasonable security safeguards against such risks as loss or unauthorized access, destruction, use, modification or disclosure of data.
-6.  Openness Principle: There should be a general policy of openness about developments, practices and policies with respect to personal data. Means should be readily available of establishing the existence and nature of personal data, and the main purposes of their use, as well as the identity and usual residence of the data controller.
+5.  *Security Safeguards Principle*: Personal data should be protected by reasonable security safeguards against such risks as loss or unauthorized access, destruction, use, modification or disclosure of data.
+6.  *Openness Principle*: There should be a general policy of openness about developments, practices and policies with respect to personal data. Means should be readily available of establishing the existence and nature of personal data, and the main purposes of their use, as well as the identity and usual residence of the data controller.
 
 ## Data Ethics Principles (OECD)
 
-7.  Individual Participation Principle: An individual should have the right to obtain from a data controller, or otherwise, confirmation of whether or not the data controller has data relating to him; and to have communicated to him, data relating to him.
-8.  Accountability principles: A data controller should be accountable for complying with measures which give effect to the principles stated above.
+7.  *Individual Participation Principle*: An individual should have the right to obtain from a data controller, or otherwise, confirmation of whether or not the data controller has data relating to him; and to have communicated to him, data relating to him.
+8.  *Accountability Principle*: A data controller should be accountable for complying with measures which give effect to the principles stated above.
 
-## Example
+## Case Study
 
-In 2017, Meta announced that they analyze and flag user-generated content related to suicidal intent or risk (e.g., post and comments). Later, Meta announced that the company used the suicide predictions to notify local authorities and that over 100 wellness checks were conducted by law-enforcement. Meta also announced that the suicide detection program would expand across all other countries. In 2018, Meta revealed that they also scan the content of users' private messages for suicide risk.
+In 2017, **Meta** announced that they analyze and flag user-generated content related to suicidal intent or risk (e.g., post and comments). Later, Meta announced that the company used the suicide predictions to notify local authorities and that over 100 wellness checks were conducted by law-enforcement. Meta also announced that the suicide detection program would expand across all other countries. In 2018, Meta revealed that they also scan the content of users' private messages for suicide risk.
 
 
 ## {.instructor-discussion}
 
-- In pairs or smaller groups discuss the ethical issues in the previous example or potential for future dilemma. 
+- In pairs or smaller groups discuss the ethical issues in the previous example or potential for future dilemmas. 
 
 # Ethical Practice
 
@@ -186,24 +188,24 @@ In 2017, Meta announced that they analyze and flag user-generated content relate
 
 - Remain **honest** about level of competence related skill, content/subject, potential bias, and timeliness.
 
-- **Understand** responsibilities to ensure their skills can address the stakeholders (i.e., clients and participants) needs.
+- **Understand** responsibilities to ensure that the stakeholders' (i.e., clients and participants) needs are addressed.
 
-- **Communicate** the limitations of the research design and analytic approach. Clearly convey steps, logic, and findings so that other data practitioners and the public understand.
+- **Communicate** the limitations of the research design and analytic approach. Clearly convey steps, logic, and findings so that other data practitioners and the public can understand them.
 
-- Engage in data science practices processes that **protect** humans and animals and minimize harmful impact 
+- Engage in data science practices processes that **protect** humans and animals and minimize harmful impact.
 
-- **Acknowledge** the work of other data practitioners and researchers that were used.
+- **Acknowledge** the work of other data practitioners and researchers that was used.
 
-- **Report** ethical misconduct. Report to appropriate authority, which will investigate ethical issues and or violations. 
+- **Report** ethical misconduct to the appropriate authority, which will investigate ethical issues and or violations. 
 
 ## {.instructor-discussion}
 
-Algorithms affect the lives of individuals, sometimes in profound ways
+Algorithms affect the lives of individuals, sometimes in profound ways.
 <br>
 
 - What are example of algorithms that you've encountered in your life which have influenced your life or your behavior?
 
-- What are the ethical practices and considerations that you think the creator of algorithm(s) did or did not take into account? 
+- What are the ethical practices and considerations that you think the creator of this algorithm(s) did or did not take into account? 
 
 
 ## References
