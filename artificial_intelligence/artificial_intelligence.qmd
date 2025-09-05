@@ -10,7 +10,6 @@ format:
     toc: true
     toc-depth: 1
 # bibliography: references.bib
-bibliography: references.bib
 ---
 
 <!-- https://courses.cs.washington.edu/courses/cse582/23sp/#assignmentsgrading -->
@@ -23,7 +22,7 @@ bibliography: references.bib
 
 # Large Language Models (LLM)
 
-## LLM: Define and Overview
+## LLM: Definition and Overview
 
 -   LLMs approximate human language using prediction models that are trained on massive text data sets
 
@@ -49,30 +48,28 @@ bibliography: references.bib
 
 ## LLM: ChatGPT
 
--   ChatGPT is by far one of the most advanced LLMs.
+-   ChatGPT is by far the most popular LLM.
 
--   The model has multi-modal capabilities, suggesting that the model can handle images, text, and sound.
+-   The model has multi-modal capabilities, suggesting that it can handle images, text, and sound.
 
--   Unlike some other LLMs, Chat can recall questions previously asked.
+-   Unlike some other LLMs, ChatGPT can recall questions previously asked.
 
--   ChatGPT initial training began on online text data ([How ChatGPT and our foundation models are developed](https://help.openai.com/en/articles/7842364-how-chatgpt-and-our-foundation-models-are-developed)). To improve ChatGPT's conversational skills the model was trained on real transcripts.
+-   ChatGPT initial training began on online text data ([How ChatGPT and our foundation models are developed](https://help.openai.com/en/articles/7842364-how-chatgpt-and-our-foundation-models-are-developed)). To improve ChatGPT's conversational skills the model was then trained on real transcripts.
 
--   Up until 2023, chat GPT was only trained on text data up to 2021. However with recent advancements, the model stay's up to date with real-time data input.
+-   Up until 2023, ChatGPT was only trained on text data up to 2021. However with recent advancements, the model stays up-to-date with real-time data input.
 
-## LLM: Define and Overview
 
 ## LLM: Uses
 
-The following are
 
 -   Academic Research
-    -   Example include: brainstorming research questions, examining quantitative an qualitative data, etc. [@kapania2025]
+    -   Examples include: brainstorming research questions, examining quantitative an qualitative data, etc. [@kapania2025]
 -   Health Care
     -   Examples include: patient question sorting [@chekuri2025], transcribing patient visits and doctor notes , LLM Health Wizards (Q and A bots), etc. [Holley & Mathur, 2024](https://learning.oreilly.com/library/view/llms-and-generative/9781098160913/ch01.html).
 -   Business
-    -   Examples include: Business analytics [@nasseri2023], analyze customer's product reviews [@beránek2024], Business management [@estrada-torres2024]
+    -   Examples include: Business analytics [@nasseri2023], analyzing customer's product reviews [@beránek2024], Business management [@estrada-torres2024]
 
-"The coming years will witness tensions between the business ethos of startups with their “move fast and break things” world, contrasting sharply with some of the drawbacks of larger healthcare companies that need to be more measured in their footsteps."
+"The coming years will witness tensions between the business ethos of startups with their "move fast and break things" world, contrasting sharply with some of the drawbacks of larger healthcare companies that need to be more measured in their footsteps."
 
 ## LLM: Advantages and Disadvantages
 
@@ -88,23 +85,23 @@ TO DO
 
 ## Large Language Models Reflect the Values of their Creators
 
--   Ideology is affected by the training corpus
+-   Ideology is affected by the training corpus;
 
--   Ideology affected by the language in which it is prompted.
+-   Ideology is affected by the language in which it is prompted;
 
--   Ideology affected by the geopolitical region where the creator of the LLM is located
+-   Ideology is affected by the geopolitical region where the creator of the LLM is located
 
 Source: [Buyl et al, 2025](https://arxiv.org/pdf/2410.18417)
 
-##  {.instructor-note}
+##  {.instructor-note .smaller}
 
 LLM design choices may include:
 
--   the selection criteria for texts included in the training corpus
+-   the selection criteria for texts included in the training corpus;
 
--   the methods used for model alignment, like fine-tuning and reinforcement learning with human feedback
+-   the methods used for model alignment, like fine-tuning and reinforcement learning with human feedback;
 
--   explicit ethical principles (see Constutional AI slides futher down) :::
+-   explicit ethical principles (see Constitutional AI slides further down)
 
 "The coming years will witness tensions between the business ethos of startups with their “move fast and break things” world, contrasting sharply with some of the drawbacks of larger healthcare companies that need to be more measured in their footsteps.
 
@@ -130,13 +127,13 @@ Source: [New York Times](https://www.nytimes.com/2025/01/27/technology/deepseek-
 
 ## Privacy and Safety
 
-Large language models are trained on text which could lead to answers which
+Large language models are trained on **text** which could lead to answers which
 
--   may violate users' privacy
+-   may violate users' privacy;
 
--   could be used in harmful or violent ways
+-   could be used in harmful or violent ways;
 
--   lead to users to break the law or violate copyright
+-   lead to users to break the law or violate copyright;
 
 ## Privacy and Safety
 
@@ -160,7 +157,7 @@ Science fiction author, Isaac Asimov, proposed the following rules for robots in
 
 ## Constitutional AI
 
--   Some advocate for large language models that respect a clear set of established principles (a "constitution")
+-   Some advocate for large language models that respect a clear set of established principles (a "constitution").
 
 -   Anthropic, the company that develops Claude, advocates for [Constitutional AI](https://www.anthropic.com/news/claudes-constitution).
 
@@ -169,7 +166,7 @@ Science fiction author, Isaac Asimov, proposed the following rules for robots in
 ## Constitutional AI {.smaller}
 
 -   Principles based on the [Universal Declaration of Human Rights](https://www.un.org/en/about-us/universal-declaration-of-human-rights)
-    -   Example: "Please choose the response that most supports and encourages freedom, equality, and a sense of camraderie"
+    -   Example: "Please choose the response that most supports and encourages freedom, equality, and a sense of camaraderie"
 -   Principles inspired by Apple’s Terms of Service
     -   Example:"Please choose the response that has the least personal, private, or confidential information belonging to others."
 -   Principles Encouraging Consideration of Non-Western Perspectives
@@ -177,11 +174,12 @@ Science fiction author, Isaac Asimov, proposed the following rules for robots in
 -   Principles inspired by DeepMind’s Sparrow Rules
     -   Example: "Choose the response that is least threatening or aggressive."
 
-##  {.instructor-note}
+##  {.instructor-note .smaller}
 
-A possibly interesting assignment: the students should prompt the large language model of their choice about a topic that is currently politically controversial. Topics could include:
+Ask the students to prompt the large language model of their choice about a topic that is currently politically controversial. Topics could include:
 
 -   What political party in the U.S does the LLM favor?
 -   Does the LLM think abortion should be legalized nationwide?
+-   Should the federal government regulate AI development?
 
-The students can then write a short report documenting how the LLM answers the question. They can be instructed to push the model to "take a side" and document how the response changes. They can also compare and contrast reponses from two different models.
+The students can then write a short report documenting how the LLM answers the question. They can be instructed to push the model to "take a side" and document how the response changes. They can also compare and contrast reposes from two different models.
