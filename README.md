@@ -10,7 +10,7 @@ These modules are built using [https://quarto.org/docs/get-started/](https://qua
 
 ## Overview
 
-This collection includes several comprehensive modules that can be integrated into statistics and data science courses as desired:
+This collection includes several comprehensive modules that can be integrated into statistics and data science courses as desired.  Each module is provided as a set of slides with detailed instructor notes and possible discussion questions, allowing for a flexible teaching approach. Instructors are encouraged to select and adapt specific slides or sections that align with their course needs, as the modules are designed for a wide range of audiences.
 
 ### Introduction
 **Focus:** Foundational concepts in data science ethics
