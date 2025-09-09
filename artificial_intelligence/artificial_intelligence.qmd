@@ -10,15 +10,8 @@ format:
     toc: true
     toc-depth: 1
 # bibliography: references.bib
+
 ---
-
-<!-- https://courses.cs.washington.edu/courses/cse582/23sp/#assignmentsgrading -->
-
-<!-- https://thebullshitmachines.com/ -->
-
-<!-- https://arxiv.org/pdf/2410.18417 -->
-
-<!-- https://www.anthropic.com/news/claudes-constitution -->
 
 # Large Language Models (LLM)
 
@@ -26,11 +19,16 @@ format:
 
 -   LLMs approximate human language using prediction models that are trained on massive text data sets
 
-    -   First, models are trained to learn general patterns in language, including syntax, grammar, and pragmatics
+- Language models are trained in multiple-stages.  For example,
 
-    -   Second, the models are fine-tuned using human feedback
+  -   First, models are trained to learn general patterns in language, including syntax, grammar, and pragmatics
 
-## LLM: Define and Overview
+  -  Second, the models are fine-tuned using human feedback and other "reinforcement learning" techniques
+
+- Many models are multi-modal (go beyond just language)
+    + Can take images, video, text, and sound and input and also generate images, text and sounds.
+
+## Large Language Model
 
 -   Popular LLMs include:
 
@@ -44,13 +42,9 @@ format:
 
     -   Claude
 
-    -   Anthropic
+## Large Language Models
 
-## LLM: ChatGPT
-
--   ChatGPT is by far the most popular LLM.
-
--   The model has multi-modal capabilities, suggesting that it can handle images, text, and sound.
+-   Many models have multi-modal capabilities: model can take images, video, text, and sound and input and also generate images, text and sounds.
 
 -   Unlike some other LLMs, ChatGPT can recall questions previously asked.
 
@@ -58,30 +52,37 @@ format:
 
 -   Up until 2023, ChatGPT was only trained on text data up to 2021. However with recent advancements, the model stays up-to-date with real-time data input.
 
+# The Use of AI
 
-## LLM: Uses
+## The Use of AI: academics and education
 
+- Education
+  + Creating study material
+  + Help with revising text for clarity
+  
+- Academic Research
 
 -   Academic Research
-    -   Examples include: brainstorming research questions, examining quantitative an qualitative data, etc. [@kapania2025]
+    + brainstorming research questions
+    + examining quantitative an qualitative data [@kapania2025]
+
+
+
+## The Use of AI
+
 -   Health Care
     -   Examples include: patient question sorting [@chekuri2025], transcribing patient visits and doctor notes , LLM Health Wizards (Q and A bots), etc. [Holley & Mathur, 2024](https://learning.oreilly.com/library/view/llms-and-generative/9781098160913/ch01.html).
--   Business
-    -   Examples include: Business analytics [@nasseri2023], analyzing customer's product reviews [@beránek2024], Business management [@estrada-torres2024]
+
+## The Use of AI: Business
+
+Examples include: Business analytics [@nasseri2023], analyzing customer's product reviews [@beránek2024], business management [@estrada-torres2024]
 
 "The coming years will witness tensions between the business ethos of startups with their "move fast and break things" world, contrasting sharply with some of the drawbacks of larger healthcare companies that need to be more measured in their footsteps."
 
-## LLM: Advantages and Disadvantages
+##  {.instructor-note}
 
--   They have no memory between conversations
 
-# Ethical Issues with Large Language Models
-
-##  {.instructor-discussion}
-
-## Ethical Use of AI
-
-TO DO
+# Creating Language Models
 
 ## Large Language Models Reflect the Values of their Creators
 
@@ -101,7 +102,8 @@ LLM design choices may include:
 
 -   the methods used for model alignment, like fine-tuning and reinforcement learning with human feedback;
 
--   explicit ethical principles (see Constitutional AI slides further down)
+
+-   explicit ethical principles (see Constutional AI slides futher down) 
 
 "The coming years will witness tensions between the business ethos of startups with their “move fast and break things” world, contrasting sharply with some of the drawbacks of larger healthcare companies that need to be more measured in their footsteps.
 
