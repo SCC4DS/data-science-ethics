@@ -29,17 +29,19 @@ This module addresses the ethical dimensions of data visualization, emphasizing 
 ### Classification  
 **Focus:** Ethical considerations in predictive modeling and classification algorithms
 
-
+This module focuses on the ethical issues that can arise when using classification algorithms, particularly in binary classification problems where mistakes are not all equal. It discusses metrics for evaluating a classifier's accuracy and explores the tradeoff between false positive and false negative rates. The module uses real-world examples such as breast cancer screening and criminal risk assessment to illustrate these concepts.
 
 **Suitable for:** Intermediate statistics courses covering regression and classification, machine learning courses.
 
-### Sampling
-**Focus:** TK TK
+### Sampling and Data Representativeness
+**Focus:**  Ethical issues related to sampling techniques and data representativeness
 
-**Suitable for:** TK TK
+This module explores ethical issues stemming from sampling techniques and the lack of representative samples. It uses real-world examples likeand Swain's Jury Panel Case Study to promote discussion around the importance of sampling and the consequences of using non-representative data. The module also delineates ethical principles from the American Statistical Association.
+
+**Suitable for:** Introductory to intermediate statistics courses, or courses on data collection and research methods.
 
 
 ### Artificial Intelligence
-**Focus:** TK TK
+**Focus:** Ethical considerations for Large Language Models (LLMs) and the use of AI
 
-**Suitable for:** TK TK
+This module examines the ethical use of Large Language Models and AI in fields like academics, healthcare, and business. It covers how the training data and design of these models reflect the values and ideology of their creators. The content also introduces the concept of "Constitutional AI" as a method for guiding AI behavior with a set of principles.
