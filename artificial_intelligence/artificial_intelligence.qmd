@@ -1,113 +1,283 @@
 ---
 title: "Large Language Models and Artificial Intelligence"
-format:
-  revealjs: 
+format: 
+  revealjs:
     css: custom.css
     slide-number: true
-    chalkboard:  
+    chalkboard:
       buttons: true
     preview-links: auto
+    smaller: true
+    scrollable: false
     toc: true
     toc-depth: 1
+    number-sections: true
+    number-depth: 1
 # bibliography: references.bib
-
+bibliography: references.bib
 ---
+
+<!-- https://courses.cs.washington.edu/courses/cse582/23sp/#assignmentsgrading -->
+
+<!-- https://thebullshitmachines.com/ -->
+
+<!-- https://arxiv.org/pdf/2410.18417 -->
+
+<!-- https://www.anthropic.com/news/claudes-constitution -->
+
+<!-- https://aiethics.princeton.edu/wp-content/uploads/sites/587/2018/10/Princeton-AI-Ethics-Case-Study-3.pdf-->
 
 # Large Language Models (LLM)
 
-## LLM: Definition and Overview
+## LLM: Example - JEREMY the Chat bot
 
--   LLMs approximate human language using prediction models that are trained on massive text data sets
+Cybercrime was becoming increasingly problematic for the citizens of a democratic mid-sized European nation. To deal with cyber identity theft crimes, citizens were asked to vote on providing the national law enforcement with the power and ability to charge and prosecute cyber criminals.
 
-- Language models are trained in multiple-stages.  For example,
+Collaborating with local experts, the national law enforcement leaned in natural language processing- the origin of LLMs- to find criminals. Specifically, an algorithm, named JEREMY, was trained on online chat forums where criminal behavior had taken place.
 
-  -   First, models are trained to learn general patterns in language, including syntax, grammar, and pragmatics
+## LLM: Example - JEREMY the Chat bot
 
-  -  Second, the models are fine-tuned using human feedback and other "reinforcement learning" techniques
+JEREMY the chat bot was able to enter and engage in conversations with people that had been suspected of such crimes. At first the bot was able to identify individuals with smaller crimes (e.g., hacking) and later able to identify criminal rings that were engaging in more brazen acts. Additionally, the bot was also tasked with creating dossiers on current and possible criminals.
 
-- Many models are multi-modal (go beyond just language)
-    + Can take images, video, text, and sound and input and also generate images, text and sounds.
+It should be noted that citizen did not know about JEREMY the bot to keep the bot a secrete and catch criminal.
 
-## Large Language Model
+##  {.instructor-discussion}
 
--   Popular LLMs include:
+JEREMY the Chat bot Discussion
 
-    -   ChatGPT-4 (generative pretrained transformer)
+Take 2 minutes consider the following questions and 5 minutes for class discussion:
 
-    -   Mistral
+-   If you were hypothetically a citizen of the nation, what would be your opinion about using a chat bot to identify, monitor, and incriminate cyber criminals on forums/group chats? Consider if you were a victim of identity theft versus a not targeted member of this society.
 
-    -   Gemini
+-   Are there possible violations of ethical principles? Do the benefits of having JEREMY outweigh the possible ethical violations?
 
-    -   Deep Seek
+Take 5 minutes for class discussion:
 
-    -   Claude
+<iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:03:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
 
-## Large Language Models
-
--   Many models have multi-modal capabilities: model can take images, video, text, and sound and input and also generate images, text and sounds.
-
--   Unlike some other LLMs, ChatGPT can recall questions previously asked.
-
--   ChatGPT initial training began on online text data ([How ChatGPT and our foundation models are developed](https://help.openai.com/en/articles/7842364-how-chatgpt-and-our-foundation-models-are-developed)). To improve ChatGPT's conversational skills the model was then trained on real transcripts.
-
--   Up until 2023, ChatGPT was only trained on text data up to 2021. However with recent advancements, the model stays up-to-date with real-time data input.
-
-# The Use of AI
-
-## The Use of AI: academics and education
-
-- Education
-  + Creating study material
-  + Help with revising text for clarity
-  
-- Academic Research
-
--   Academic Research
-    + brainstorming research questions
-    + examining quantitative an qualitative data [@kapania2025]
-
-
-
-## The Use of AI
-
--   Health Care
-    -   Examples include: patient question sorting [@chekuri2025], transcribing patient visits and doctor notes , LLM Health Wizards (Q and A bots), etc. [Holley & Mathur, 2024](https://learning.oreilly.com/library/view/llms-and-generative/9781098160913/ch01.html).
-
-## The Use of AI: Business
-
-Examples include: Business analytics [@nasseri2023], analyzing customer's product reviews [@beránek2024], business management [@estrada-torres2024]
-
-"The coming years will witness tensions between the business ethos of startups with their "move fast and break things" world, contrasting sharply with some of the drawbacks of larger healthcare companies that need to be more measured in their footsteps."
+</iframe>
 
 ##  {.instructor-note}
 
+Possible ethical principles to consider:
 
-# Creating Language Models
+Privacy: The bot was able to collect and analyze data from who used the forums. Furthermore, collection of documents were developed on possible and existing criminals.
 
-## Large Language Models Reflect the Values of their Creators
+Consent:Citizens of nation did not know about the bot and therefore, were not able to given consent to monitoring and collection of data.
 
--   Ideology is affected by the training corpus;
+Transparency: The team of experts and law enforcement did not provide information about the algorithm's performance or possible bias.
 
--   Ideology is affected by the language in which it is prompted;
+## LLM: Define and Overview
 
--   Ideology is affected by the geopolitical region where the creator of the LLM is located
+-   LLMs approximate human language using prediction models that are trained on massive text data sets
+
+    -   First, models are trained on known text sequences to learn general patterns in language, including syntax, grammar, and pragmatics. Through an iterative process the model's parameters are estimated and updated while the model is trained across the large number of known text sequences.
+
+    -   Second, the models are fine-tuned using human feedback
+
+![](images/LLM_example.png)
+
+Source [Pai, 2025](https://learning.oreilly.com/library/view/designing-large-language/9781098150495/ch01.html#id4)
+
+## LLM: Uses
+
+The following examples of how LLMs are being used across different fields:
+
+-   Academic Research
+    -   Example include: brainstorming research questions, examining quantitative an qualitative data, etc. [@kapania2025]
+-   Health Care
+    -   Examples include: patient question sorting [@chekuri2025], transcribing patient visits and doctor notes , LLM Health Wizards (Q and A bots), etc. [Holley & Mathur, 2024](https://learning.oreilly.com/library/view/llms-and-generative/9781098160913/ch01.html).
+-   Business
+    -   Examples include: Business analytics [@nasseri2023], analyze customer's product reviews [@beránek2024], Business management [@estrada-torres2024]
+
+## LLM: Define and Overview
+
+-   In 2025, popular LLMs and their associated companies include:
+
+    -   ChatGPT-4 (generative pre-trained transformer) - Open AI
+
+    -   Claude - Anthropic
+
+    -   Deep Seek
+
+    -   Gemini/BERT - Google
+
+    -   Mistral
+
+##  {.instructor-note}
+
+-   All of the aforementioned LLM models vary in popularity, strengths, and weakness as of September 2025. Since LLMs are relatively a new popular phenomenon these LLMs may be come obsolete later. \## LLM: Example
+
+Back ground on Chat GPT:
+
+-   ChatGPT model has multi-modal capabilities, suggesting that the model can handle images, text, and sound.
+
+-   Unlike some other LLMs, Chat can recall questions previously asked.
+
+-   ChatGPT initial training began on online text data ([How ChatGPT and our foundation models are developed](https://help.openai.com/en/articles/7842364-how-chatgpt-and-our-foundation-models-are-developed)). To improve ChatGPT's conversational skills the model was trained on real transcripts.
+
+-   Up until 2023, chat GPT was only trained on text data up to 2021. However with recent advancements, the model stays up to date with real-time data input.
+
+## "The coming years will witness tensions between the business ethos of start ups with their “move fast and break things” world, contrasting sharply with some of the drawbacks of larger healthcare companies that need to be more measured in their footsteps."
+
+## LLM: ChatGPT and Medical Question Discussion
+
+An older man underwent a procedure to address his irregular heartbeat condition. A couple of days later, he began to experience double vision, where a single object was perceived as two. He contacted the surgeon about his newly developed symptoms, and the surgeon noted that double vision was a "harmless" side effect and indicated that if the symptom continued to occur, he should contact his general doctor or go to the ER. Unsatisfied with the surgeon's answer, he then consulted with ChatGPT, which suggested that his double vision was a possible outcome of his treatment (See image for partial response). The man had two more episodes and called the paramedics. When evaluated by the ER neurologist, the man was considered at-risk for a stroke, which was later reduced to a mini-stroke [@saenger2024].
+
+## LLM: ChatGPT and Medical Question Discussion
+
+Later the elderly man asked how we would describe the surgeon's explanation and Chat-GPT. He stated that the doctor's response was "partly incomprehensible" and chatGPT's as "valuable, precise, and understandable"
+
+![](images/DoubleVision.png)
+
+##  {.instructor-discussion}
+
+Take 2 minutes to review the following questions.
+
+Consider the following questions:
+
+-   After reading the response, how would you describe the information provided by ChatGPT ? Could a paid visions of ChatGPT generate different response? If so, would the response be more believable?
+
+-   Should OpenAI be held responsible for any medical outcomes? Should the man be awarded any compensation by OpenAI?
+
+-   What type of medical safe-guards should be put into free-public large-language models?
+
+Spend 5 minutes discussing your perspectives as a class.
+
+<iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:03:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
+
+</iframe>
+
+## LLM: Advantages and Limitations
+
+Limitations
+
+-   Memory: Models have no memory between conversations.
+-   Rudimentary: Simulates verbal elementary logical rules, but cannot implement chain logical rules to create and verify complex conclusion [Burtsev, Reeves, & Job (2023)](https://www.oreilly.com/library/view/the-working-limitations/53863MIT65233/chapter001.xhtml#h1-3).
+-   Error Accumulation: In multi-step logical reasoning error accumulates because at every step there is a non-zero probability of error occurring [Burtsev, Reeves, & Job (2023)](https://www.oreilly.com/library/view/the-working-limitations/53863MIT65233/chapter001.xhtml#h1-3).
+-   LLM Hallucinations: when LLMs results are incorrect due to being trained on poor quality or "poisoned" data [@alber2025], LLMs pursuit of a reward, lacking in robust generalization and reasoning [@farquhar2024].
+
+## LLM: Advantages and Limitations
+
+Advantages
+
+-   Highly effective (speed and accuracy) in text and coding task, including generation, testing, repair, and refinement [@gu2025]
+
+-   Make mundane time consuming task more manageable for humans, such as legal administrative tasks, organizing medical documents, generating targeted program service information for citizens [@bondarenko] \# Regulatory Frameworks for AI
+
+# AI and Student Impact
+
+## AI and Student Impact: Students
+
+-   The impact of AI on students' educational outcomes may be larger than most individuals anticipate due to how students, teachers, university administrators, private companies and government entities use AI technology.
+
+-   Students use LLM for many purposes, including and not limited to:
+
+    -   language translator
+
+    -   text editor
+
+    -   tutor
+
+    -   research idea generator [@chan2023].
+
+## AI and Student Impact: Student Discussion
+
+Take 2 minutes to review the following questions.
+
+Consider the following questions:
+
+-   How do you use LLMs for academic-related activities and how often do you use LLMs for those academic-related prompts?
+
+-   To what degree should teachers be able to use AI for in-person instruction, curriculum development, testing, and evaluation of students progress or work?
+
+-   What are the possible consequences (positive and negative) of using AI tools for the evaluation of student's work?
+
+-   How do you see your university/college using AI which may influence your peers or potential peers experiences?
+
+Spend 5 minutes discussing your perspectives as a class.
+
+<iframe width="320" height="100" src="https://vclock.com/embed/timer/#countdown=00:03:00&amp;enabled=0&amp;seconds=300&amp;theme=0&amp;ampm=1&amp;sound=xylophone" frameborder="0" allowfullscreen>
+
+</iframe>
+
+##  {.instructor-note}
+
+-   Question 2: To get students thinking about the question you may want to reveal how you, as an educator use AI.
+
+-   Question 3: The second question may also come up from question one, if so skip. The second question hopefully leads students to think about data collection and evaluation of AI models. AI models need large amounts of data, which suggests training and fine tuning data will need to be accessible and usable for long periods of time. The algorithms and training datasets employed to build such systems may carry forward existing biases such as human biases related to gender and ethnicity (Kulkarni et al.,2023).
+
+-   Question 4: To engage student more in the first questions, you may prompt them to take time to identify a statement made by the university or college of the incorporation of AI at the system-level. If not available, ask them to look up other universities.
+
+## AI and Student Impact: Teacher Use and Academic Institutions
+
+Teachers have reported using AI to do the following (Toksha et al., 2023):
+
+-   Intelligent Tutoring System (ITS) to provide students with extra assistance
+
+-   Assessment of student test, assignments, and progress
+
+-   To communicate with students so teacher may spend more time on assessment of student progress
+
+-   Curriculum Development
+
+-   Course Development
+
+Academic Institutions have used AI for the following [@khairullah2025]:
+
+-   Classification of student documents
+
+-   Processing student applications and paper work
+
+-   Facial recognition to assess student activity
+
+-   Student academic and career survices
+
+-   Attendance monitoring
+
+-   Teacher evaluations
+
+## AI and Student Impact:  Performance
+
+-   Several studies have evaluated the performance of LLMs, such has ChatGPT, on academic competence
+
+    -   Gong and Colleagues assessed the knowledge performance of various ChatGPT models and found that over time the models' performance on common sense and general academic professional knowledge assessments improved [@gong2025].
+
+        -   None of the models performed perfectly
+
+# LLM and Ethics
+
+## LLM and Ethics: Broad AI and 
+
+-   With the increased integration of AI in everyday activities and it's potential impact on humans, some countries have developed laws and regulation around its development and deployment
+
+-   Currently there is not one globally followed set of rules or procedures agreed up among all nations
+
+-   LIST OVERLAPPING Laws, rules or regulations <https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng>
+
+## LLM and Ethics: The Values of their Creators
+
+-   Ideology is affected by the training corpus
+
+-   Ideology affected by the language in which it is prompted.
+
+-   Ideology affected by the geopolitical region where the creator of the LLM is located
 
 Source: [Buyl et al, 2025](https://arxiv.org/pdf/2410.18417)
 
-##  {.instructor-note .smaller}
+##  {.instructor-note}
 
 LLM design choices may include:
 
--   the selection criteria for texts included in the training corpus;
+-   the selection criteria for texts included in the training corpus
 
--   the methods used for model alignment, like fine-tuning and reinforcement learning with human feedback;
+-   the methods used for model alignment, like fine-tuning and reinforcement learning with human feedback
 
-
--   explicit ethical principles (see Constutional AI slides futher down) 
+-   explicit ethical principles (see Constutional AI slides futher down) :::
 
 "The coming years will witness tensions between the business ethos of startups with their “move fast and break things” world, contrasting sharply with some of the drawbacks of larger healthcare companies that need to be more measured in their footsteps.
 
-## Grok and Elon Musk
+## LLM and Ethics: Grok and Elon Musk
 
 <center>![](images/grok.png){width="60%"}</center>
 
@@ -129,13 +299,13 @@ Source: [New York Times](https://www.nytimes.com/2025/01/27/technology/deepseek-
 
 ## Privacy and Safety
 
-Large language models are trained on **text** which could lead to answers which
+Large language models are trained on text which could lead to answers which
 
--   may violate users' privacy;
+-   may violate users' privacy
 
--   could be used in harmful or violent ways;
+-   could be used in harmful or violent ways
 
--   lead to users to break the law or violate copyright;
+-   lead to users to break the law or violate copyright
 
 ## Privacy and Safety
 
@@ -159,7 +329,7 @@ Science fiction author, Isaac Asimov, proposed the following rules for robots in
 
 ## Constitutional AI
 
--   Some advocate for large language models that respect a clear set of established principles (a "constitution").
+-   Some advocate for large language models that respect a clear set of established principles (a "constitution")
 
 -   Anthropic, the company that develops Claude, advocates for [Constitutional AI](https://www.anthropic.com/news/claudes-constitution).
 
@@ -168,7 +338,7 @@ Science fiction author, Isaac Asimov, proposed the following rules for robots in
 ## Constitutional AI {.smaller}
 
 -   Principles based on the [Universal Declaration of Human Rights](https://www.un.org/en/about-us/universal-declaration-of-human-rights)
-    -   Example: "Please choose the response that most supports and encourages freedom, equality, and a sense of camaraderie"
+    -   Example: "Please choose the response that most supports and encourages freedom, equality, and a sense of camraderie"
 -   Principles inspired by Apple’s Terms of Service
     -   Example:"Please choose the response that has the least personal, private, or confidential information belonging to others."
 -   Principles Encouraging Consideration of Non-Western Perspectives
@@ -176,12 +346,15 @@ Science fiction author, Isaac Asimov, proposed the following rules for robots in
 -   Principles inspired by DeepMind’s Sparrow Rules
     -   Example: "Choose the response that is least threatening or aggressive."
 
-##  {.instructor-note .smaller}
+## AI Jail Breaking
 
-Ask the students to prompt the large language model of their choice about a topic that is currently politically controversial. Topics could include:
+##  {.instructor-note}
+
+A possibly interesting assignment: the students should prompt the large language model of their choice about a topic that is currently politically controversial. Topics could include:
 
 -   What political party in the U.S does the LLM favor?
 -   Does the LLM think abortion should be legalized nationwide?
--   Should the federal government regulate AI development?
 
-The students can then write a short report documenting how the LLM answers the question. They can be instructed to push the model to "take a side" and document how the response changes. They can also compare and contrast reposes from two different models.
+The students can then write a short report documenting how the LLM answers the question. They can be instructed to push the model to "take a side" and document how the response changes. They can also compare and contrast reponses from two different models.
+
+## References
