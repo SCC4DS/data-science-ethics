@@ -98,11 +98,7 @@ There are several points related to ethical or social justice practices that can
 
 ## {.instructor-discussion}
 
-<<<<<<< Updated upstream
 - Consider posing the question: "If researchers determined that more women were hired overall in comparison to men, would you consider the hiring algorithm to be fair?" 
-=======
-If researchers determined that more women were hired more overall in comparison to men, would you consider the hiring algorithm to be fair?
->>>>>>> Stashed changes
 
 ## 1. Amazon's Automated Hiring Tool: Final Comments 
 
@@ -625,7 +621,6 @@ What is sampling bias?
 ##  {.instructor-note}
 
 The following real-world example can be used to highlight several important points.
-<<<<<<< Updated upstream
 
  - Ask students whether they have enough information to make sense of the sampling technique. 
  - Note that this is a form of convenience sampling (non-random), which can lead to bias in samples and real world consequences.
@@ -633,7 +628,6 @@ The following real-world example can be used to highlight several important poin
  
  Notes:
  - There are 51,045 residential properties in the city of Flint. Therefore, the task force sampled 0.30% (156) of residents in the initial sample. The sample size was eventually increased to 759 which is 1.48% of the residents. Including volunteer houses, 4 percent of households were sampled from Flint residents in the initial sampling. Later sampling include 9 percent of the Flint households providing water samples. 
-=======
  -  Ask students whether they have enough information to make sense of the sampling technique. 
  - Note that this is a form of convenience sampling (non-random), which can lead to bias in samples and real world consequences
  - There is an opportunity to engage in a conversation about the representation and under-representation using this example. Please, see notes below. Ask students if results from the task force can be trusted.
@@ -641,7 +635,6 @@ The following real-world example can be used to highlight several important poin
 ##  {.instructor-note}
 
  - There are 51,045 residential properties in the city of flint. Therefore, the task force sampled .30% (156) of residents at the initial sample. The sample size has increased to 759 which is representative of  1.48% of the residents. Including volunteer houses 4 percent of household were sampled from flint residents in the initial sampling. Later sampling include 9 percent of the Flint household residents providing water samples. 
->>>>>>> Stashed changes
 
 ## 5. Sampling and Representativeness: Example
 
@@ -665,16 +658,14 @@ The following real-world example can be used to highlight several important poin
 ![D](figures/FigureD_Flint.png){style="float: left;" width="30%"} ![E](figures/FigureE_Flint.png){width="30%"} ![F](figures/FigureF_Flint.png){width="30%"}
 
 ##  {.instructor-note}
-<<<<<<< Updated upstream
+
 Figure A can be used as a comparison visualization. Figure A is a map of Flint divided into 9 parts, which can be also be seen through out the other maps. Red points are sampled sites by the task force also labeled sentinel. The blue points are volunteer residents providing water samples. Comparing Figure A to Figure C, shows the year residences were built. Comparing Figure A to Figure B students can observe that most sentinel water sampling sites were built between 1935 to 1985. Homes built before 1935 were mostly identified as volunteer households. Consider also pointing out to students that both figure A and C show that there is a pattern of missing water sample information starting from the right hand corner of section 3 through the left hand corner of section 8.
 
 Comparing Figure A to D, sentinel sites primarily are identified as having other or unknown water pipes. Some volunteer households were identified has having water serviced from lead pipes, but mostly were unknown and other pipes. In comparison to figure F, most sites sampled by the Flint task force experienced low levels of elevated lead in blood. However, volunteer household residents were more likely to have elevated lead in their blood samples. 
-=======
 
-- Figure A can be used as a comparison visualization. Figure A is a map of flint divided into 9 parts, which can be also be seen throughout the other maps. Red points are sampled sites by the task force also labeled sentinel. The blue points are volunteer residents providing water samples. Comparing Figure A to Figure C, shows the year residents were built. Comparing Figure A to Figure B students can observe that most sentinel water sampling sites were built between 1935 to 1985. Homes built before 1935 were mostly identified as volunteer households. Consider also pointing out to students that both figure A and C show that there is a pattern of missing water sample information starting from the right hand corner of section 3 through the left hand corner of section 8. Comparing figure A to D, sentinel sites primarily are identified as having other or unknown water pipes.Some volunteer households were identified has having water serviced from lead pipes, but mostly were unknown and other pipes. In comparison to figure F, most sites sampled by the flint task force experienced low levels of elevated lead in blood. However, volunteer household residents were more likely to have elevated lead in their blood samples. 
->>>>>>> Stashed changes
 
 ##  {.instructor-note}
+
 Figure E can be compared  to figure A, C, D and F, which would help compare the percent poverty levels to sampling site, year the dwelling was built, service lines, and lead in blood levels. 
 
 ## 5. Sampling and Representativeness: Discussion
@@ -1081,15 +1072,12 @@ Possibilities:
 
 This example can also fit into the [storytelling and visualization module](https://github.com/SCC4DS/data-science-ethics/tree/main/visualization) to highlight the number of different possible explanations for the same (limited) set of data.
 
-<<<<<<< Updated upstream
-=======
 ## {.instructor-note}
 
 From wikipedia:
 
 The admission figures for the fall of 1973 showed that men applying were more likely than women to be admitted, and the difference was so large that it was unlikely to be due to chance. However, when taking into account the information about departments being applied to, the different rejection percentages reveal the different difficulty of getting into the department, and at the same time it showed that women tended to apply to more competitive departments with lower rates of admission, even among qualified applicants (such as in the English department), whereas men tended to apply to less competitive departments with higher rates of admission (such as in the engineering department). The pooled and corrected data showed a "small but statistically significant bias in favor of women".
 
->>>>>>> Stashed changes
 ## 10. Simpson's Paradox: UC Berkeley Graduate Admissions
 
 ```{r, width = 300, height = 700 }
@@ -1183,11 +1171,8 @@ For the previous plots, point out that that women tended to apply to departments
 
 
 
-<<<<<<< Updated upstream
-## 10. Simpson's Paradox
-=======
+
 ## 10. Simpson's Paradox: Define
->>>>>>> Stashed changes
 
 -   Simpson’s Paradox is a statistical phenomenon in which a trend that appears across multiple subgroups tends to **reverse or disappear** when the groups are combined.
 

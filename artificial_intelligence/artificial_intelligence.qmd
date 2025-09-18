@@ -120,15 +120,15 @@ Back ground on Chat GPT:
 
 ## "The coming years will witness tensions between the business ethos of start ups with their “move fast and break things” world, contrasting sharply with some of the drawbacks of larger healthcare companies that need to be more measured in their footsteps."
 
-## LLM: ChatGPT and Medical Question Discussion
+## LLM: ChatGPT and Healthcare
 
 An older man underwent a procedure to address his irregular heartbeat condition. A couple of days later, he began to experience double vision, where a single object was perceived as two. He contacted the surgeon about his newly developed symptoms, and the surgeon noted that double vision was a "harmless" side effect and indicated that if the symptom continued to occur, he should contact his general doctor or go to the ER. Unsatisfied with the surgeon's answer, he then consulted with ChatGPT, which suggested that his double vision was a possible outcome of his treatment (See image for partial response). The man had two more episodes and called the paramedics. When evaluated by the ER neurologist, the man was considered at-risk for a stroke, which was later reduced to a mini-stroke [@saenger2024].
 
-## LLM: ChatGPT and Medical Question Discussion
+## LLM: ChatGPT and Healthcare
 
 Later the elderly man asked how we would describe the surgeon's explanation and Chat-GPT. He stated that the doctor's response was "partly incomprehensible" and chatGPT's as "valuable, precise, and understandable"
 
-![](images/DoubleVision.png)
+<!-- ![](images/DoubleVision.png) -->
 
 ##  {.instructor-discussion}
 
